@@ -1,0 +1,53 @@
+---
+title: "ETL Initial Analysis"
+output: html_notebook
+---
+
+```{r, message=FALSE}
+library(tidyverse)
+library(lubridate)
+library(janitor)
+```
+
+```{r}
+loans <- read_csv("raw_data/loans-export jan-dec 2019.csv") %>% 
+  clean_names() %>% 
+  mutate(due_date = as.Date(due_date, format = "%d/%m/%Y"),
+         checked_out = as.POSIXct(checked_out, format = "%d/%m/%Y %H:%M"),
+         checked_in = as.POSIXct(checked_in, format = "%d/%m/%Y %H:%M")
+         )
+         
+
+usage <- read_csv("raw_data/usage-export jan-dec 2019.csv")
+```
+
+
+
+```{r}
+loans %>% 
+  mutate(month = month(checked_out, label = T)) %>% 
+  group_by(month, item_name) %>% 
+  summarise(count = n()) %>% 
+  arrange(count) %>% 
+  top_n(1) %>% 
+  arrange(month, desc(count))
+```
+
+group tools
+see if groups spike throughout year
+find specific  user stories
+
+```{r}
+loans %>% 
+  group_by(user_id) %>% 
+  summarise(count = n()) %>% 
+  arrange(desc(count))
+  
+```
+```{r}
+loans %>% 
+  filter(user_id == 209) %>% 
+  arrange(checked_out)
+
+```
+

@@ -1,0 +1,889 @@
+Item Name,Item ID,Type,Loans,Completed Loans,Total DaysOut,Average Loan Length
+Ryobi Jigsaw,ETL1214,Jig Saws,34,34,248,7.3
+Corded circular saw,ETL0401,Circular Saws,33,33,253,7.67
+75 piece drill bit and saw set,ETL0417,"Bits, Drivers and Accessories",33,33,202,6.13
+Electric lawn mower,ETL0488,Corded Mowers,33,33,130,3.94
+MacAllister Jigsaw,ETL0706,Jig Saws,32,32,250,7.82
+BOSCH X50Ti Drill Bit Set,ETL0946,"Bits, Drivers and Accessories",32,32,224,7
+Cordless drill,ETL0168,Cordless Drills,32,32,195,6.1
+Jigsaw - Bosch PST 650L,ETL0433,Jig Saws,31,31,245,7.91
+Black & Decker Jigsaw,ETL0323,Jig Saws,31,31,191,6.17
+Detail Sander,ETL0964,Finishing Power Sanders,30,30,229,7.64
+Cordless drill,ETL0908,Cordless Drills,30,30,217,7.24
+Step ladders,ETL0338,Step Ladders,30,30,180,6
+Bosch Power Sander,ETL0923,Finishing Power Sanders,29,29,224,7.73
+JCB 20v Cordless Drill,ETL0387,Cordless Drills,29,29,218,7.52
+Bar clamp,ETL0248,Bar Clamps,29,29,207,7.14
+Makita Cordless Drill,ETL0366,Cordless Drills,29,29,207,7.14
+75 Piece Drill Bit set,ETL0043,"Bits, Drivers and Accessories",29,29,203,7
+Step Ladder,ETL0411,Step Ladders,29,29,188,6.49
+Random Orbital Sander,ETL1218,Random Orbit Sander,29,29,180,6.21
+75 Piece Drill Bit and Saw set,ETL1257,"Bits, Drivers and Accessories",29,29,176,6.07
+G clamp set of 4,ETL0886,Bar Clamps,29,29,154,5.32
+Cordless drill,ETL0167,Cordless Drills,28,28,209,7.47
+Portable Folding Work Bench,ETL1114,Hand Tools,28,28,183,6.54
+Makita cordless drill,ETL0347,Cordless Drills,27,27,178,6.6
+Performance Power Pro Electric Screwdriver,ETL0326,Cordless Drills,27,27,155,5.75
+Corded circular saw,ETL0310,Circular Saws,26,26,170,6.54
+Palm Sander,ETL1018,Finishing Power Sanders,26,26,166,6.39
+Black & Decker 12v Cordless Drill,ETL0384,Cordless Drills,26,26,160,6.16
+Drill and Screwdriver Bit set,ETL1155,"Bits, Drivers and Accessories",26,26,157,6.04
+Titan 10” compound mitre saw,ETL1266,Chop Saws,25,25,176,7.04
+Bar clamp,ETL0249,Bar Clamps,25,25,170,6.8
+Stanley Intellisensor Pro Stud finder,ETL0875,Stud finder,25,25,161,6.44
+Extension cable,ETL1199,Extension Cords,25,25,158,6.32
+Palm Sander,ETL1200,Finishing Power Sanders,24,24,212,8.84
+Wood chisel set,ETL0119,Wood Chisel,24,24,179,7.46
+1m Spirit Level,ETL0117,Levels,24,24,167,6.96
+Multi Tool Rotary Tool,ETL0350,Engraver,24,24,165,6.88
+Palm Sander,ETL1202,Finishing Power Sanders,24,24,157,6.55
+Parkside PMS 130 Palm Sander,ETL0435,Random Orbit Sander,24,24,154,6.42
+Corded hammer drill,ETL1246,Power Drill 3/8in,23,23,176,7.66
+Dewalt chop/mitre saw,ETL0397,Chop Saws,23,23,159,6.92
+15 Piece Drill Bit Masonry set,ETL0704,"Bits, Drivers and Accessories",23,23,157,6.83
+1m Spirit Level,ETL1186,Levels,23,23,157,6.83
+Black and Decker Orbital Power Sander,ETL1017,Finishing Power Sanders,23,23,152,6.61
+Cordless Hammer Drill,ETL0455,Cordless Hammer Drills,23,23,144,6.27
+Stihl Petrol Hedge Trimmer,ETL0611,Manual Hedge Trimmer,23,23,144,6.27
+Wallpaper steamer,ETL1171,Wallpaper Steamer,23,23,144,6.27
+Ryobi Chop Saw,ETL1172,Chop Saws,22,22,179,8.14
+Performance Power Jigsaw,ETL0443,Jig Saws,22,22,166,7.55
+Drill Bit Set,ETL1252,"Bits, Drivers and Accessories",22,22,162,7.37
+Skil Belt sander,ETL0379,Sanders & Planers,22,22,141,6.41
+34 Piece Drill Bit set,ETL0703,"Bits, Drivers and Accessories",22,22,141,6.41
+Wallpaper Stripper,ETL0327,Wallpaper Steamer,22,22,128,5.82
+Heat gun/Paint stripper,ETL0315,Soldering & Heat Guns,21,21,177,8.43
+Sewing machine,ETL0360,Sewing Machines,21,21,164,7.81
+Wallpaper Stripper,ETL1209,Wallpaper Steamer,21,21,162,7.72
+Wallpaper perforator,ETL0501,Wallpaper Steamer,21,21,148,7.05
+Makita Rotary Hammer Drill (SDS+ 22mm 240v),ETL0365,Hammer Drills,21,21,146,6.96
+Bosch hammer drill,ETL1206,Power Drills,21,21,146,6.96
+Detail Sander,ETL0597,Finishing Power Sanders,21,21,141,6.72
+DeWalt Cordless Drill,ETL1251,Cordless Drills,21,21,137,6.53
+Corded hammer drill,ETL1208,Power Drill 3/8in,21,21,134,6.39
+Screwdriver Drill Bit set,ETL1193,"Bits, Drivers and Accessories",21,21,132,6.29
+Woolworths Jigsaw,ETL0314,Jig Saws,21,21,125,5.96
+Makita cordless drill,ETL6674,Cordless Drills,20,20,147,7.35
+Staple gun,ETL0138,Staple Gun,20,20,144,7.2
+Router accessories,ETL0154,Routers,20,20,143,7.15
+Spirit level,ETL1179,Levels,20,20,143,7.15
+Stud finder,ETL0331,Testers (hand held),20,20,140,7
+Narrow Paint Scraper,ETL0637,Scrapers,20,20,140,7
+Spirit level 72cm,ETL0415,Levels,20,20,137,6.85
+Pry bar,ETL0522,Crowbar,20,20,134,6.7
+Dewalt corded SDS hammer drill,ETL0633,Hammer Drills,20,20,131,6.55
+Petrol strimmer,ETL0189,Gas Powered String Trimmer,20,20,126,6.3
+Black & Decker Small Angle Grinder,ETL0925,Angle Grinders,20,20,116,5.8
+75 Piece Drill Bit and Saw set,ETL1256,"Bits, Drivers and Accessories",19,19,146,7.69
+Speed clamp - Set of 2,ETL0880,Bar Clamps,19,19,135,7.11
+Hand tool set,ETL1173,Hand Tool Sets,19,19,135,7.11
+G clamp,ETL0247,Bar Clamps,19,19,125,6.58
+Parkside cordless drill,ETL0449,Cordless Drills,19,19,125,6.58
+Variable Speed SDS Corded Hammer Drill,ETL1215,Hammer Drills,19,19,123,6.48
+G clamp set of 2,ETL0941,Bar Clamps,19,19,122,6.43
+Small Mitre Saw,ETL1028,Power Saws,19,19,117,6.16
+Screwdriver/socket bits set,ETL1236,Drill Bits,19,19,114,6
+Drill Bit set,ETL1180,"Bits, Drivers and Accessories",19,19,107,5.64
+Orbital Sander,ETL1233,Finishing Power Sanders,18,18,133,7.39
+Extension cable on reel,ETL0723,Extension Cords,18,18,132,7.34
+Set 2 Heavy Duty Trestles,ETL0928,Saw Horses,18,18,125,6.95
+Cordless drill,ETL1207,Cordless Drills,18,18,122,6.78
+75 piece drill bit and saw set,ETL1072,"Bits, Drivers and Accessories",18,18,117,6.5
+Corded circular saw,ETL1198,Circular Saws,18,18,117,6.5
+Wallpaper stripper,ETL0968,Wallpaper Steamer,18,18,116,6.45
+Belt Sander,ETL0900,Finishing Power Sanders,18,18,115,6.39
+Makita cordless drill driver,ETL1043,Cordless Drills,18,18,109,6.06
+Heat gun,ETL0596,Soldering & Heat Guns,18,18,102,5.67
+Paint scraper,ETL0624,Scrapers,17,17,149,8.77
+Hand saw,ETL1128,Saws,17,17,138,8.12
+Portable Work bench,ETL0156,Miscellaneous Furniture,17,17,137,8.06
+Parkside cordless drill,ETL0711,Cordless Drills,17,17,134,7.89
+Jigsaw,ETL0238,Jig Saws,17,17,129,7.59
+Performance Variable Speed Jigsaw,ETL0024,Jig Saws,17,17,125,7.36
+Reciprocating saw,ETL0920,Jig Saws,17,17,119,7
+Portable Work bench,ETL0356,Miscellaneous Furniture,17,17,118,6.95
+Corded Power Drill,ETL0152,Hammer Drills,17,17,115,6.77
+Electric Planer,ETL1039,Power Planer,17,17,112,6.59
+Drill Bit set,ETL0648,"Bits, Drivers and Accessories",17,17,111,6.53
+Palm Sander,ETL1204,Finishing Power Sanders,17,17,106,6.24
+Extension cable on reel,ETL1230,Extension Cords,17,17,103,6.06
+Angle Grinder,ETL1219,Angle Grinders,17,17,98,5.77
+DeWalt corded hammer drill,ETL0346,Corded & Plug-in,17,17,96,5.65
+Paint scraper,ETL0362,Scrapers,16,16,135,8.44
+75 Piece Drill Bit Set,ETL1263,Drill Bits,16,16,124,7.75
+paint roller cage on pole,ETL0211,Paint Roller Frame,16,16,121,7.57
+5 Piece SDS Hammer Drill Bit set,ETL0705,"Bits, Drivers and Accessories",16,16,120,7.5
+Heat gun/Paint stripper,ETL0305,Soldering & Heat Guns,16,16,116,7.25
+Mitre Saw with Laser Guide,ETL1135,Power Tools,16,16,116,7.25
+Adjustable square,ETL1190,Squares,16,16,114,7.13
+Performance Power Steamer,ETL0675,Wallpaper Steamer,16,16,109,6.82
+Pallet Breaker,ETL1031,Crow Bars,16,16,108,6.75
+60cm Spirit Level,ETL0965,Levels,16,16,104,6.5
+Handy Power Electric Router,ETL1221,Routers,16,16,104,6.5
+Wallpaper Steamer,ETL1010,Wallpaper Steamer,16,16,96,6
+Lawn Mower,ETL1095,Lawn Mower,16,16,79,4.94
+Step Ladder,ETL1116,Step Ladders,15,15,133,8.87
+Dewalt Angle Grinder,ETL0155,Angle Grinders,15,15,112,7.47
+Cordless Drill,ETL0587,Cordless Drills,15,15,106,7.07
+Wallpaper Steamer,ETL0631,Wallpaper Steamer,15,15,105,7
+Crowbar,ETL0161,Crowbar,15,15,104,6.94
+Claw Hammer,ETL0188,Claw Hammers,15,15,103,6.87
+Laminate Cutter,ETL0903,Misc,15,15,102,6.8
+Chop saw,ETL0914,Power Saws,15,15,102,6.8
+Cordless drill,ETL1240,Cordless Drills,15,15,101,6.74
+Performance Power Electic Router,ETL0607,Routers,15,15,95,6.34
+Paint scraper,ETL0636,Scrapers,15,15,94,6.27
+Flymo Power Trim 500 XT Strimmer,ETL0606,String Trimmer,15,15,85,5.67
+Cement trowel,ETL0219,Brick Trowel,14,14,131,9.36
+Magnetic Spirit Level,ETL0938,Levels,14,14,124,8.86
+Wet Tile Saw,ETL0409,Wet Tile Saws,14,14,120,8.58
+Detail Sander,ETL1051,Sanders,14,14,106,7.58
+Detail Sander,ETL0227,Finishing Power Sanders,14,14,105,7.5
+Crowbar,ETL0696,Crowbar,14,14,105,7.5
+Forstner Bit Set,ETL0974,Drill Bits,14,14,103,7.36
+Needle File Set,ETL0866,Files,14,14,101,7.22
+Extension Ladder,ETL0526,Extension Ladder,14,14,99,7.08
+"HACK SAW 12""",ETL0947,Hack saw,14,14,96,6.86
+Hand saw,ETL1156,Saws,14,14,96,6.86
+Hand Tile Cutter,ETL0403,Hand Tile Cutter,14,14,88,6.29
+Corded drill,ETL0150,Power Drill 3/8in,14,14,85,6.08
+G clamp set of 2,ETL0942,Bar Clamps,14,14,74,5.29
+Tiling trowel,ETL0105,Notched Trowel,14,14,71,5.08
+Nail-Staple Gun,ETL1040,Staple Guns,13,13,198,15.24
+Junior hack saw,ETL1126,Hack saw,13,13,121,9.31
+Narrow Paint Scraper,ETL1130,Scrapers,13,13,121,9.31
+Sheet Sander,ETL0450,Finishing Power Sanders,13,13,114,8.77
+Corded circular saw,ETL1197,Circular Saws,13,13,112,8.62
+Jigsaw,ETL0277,Jig Saws,13,13,104,8
+Tri square,ETL0113,Squares,13,13,103,7.93
+4 Piece SDS Drill Bit set (masonry),ETL1260,"Bits, Drivers and Accessories",13,13,101,7.77
+Corded circular saw,ETL0988,Circular Saws,13,13,99,7.62
+Black & Decker Reflex Plus Strimmer,ETL0962,String Trimmer,13,13,98,7.54
+Hammer Drill,ETL1163,Hammer Drills,13,13,98,7.54
+Wall/Floor Scraper,ETL0614,Scrapers,13,13,91,7
+Dremel Multi,ETL0328,Engraver,13,13,90,6.93
+Large Crowbar,ETL0695,Crowbar,13,13,90,6.93
+75 Piece Drill Bit Set,ETL1264,Drill Bits,13,13,90,6.93
+Reciprocating Saw,ETL0390,Reciprocating Saw,13,13,89,6.85
+60cm Spirit Level,ETL1001,Levels,13,13,89,6.85
+Cement trowel,ETL0103,Brick Trowel,13,13,87,6.7
+Router bit set,ETL1235,"Bits, Drivers and Accessories",13,13,84,6.47
+Bush saw,ETL0612,Pruning Saw,13,13,82,6.31
+Blow Torch,ETL0503,Tools,13,13,81,6.24
+Portable Work bench,ETL0895,Miscellaneous Furniture,13,13,81,6.24
+Mixing Paddle,ETL0967,Electric Mixers & Dispensers,13,13,81,6.24
+Pocket joint drill and screw bit set / jig,ETL1192,Drill Bits,13,13,81,6.24
+Heavy pickaxe,ETL0012,Pickaxes,13,13,77,5.93
+Bar clamp,ETL0146,Bar Clamps,13,13,75,5.77
+G clamp,ETL0388,Bar Clamps,12,12,168,14
+Needle nosed pliers,ETL0093,Needle Nose Pliers,12,12,111,9.25
+Trowel,ETL0948,Trowel,12,12,110,9.17
+Tiling trowel,ETL0622,Notched Trowel,12,12,109,9.09
+Clarke Sander/Polisher,ETL0847,Finishing Power Sanders,12,12,99,8.25
+Wallpaper perforator,ETL1238,Wallpaper Steamer,12,12,91,7.59
+Hand saw,ETL0290,Saws,12,12,90,7.5
+Drill Bit set,ETL0285,"Bits, Drivers and Accessories",12,12,88,7.34
+Multifunction Jigsaw/Handsaw,ETL0370,Power Saws,12,12,88,7.34
+Sledgehammer,ETL0553,Sledgehammers,12,12,88,7.34
+Wallpaper Steamer,ETL0921,Wallpaper Steamer,12,12,88,7.34
+Random Orbit Sander,ETL1325,Random Orbit Sander,12,12,88,7.34
+Petrol Lawn mower,ETL0430,Lawn Mower,12,12,87,7.25
+Mole grips,ETL1113,Vise Grips,12,12,85,7.09
+Woodworking Kit,ETL0676,Hand Tool Sets,12,12,84,7
+Garden spade,ETL0933,Spade Shovel,12,12,83,6.92
+Wall/Floor Scraper,ETL0613,Scrapers,12,12,82,6.84
+Mitre Box,ETL1003,Misc,12,12,82,6.84
+Electric Planer,ETL0673,Power Planer,12,12,81,6.75
+Parkside Electric Brad Nailer,ETL0025,Corded & Plug-in,12,12,80,6.67
+Wood chisel 12mm,ETL0289,Wood Chisel,12,12,80,6.67
+Black & Decker corded hammer drill,ETL0898,Hammer Drills,12,12,80,6.67
+Large Lopping Shears,ETL1079,Grass Shear,12,12,80,6.67
+Cordless circular saw,ETL0598,Cordless Circular Saw,12,12,77,6.42
+Power Devil corded hammer drill,ETL0897,Hammer Drills,12,12,76,6.34
+Hand saw,ETL0983,Saws,12,12,76,6.34
+Wall/Floor Scraper,ETL1212,Scrapers,12,12,74,6.17
+Corded Hammer Drill,ETL1142,Hammer Drills,12,12,73,6.09
+Garden Secateurs,ETL0984,Hand Pruner,12,12,72,6
+Stanley knife,ETL0966,Linoleum Knives,12,12,68,5.67
+Garden Spade,ETL1060,Spade Shovel,12,12,65,5.42
+Wet Tile Saw,ETL0476,Wet Tile Saws,12,12,64,5.34
+slip joint pliers,ETL0674,Slip Joint Pliers,11,11,107,9.73
+ROUTER ACCESSORIES,ETL0377,Routers,11,11,95,8.64
+Heat gun,ETL0038,Heat Gun,11,11,94,8.55
+DeWalt cordless angle grinder,ETL0400,Angle Grinders,11,11,89,8.1
+Finishing Power Sanders,ETL0904,Finishing Power Sanders,11,11,85,7.73
+G clamp (set of 4),ETL0481,Bar Clamps,11,11,84,7.64
+Pasting Table,ETL0963,Miscellaneous Furniture,11,11,84,7.64
+Wooden mallet,ETL0116,Hammers & Mallets,11,11,83,7.55
+Corded circular saw,ETL0316,Circular Saws,11,11,77,7
+Wall/Floor Scraper,ETL0641,Scrapers,11,11,77,7
+Mitre Box,ETL0932,Drills,11,11,77,7
+Cement trowel,ETL0104,Brick Trowel,11,11,74,6.73
+Belt Sander,ETL0985,Finishing Power Sanders,11,11,72,6.55
+Drill Bit set,ETL0551,"Bits, Drivers and Accessories",11,11,70,6.37
+Extendable garden shears,ETL0174,Grass Shear,11,11,67,6.1
+Drill Bit set,ETL1318,"Bits, Drivers and Accessories",11,11,66,6
+Tile cutter,ETL0142,Hand Tile Cutter,11,11,59,5.37
+Black and Decker Mouse Sander,ETL1326,Finishing Power Sanders,11,11,53,4.82
+Petrol Strimmer,ETL0428,Gas Powered String Trimmer,10,10,139,13.9
+Corner Trowel Set (2 piece),ETL1191,Trowel,10,10,100,10
+Tile cutter,ETL0644,Hand Tile Cutter,10,10,92,9.2
+Grout Out Electric Grout Remover,ETL0623,Power Drills,10,10,84,8.4
+75 Piece Drill Bit Set,ETL1279,Drill Bits,10,10,81,8.1
+Sledgehammer,ETL0473,Sledgehammers,10,10,77,7.7
+Bolt Cutter,ETL0149,Wire Cutters,10,10,73,7.3
+Bush saw,ETL0892,Hack saw,10,10,73,7.3
+Extension Ladder,ETL0527,Extension Ladder,10,10,71,7.1
+Hand Mitre Saw,ETL0543,Miter Saws,10,10,71,7.1
+Tri square,ETL0274,Squares,10,10,70,7
+Narrow Short Paint Scraper,ETL1131,Scrapers,10,10,69,6.9
+Parkside 160 W Power Sander,ETL0457,Random Orbit Sander,10,10,68,6.8
+Hedge Trimmer,ETL1044,Electric Hedge Trimmer,10,10,68,6.8
+Router accessories,ETL1129,Routers,10,10,68,6.8
+Cordless drill driver,ETL1201,Cordless Drills,10,10,67,6.7
+Hand plane,ETL0243,Planes,10,10,66,6.6
+Quarry and Floor Tile Cutter,ETL0632,Hand Tile Cutter,10,10,66,6.6
+Branch Loppers,ETL1177,Loppers,10,10,66,6.6
+GMC Biscuit Joiner,ETL0028,Biscuit Joiners,10,10,63,6.3
+Bosch Electric Planer,ETL1228,Power Planer,10,10,63,6.3
+Post Spade,ETL0934,Post Hole Digger,10,10,62,6.2
+Corded circular saw,ETL0591,Circular Saws,10,10,61,6.1
+DeWalt Corded Hammer Drill,ETL1253,Hammer Drills,10,10,61,6.1
+Long handled shears,ETL0649,Grass Shear,10,10,60,6
+Macallister Table Saw,ETL0940,Table Saws,10,10,60,6
+Mixing paddle,ETL1249,Paint Mixers & Stirrers,10,10,55,5.5
+Black & Decker Electric Plane,ETL0902,Power Planer,10,10,53,5.3
+Cordless Hedge Trimmer,ETL1287,Garden Tools,10,10,50,5
+Wet Tile Saw,ETL1205,Wet Tile Saws,10,10,46,4.6
+Grass Rake,ETL0431,Metal Garden Rake,10,10,44,4.4
+Small G clamp,ETL0943,Bar Clamps,9,9,137,15.23
+Portable Folding Work Bench,ETL1115,Hand Tools,9,9,104,11.56
+Garden Fork,ETL0009,Digging Fork,9,9,87,9.67
+Makita Cordless Drill,ETL1352,Cordless Drills,9,9,84,9.34
+Wood chisel,ETL0053,Wood Chisel,9,9,82,9.12
+Tenon saw,ETL0076,Tenon Saws,9,9,77,8.56
+Axus Precision Wallpaper Trimming Edge,ETL0617,Levels,9,9,77,8.56
+Drill bits,ETL1347,Drill Bits,9,9,77,8.56
+10mm Wood chisel,ETL0871,Wood Chisel,9,9,74,8.23
+Adjustable Spanner,ETL1224,Wrenches,9,9,73,8.12
+Reciprocating Saw,ETL1042,Power Saws,9,9,70,7.78
+Wood chisel 20mm blade,ETL0288,Wood Chisel,9,9,67,7.45
+Makita SDS Rotary Hammer Drill,ETL0453,Hammer Drills,9,9,67,7.45
+Hack saw,ETL0180,Hack saw,9,9,66,7.34
+Stone chisel,ETL0223,Cement Chisel,9,9,66,7.34
+Whirlwind Wizard Rotary Tool,ETL0461,Engraver,9,9,64,7.12
+Rubber Mallet,ETL0181,Rubber Mallets,9,9,63,7
+OTHER NON-REGISTERED ITEMS,ETL0000,Tools,9,9,63,7
+Pry bar,ETL0108,Pry Bar,9,9,62,6.89
+Tile cutter,ETL0986,Hand Tile Cutter,9,9,62,6.89
+Sledgehammer,ETL0552,Sledgehammers,9,9,61,6.78
+Extension cable,ETL0976,Extension Cords,9,9,60,6.67
+Manual Lawn Mower,ETL1098,Garden Tools,9,9,60,6.67
+Garden shredder,ETL0343,Electric Chippers,9,9,59,6.56
+SDS Masonry drill bit set,ETL1213,"Bits, Drivers and Accessories",9,9,58,6.45
+Square Edged File,ETL0245,Files,9,9,57,6.34
+Hole Saw Set,ETL1110,Hole Saw Kit,9,9,57,6.34
+Soldering iron,ETL0303,Soldering & Heat Guns,9,9,56,6.23
+Finger pointing trowel,ETL1289,Tuck Point Trowel,9,9,56,6.23
+Step Ladder,ETL1350,Step Ladders,9,9,56,6.23
+Agojama Angle Grinder,ETL0523,Angle Grinders,9,9,53,5.89
+Small hand rake,ETL1057,Metal Garden Rake,9,9,53,5.89
+Coping Saw,ETL1125,Coping Saw,9,9,53,5.89
+4 Piece SDS Drill Bit set (masonry),ETL1259,"Bits, Drivers and Accessories",9,9,53,5.89
+Hack saw,ETL0891,Hack saw,9,9,52,5.78
+Bucket,ETL1248,Buckets,9,9,52,5.78
+Axminster Jigsaw,ETL1064,Jig Saws,9,9,50,5.56
+Crowbar,ETL1066,Crowbar,9,9,50,5.56
+Multi tool,ETL0023,Jig Saws,9,9,49,5.45
+"12"" Bow Saw",ETL0525,Bow Saws,9,9,49,5.45
+Spring clamps (set of 4),ETL0876,Bar Clamps,9,9,48,5.34
+Hand riveter,ETL0139,Rivet Tools,9,9,46,5.12
+Garden Shears,ETL0508,Grass Shear,9,9,45,5
+Pressure Washer with accessories,ETL1310,Pressure Washers,9,9,44,4.89
+Extension Lead,ETL0849,Extension Cords,9,9,43,4.78
+Diamond Core Drill Kit,ETL1803,Drill Bits,9,9,42,4.67
+Wheelbarrow,ETL0958,Wheelbarrow,9,9,41,4.56
+Electric lawn mower,ETL1312,Corded Mowers,9,9,31,3.45
+G clamp,ETL0884,Bar Clamps,8,8,147,18.38
+G clamp,ETL0885,Bar Clamps,8,8,144,18
+Pasting Table,ETL0345,Miscellaneous Furniture,8,8,77,9.63
+Hand saw,ETL1184,Saws,8,8,76,9.5
+Allen Key Set,ETL0197,Allen Wrench Sets,8,8,63,7.88
+Tri square,ETL0237,Squares,8,8,63,7.88
+Small Garden Spade,ETL0937,Spade Shovel,8,8,62,7.75
+Stanley knife,ETL0235,Linoleum Knives,8,8,61,7.63
+Claw Hammer,ETL0191,Claw Hammers,8,8,60,7.5
+Cement hawk,ETL0220,Float,8,8,60,7.5
+Pliers,ETL0714,Lineman Plier,8,8,60,7.5
+Bush saw,ETL0480,Bow Saws,8,8,59,7.38
+Wallpaper Steamer,ETL1134,Wallpaper Steamer,8,8,59,7.38
+Extension cable,ETL0724,Extension Cords,8,8,58,7.25
+Extension pole for paint roller,ETL0209,Paint Roller Frame,8,8,56,7
+Power Devil Electic Router,ETL0438,Routers,8,8,56,7
+Corded circular saw,ETL0441,Circular Saws,8,8,56,7
+Plastic Plastering Trowel,ETL0621,Notched Trowel,8,8,56,7
+Staple Gun,ETL1071,Staple Gun,8,8,56,7
+Lawn Mower,ETL1299,Garden Tools,8,8,54,6.75
+Wooden mallet,ETL0284,Hammers & Mallets,8,8,53,6.63
+Garden Spade,ETL0414,Spade Shovel,8,8,53,6.63
+Belt Sander,ETL0586,Belt Sanders,8,8,53,6.63
+Socket and Spanner Set,ETL0987,Mixed Wrench Sets,8,8,53,6.63
+Sewing machine,ETL1139,Sewing Machines,8,8,53,6.63
+Manual Drain Auger,ETL1225,Manual Drain Auger,8,8,53,6.63
+Bottle cutter,ETL1290,Pipe Cutters,8,8,53,6.63
+Flat Wood bit set,ETL1830,Drill Bits,8,8,53,6.63
+Step ladders,ETL1332,Step Ladders,8,8,52,6.5
+G clamp,ETL0246,Bar Clamps,8,8,51,6.38
+Pry bar,ETL0109,Pry Bar,8,8,50,6.25
+Drywall/hacksaw,ETL0165,Drywall Saws,8,8,49,6.13
+Staple Gun,ETL0952,Staple Gun,8,8,49,6.13
+Wooden Clamp - Set of 2,ETL0969,Wood Clamp,8,8,49,6.13
+G clamp set of 2,ETL1091,Bar Clamps,8,8,49,6.13
+Dehumidifier,ETL1145,Tools,8,8,49,6.13
+Large Burlap Bag,ETLBAG002,Buckets,8,8,48,6
+Silicone Gun,ETL1133,Caulk Guns,8,8,47,5.88
+Axminster Electric Hand Planer,ETL0029,Power Planer,8,8,45,5.63
+Hand plane,ETL0311,Planes,8,8,45,5.63
+Pressure Washer,ETL1265,Pressure Washers,8,8,44,5.5
+Hand soil tiller,ETL0173,Hand Tillers,8,8,39,4.88
+3 tonne Axle stands,ETL0930,Jack Stands,7,7,91,13
+Finishing Sander,ETL0907,Finishing Power Sanders,7,7,77,11
+Plunge Router,ETL1050,Routers,7,7,72,10.29
+Rubber Mallet,ETL0182,Rubber Mallets,7,7,67,9.58
+Hand saw,ETL0939,Saws,7,7,67,9.58
+Pasting Table,ETL0355,Miscellaneous Furniture,7,7,63,9
+Spirit level,ETL0312,Levels,7,7,59,8.43
+"Combined Metal, Voltage and Stud Detector",ETL0912,Testers (hand held),7,7,58,8.29
+Corded circular saw,ETL1037,Circular Saws,7,7,58,8.29
+MacAllister Sander,ETL0456,Finishing Power Sanders,7,7,56,8
+Self-levelling Laser level,ETL0911,Levels,7,7,56,8
+Garden Fork,ETL1281,Digging Fork,7,7,56,8
+Bosch Electic Router,ETL0030,Routers,7,7,52,7.43
+Hack saw,ETL0083,Hack saw,7,7,50,7.15
+paint roller cage,ETL0215,Paint Roller Frame,7,7,50,7.15
+Tenon saw,ETL0073,Tenon Saws,7,7,49,7
+Hack saw,ETL0226,Hack saw,7,7,49,7
+Claw / cross-pein hammer,ETL0659,Claw Hammers,7,7,49,7
+Small table vice,ETL0878,Bar Clamps,7,7,49,7
+Jigsaw,ETL1021,Jig Saws,7,7,49,7
+Garden shredder,ETL1100,Electric Chippers,7,7,49,7
+Drill Driver Bit Set,ETL1255,Drill Bits,7,7,49,7
+Wire brush,ETL0639,Sharp Bristle Brushes,7,7,48,6.86
+Combination Spanner/Wrench set,ETL0549,Open End Wrench,7,7,47,6.72
+Small Plunge Router,ETL1027,Routers,7,7,47,6.72
+Hand saw,ETL0088,Saws,7,7,46,6.58
+Club hammer,ETL0121,Claw Hammers,7,7,46,6.58
+Garden Fork,ETL0187,Digging Fork,7,7,46,6.58
+Float Trowel,ETL0367,Float,7,7,46,6.58
+Carpet Kicker,ETL0916,Carpet Kicker,7,7,46,6.58
+Router table and electric router,ETL1029,Routers,7,7,46,6.58
+Coping Saw,ETL1267,Coping Saw,7,7,46,6.58
+Large Power Sander VK600,ETL0922,Finishing Power Sanders,7,7,44,6.29
+Cordless Telescopic Hedge Trimmer,ETL1101,Electric Hedge Trimmer,7,7,44,6.29
+Bolt cutter 18inch,ETL1237,"Pliers, Cutters, and Snips",7,7,43,6.15
+Extension pole for paint roller,ETL0210,Paint Roller Frame,7,7,42,6
+Digital Moisture Meter,ETL0425,Meters & Diagnostics,7,7,42,6
+Square Edged File,ETL0869,Files,7,7,42,6
+Heat Gun,ETL1046,Heat Gun,7,7,42,6
+Electric strimmer/edger,ETL1097,String Trimmer,7,7,42,6
+Carpenter's Pincers,ETL1271,"Pliers, Cutters, and Snips",7,7,42,6
+Staple Gun,ETL1340,Staple Gun,7,7,41,5.86
+Sander,ETL1165,Finishing Power Sanders,7,7,40,5.72
+Crank Remover,ETL1227,Bicycle Accessories,7,7,40,5.72
+Small hack saw,ETL0513,Hack saw,7,7,39,5.58
+Bosch combitrim Strimmer,ETL1323,String Trimmer,7,7,39,5.58
+Wood chisel 12mm blade,ETL0049,Wood Chisel,7,7,38,5.43
+Super Steamer Wallpaper Stripper,ETL0588,Wallpaper Steamer,7,7,38,5.43
+Orbital Sander,ETL1048,Sanders,7,7,36,5.15
+Parkside Jigsaw,ETL0944,Jig Saws,7,7,35,5
+Hole Saw Set,ETL1313,Hole Saw Kit,7,7,35,5
+Push mower,ETL0293,Lawn Mower,7,7,32,4.58
+Clamp Multimeter (AC current),ETL0395,Multimeters,7,7,32,4.58
+Hand sickle,ETL0134,Hand Sickle,7,7,28,4
+Heat Gun,ETL0991,Soldering & Heat Guns,6,6,61,10.17
+Bosh cordless drill,ETL1254,Cordless Drills,6,6,60,10
+Paperhanging Brush,ETL0619,Sharp Bristle Brushes,6,6,57,9.5
+Square-edged File,ETL0865,Files,6,6,57,9.5
+Heat gun,ETL1022,Heat Gun,6,6,52,8.67
+2.5mm Fine Wood chisel,ETL0872,Wood Chisel,6,6,49,8.17
+Hammer Drill,ETL1162,Power Drill 3/8in,6,6,49,8.17
+Small Bucket,ETL1275,Buckets,6,6,49,8.17
+paint roller cage,ETL0216,Paint Roller Frame,6,6,47,7.84
+Electric Screwdriver,ETL0989,Cordless Drills,6,6,47,7.84
+Hitachi Jigsaw,ETL1371,Jig Saws,6,6,47,7.84
+Push mower,ETL0334,Lawn Mower,6,6,46,7.67
+Plastic Dolly / Trolley,ETL1283,Utility Wagon,6,6,46,7.67
+Tile cutter,ETL0645,Hand Tile Cutter,6,6,45,7.5
+"Painting, Roller Extension Pole",ETL1121,Hand Tools,6,6,45,7.5
+Roller Moss Remover / Scarifying rake,ETL0608,Metal Garden Rake,6,6,44,7.34
+Screwdriver Drill Bit set,ETL0667,"Bits, Drivers and Accessories",6,6,44,7.34
+Powercraft Electric Plane,ETL0034,Power Planer,6,6,42,7
+Portable Work bench,ETL0273,Miscellaneous Furniture,6,6,42,7
+Black and Decker Wallpaper Stripper,ETL0459,Wallpaper Steamer,6,6,42,7
+Tenon Saw,ETL0542,Tenon Saws,6,6,42,7
+Wallpaper Spreader,ETL0610,Scrapers,6,6,42,7
+Angle grinder,ETL1036,Angle Grinders,6,6,42,7
+Adjustable Crescent Spanner,ETL1294,Crescent Wrench,6,6,42,7
+Hand riveter,ETL1809,Rivet Tools,6,6,42,7
+Two handed plane,ETL0080,Planes,6,6,41,6.84
+Work light,ETL0295,Hanging Lights,6,6,41,6.84
+Wood chisel,ETL0057,Wood Chisel,6,6,40,6.67
+60cm Spirit Level,ETL0993,Levels,6,6,40,6.67
+Crowbar,ETL0194,Crowbar,6,6,39,6.5
+Bosch Multi tool,ETL0320,Jig Saws,6,6,39,6.5
+Wooden mallet,ETL0957,Rubber Mallets,6,6,39,6.5
+Bush saw,ETL0132,Bow Saws,6,6,38,6.34
+Paperhanging Brush,ETL0640,Sharp Bristle Brushes,6,6,38,6.34
+Branch Loppers,ETL1175,Loppers,6,6,38,6.34
+Portable Work bench,ETL1811,Miscellaneous Furniture,6,6,38,6.34
+Corner clamp - Set of 4,ETL1082,Bar Clamps,6,6,37,6.17
+Club hammer,ETL0404,Hammers & Mallets,6,6,36,6
+Sack trolley,ETL0593,Utility Wagon,6,6,36,6
+square,ETL0642,Squares,6,6,36,6
+Panel Saw,ETL1005,Saws,6,6,35,5.84
+Mesh Riddle 10mm,ETL1143,Garden Tools,6,6,35,5.84
+Extendable Branch Loppers,ETL1174,Loppers,6,6,35,5.84
+Extension Lead,ETL1304,Extension Cords,6,6,33,5.5
+File and rasp set (12 pieces),ETL1337,Files,6,6,33,5.5
+POLYCELL SMART /SMOOTHER SCRAPER APPLICATOR,ETL0950,Scrapers,6,6,32,5.34
+Wire snips,ETL0374,"Pliers, Cutters, and Snips",6,6,31,5.17
+Router Bit Set,7,Routers,6,6,31,5.17
+Pipe wrench,ETL0107,Pipe Wrenches,6,6,29,4.84
+Flymo Strimmer,ETL1324,String Trimmer,6,6,29,4.84
+Hand plane,ETL0662,Planes,6,6,28,4.67
+Adjustable tri square,ETL0882,Squares,5,5,165,33
+Bar clamp,ETL0147,Bar Clamps,5,5,158,31.6
+Hydraulic trolley jack,ETL1269,Jacks,5,5,86,17.2
+Hammer Drill (corded),ETL1052,Hammer Drills,5,5,54,10.8
+Parkside Jigsaw,ETL1362,Jig Saws,5,5,49,9.8
+Garden rake,ETL0016,Metal Garden Rake,5,5,45,9
+Portable Folding Work Bench,ETL1311,Hand Tools,5,5,44,8.8
+Socket Set,ETL0177,Socket Sets,5,5,43,8.6
+60cm Spirit Level,ETL0992,Levels,5,5,40,8
+Pliers,ETL0205,Lineman Plier,5,5,38,7.6
+Sharpening stone,ETL0276,Finishing Stone,5,5,38,7.6
+Soldering iron,ETL0302,Soldering & Heat Guns,5,5,37,7.4
+Garden rake,ETL0172,Metal Garden Rake,5,5,35,7
+Adjustable spanner,ETL0202,Crescent Wrench,5,5,35,7
+Cement or plaster hawk,ETL0221,Float,5,5,35,7
+Garden rake,ETL0231,Metal Garden Rake,5,5,35,7
+Heat gun,ETL0458,Heat Gun,5,5,35,7
+Cordless circular saw,ETL0668,Cordless Circular Saw,5,5,35,7
+Combination Spanner/Wrench set,ETL0677,Open End Wrench,5,5,35,7
+Jigsaw,ETL1019,Jig Saws,5,5,35,7
+Caulking Gun,ETL1055,Caulk Guns,5,5,35,7
+Set of leatherworking awls,ETL1056,Screwdriver Sets,5,5,35,7
+Plastic Profile Gauge,ETL1075,Measuring & Layout Tools,5,5,35,7
+Manual Lawn Mower,ETL1099,Garden Tools,5,5,35,7
+Plunge Router,ETL1146,Routers,5,5,35,7
+Orbital Sander,ETL1203,Finishing Power Sanders,5,5,35,7
+Garden shredder,ETL1277,Electric Chippers,5,5,35,7
+Hand Mitre Saw,ETL1334,Miter Saws,5,5,35,7
+Garden Shears,ETL1815,Grass Shear,5,5,35,7
+Wallpaper Stripper,ETL1360,Wallpaper Steamer,5,5,35,7
+Socket set,ETL0136,Socket Sets,5,5,32,6.4
+Dutch Hoe,ETL0357,Hoes,5,5,32,6.4
+"Spirit level 9"" / 23cm",ETL0361,Levels,5,5,32,6.4
+Super Sprayer 55 Paint Sprayer,ETL0462,Paint Sprayer,5,5,32,6.4
+Set Square,ETL0471,Squares,5,5,32,6.4
+Soldering iron,ETL0977,Soldering & Heat Guns,5,5,32,6.4
+Drill bits,ETL1354,Drill Bits,5,5,32,6.4
+Random Orbit Sander,ETL1372,Random Orbit Sander,5,5,32,6.4
+Two handed plane,ETL0079,Planes,5,5,31,6.2
+Tri square,ETL0281,Squares,5,5,31,6.2
+Silicon Gun,ETL0412,Caulk Guns,5,5,31,6.2
+Soldering iron,ETL1244,Soldering & Heat Guns,5,5,31,6.2
+Corded Hedge Trimmer,ETL1286,Electric Hedge Trimmer,5,5,30,6
+Small Garden Trowel,ETL1058,Brick Trowel,5,5,29,5.8
+Coping Saw,ETL1182,Coping Saw,5,5,29,5.8
+Wood chisel,ETL0062,Wood Chisel,5,5,28,5.6
+Garden Spade,ETL0004,Shovels & Digging,5,5,28,5.6
+Garden Secateurs,ETL0186,Hand Pruner,5,5,28,5.6
+Stone chisel,ETL0218,Cement Chisel,5,5,28,5.6
+Staple gun,ETL0701,Staple Gun,5,5,28,5.6
+Ratchet Socket set,ETL0896,Socket Sets,5,5,28,5.6
+Cordless drill,ETL1065,Cordless Drills,5,5,28,5.6
+Adjustable Pipe Cutter,ETL1317,Pipe Cutters,5,5,28,5.6
+Shoulder plane,ETL0981,Planes,5,5,27,5.4
+20mm Half-moon Rasp/File,ETL0856,Files,5,5,25,5
+Steel ruler,ETL0651,Rulers,5,5,24,4.8
+Bungee cords,ETL1226,Bicycle Accessories,5,5,24,4.8
+Garden Hose,ETL0475,Watering Tools,5,5,22,4.4
+NoMorePly Tile Scoring Knife,ETL1250,Hand Tile Cutter,5,5,21,4.2
+Tenon Saw,ETL1127,Tenon Saws,4,4,151,37.75
+Makita impact driver,ETL1353,Cordless Drills,4,4,49,12.25
+paint roller cage,ETL0213,Paint Roller Frame,4,4,42,10.5
+Grout Rake,ETL0635,Grout Trowel,4,4,42,10.5
+Rotary tool,ETL0924,Rotary Tools,4,4,42,10.5
+Screw Extractor,ETL1033,Drill Bits,4,4,42,10.5
+"Adjustable Spanner, 250mm",ETL1083,Crescent Wrench,4,4,42,10.5
+Chain Whip,ETL1222,Bicycle Accessories,4,4,42,10.5
+Soldering iron,ETL1245,Soldering & Heat Guns,4,4,42,10.5
+Cordless Random Orbital Sander,ETL1364,Random Orbit Sander,4,4,42,10.5
+Beeline Wallpaper Trimming Edge,ETL0618,Levels,4,4,36,9
+Sheet Sander,ETL0319,Finishing Power Sanders,4,4,33,8.25
+Orbital Sander,ETL1140,Sanders,4,4,33,8.25
+Hoover Steam Cleaner,ETL1242,Corded & Plug-in,4,4,32,8
+Mini Endless Ratchet Strap,ETL1825,Ratchet Straps,4,4,32,8
+Brace hand drill,ETL0282,Drills,4,4,31,7.75
+20mm Half-moon Rasp / File,ETL0857,Files,4,4,31,7.75
+Garden Spade,ETL0935,Spade Shovel,4,4,30,7.5
+Tri square,ETL1074,Squares,4,4,30,7.5
+Electric Screwdriver,ETL1148,Cordless Drills,4,4,30,7.5
+Sealant gun,ETL1061,Caulk Guns,4,4,29,7.25
+Electric hammer drill,ETL0040,Power Drills,4,4,28,7
+Wood chisel,ETL0052,Wood Chisel,4,4,28,7
+Tri square,ETL0084,Squares,4,4,28,7
+1m Spirit Level,ETL0196,Levels,4,4,28,7
+Pliers,ETL0204,Lineman Plier,4,4,28,7
+Performance Power Corded Hammer Drill,ETL0317,Power Drills,4,4,28,7
+Squeegee,ETL0369,Squeegees,4,4,28,7
+Belt Sander,ETL0442,Belt Sanders,4,4,28,7
+Long handled shears,ETL0630,Shears,4,4,28,7
+Stud finder,ETL0894,Testers (hand held),4,4,28,7
+Cordless Drill Driver,ETL1025,Cordless Drills,4,4,28,7
+Wet tile saw,ETL1041,Wet Tile Saws,4,4,28,7
+Crowbar,ETL1067,Crowbar,4,4,28,7
+Corner clamp - set of 4,ETL1081,Bar Clamps,4,4,28,7
+Crimping Tool Set,ETL1112,Crimpers,4,4,28,7
+Garden Rake,ETL1120,Garden Tools,4,4,28,7
+Edger,ETL1154,Garden Tools,4,4,28,7
+Extendable Branch Loppers,ETL1282,Loppers,4,4,28,7
+Cordless Rotary Tool,ETL1298,Rotary Tools,4,4,28,7
+Multi tool,ETL1366,Jig Saws,4,4,28,7
+DeWalt Cordless Drill,ETL1368,Cordless Drills,4,4,28,7
+24cm Spirit Level,ETL0577,Levels,4,4,27,6.75
+6 amp Battery Charger,ETL0634,Automotive Trickle Chargers,4,4,27,6.75
+Caulk Gun,ETL0420,Caulk Guns,4,4,26,6.5
+Basin Wrench / Spanner,ETL1284,Basin Wrench,4,4,26,6.5
+Sledgehammer,ETL0228,Sledgehammers,4,4,25,6.25
+Bosch Hammer Drill GBH 24 V SDS Plus,ETL1335,Cordless Hammer Drills,4,4,25,6.25
+tack hammer,ETL0068,Claw Hammers,4,4,24,6
+Long handled shears,ETL0271,Grass Shear,4,4,24,6
+Extension Lead,ETL0599,Extension Cords,4,4,24,6
+Tile adhesive comb,ETL0609,Scrapers,4,4,24,6
+Junior Hacksaw,ETL0890,Hack saw,4,4,24,6
+Size 14 Pipe Wrench,ETL0945,Pipe Wrenches,4,4,24,6
+Silicone Gun,ETL1132,Caulk Guns,4,4,24,6
+Narrow Paint scraper,ETL1356,Scrapers,4,4,24,6
+Corded circular saw,ETL1836,Circular Saws,4,4,24,6
+Tenon Saw,ETL1000,Tenon Saws,4,4,23,5.75
+Junior Hacksaw,ETL0550,Hack saw,4,4,22,5.5
+Pliers,ETL0583,Lineman Plier,4,4,22,5.5
+Wood file,ETL0111,Files,4,4,21,5.25
+Garden shears,ETL0159,Grass Shear,4,4,21,5.25
+Electric Grout Remover,ETL1038,Power Tools,4,4,21,5.25
+Jigsaw,ETL0584,Jig Saws,4,4,19,4.75
+"Adjustable Crescent Spanner, 250mm",ETL0408,Crescent Wrench,4,4,18,4.5
+Ratchet screwdriver set,ETL0603,Screwdriver Sets,4,4,18,4.5
+Tile adhesive comb,ETL1273,Scrapers,4,4,18,4.5
+Crowbar,ETL0195,Crowbar,4,4,17,4.25
+Hedge Trimmer,ETL1045,Electric Hedge Trimmer,4,4,17,4.25
+Portable Folding Work Bench,ETL1321,Hand Tools,4,4,16,4
+Gas blow torch,ETL1339,Propane & Gas Powered Tools,4,4,14,3.5
+Long Handled Bulb Planter,ETL0393,Planters Shovel,3,3,39,13
+Titan Hex Shank Breaker,ETL0381,Corded & Plug-in,3,3,36,12
+Scythe,ETL0358,"Scythes, Sickles & Machetes",3,3,35,11.67
+Paint scraper 100mm,ETL1106,Scrapers,3,3,35,11.67
+Wire snips,ETL0419,Wire Cutters,3,3,32,10.67
+Wallpaper Cutting Guide,ETL1189,Levels,3,3,31,10.34
+Work light,ETL0296,Hanging Lights,3,3,28,9.34
+Jigsaw,ETL0444,Jig Saws,3,3,28,9.34
+Paint scraper 100mm,ETL0717,Scrapers,3,3,28,9.34
+Spud Hoe,ETL0955,Hoes,3,3,28,9.34
+Small Axe,ETL1077,Hand Axe,3,3,28,9.34
+Mini Endless Ratchet Strap,ETL1826,Ratchet Straps,3,3,28,9.34
+Rip Saw,ETL1009,Saws,3,3,26,8.67
+Hand plane,ETL0128,Planes,3,3,24,8
+Clarkes 900W Electric Spray Station,ETL0464,Paint Sprayer,3,3,24,8
+Screwdriver 6-way,ETL0533,Rubber Mallets,3,3,23,7.67
+Garden Fork,ETL1150,Digging Fork,3,3,23,7.67
+Branch Loppers,ETL1176,Loppers,3,3,22,7.34
+Einhell Electric Welding Transformer kit,ETL0032,Welders,3,3,21,7
+Wood chisel,ETL0045,Wood Chisel,3,3,21,7
+Wood chisel,ETL0048,Wood Chisel,3,3,21,7
+Needle nosed pliers,ETL0094,Needle Nose Pliers,3,3,21,7
+Pliers,ETL0096,Lineman Plier,3,3,21,7
+Claw Hammer,ETL0192,Claw Hammers,3,3,21,7
+Garden rake,ETL0232,Metal Garden Rake,3,3,21,7
+Small hack saw,ETL0364,Hack saw,3,3,21,7
+"6"" Spanner",ETL0413,Crescent Wrench,3,3,21,7
+Detail Sander,ETL0440,Finishing Power Sanders,3,3,21,7
+Brick Hammer/Mallet,ETL0489,Brick Hammers,3,3,21,7
+Tenon saw,ETL0491,Tenon Saws,3,3,21,7
+Paint Sprayer,ETL0524,Paint Sprayer,3,3,21,7
+Coping saw,ETL0539,Hack saw,3,3,21,7
+Scythe,ETL0540,"Scythes, Sickles & Machetes",3,3,21,7
+Slip-joint Pliers,ETL0578,Lineman Plier,3,3,21,7
+Steel ruler,ETL0650,Rulers,3,3,21,7
+Tape measure,ETL0665,Tape Measures,3,3,21,7
+Palm Belt Sander,ETL0672,Belt Sanders,3,3,21,7
+Mini Square Edged File,ETL0858,Files,3,3,21,7
+half moon gouge,ETL0698,Chisels & Gouges,3,3,21,7
+Garden Spade,ETL0936,Spade Shovel,3,3,21,7
+Garden Spade,ETL0956,Spade Shovel,3,3,21,7
+Metric Combo Spanner Set,ETL0998,Open End Wrench,3,3,21,7
+Glue Gun,ETL0999,Hot Glue Gun,3,3,21,7
+4-in-One Sharpener,ETL1170,Sharpeners,3,3,21,7
+Patio Knife,ETL1183,Hoe Weeders,3,3,21,7
+Ryobi 10” Electric Surface Planer & Transformer,ETL1232,Power Planer,3,3,21,7
+Tile adhesive comb,ETL1274,Scrapers,3,3,21,7
+Multi Tool Rotary Tool,ETL1309,Engraver,3,3,21,7
+Tile cutter,ETL1336,Hand Tile Cutter,3,3,21,7
+Screw & Bolt Extractor Set,ETL1316,Hand Tools,3,3,20,6.67
+Lawn Edger,ETL1153,Garden Tools,3,3,19,6.34
+Nail Gun (Electric),ETL1164,Corded & Plug-in,3,3,19,6.34
+Cordless strimmer,ETL1280,String Trimmer,3,3,19,6.34
+BOSCH Multi Bit Set,ETL1308,"Bits, Drivers and Accessories",3,3,19,6.34
+HSS steel drill bit set (19 bits) (1-10mm),ETL1342,"Bits, Drivers and Accessories",3,3,19,6.34
+Stone chisel,ETL0185,Cement Chisel,3,3,18,6
+Large Square Edged File,ETL0852,Files,3,3,18,6
+4 Corner clamps,ETL0879,Bar Clamps,3,3,18,6
+Small Hacksaw,ETL0887,Hack saw,3,3,18,6
+Half Round Hand File,ETL1292,Files,3,3,18,6
+Drywall/hacksaw,ETL0106,Drywall Saws,3,3,17,5.67
+Hand Drill,ETL0490,Drills,3,3,17,5.67
+Ratcheting Socket Set,ETL0913,Socket Sets,3,3,17,5.67
+Heat gun,ETL1220,Heat Gun,3,3,17,5.67
+Clarke CHT303 28-Pce Tap & Die Set,ETL1261,Tap and Die,3,3,17,5.67
+Heavy Duty SDS+ drill bit set,ETL1293,Drill Bits,3,3,17,5.67
+G Clamp,ETL0996,Bar Clamps,3,3,16,5.34
+Hand plane,ETL1073,Planes,3,3,16,5.34
+Cordless Hammer Drill,ETL1141,Cordless Drills,3,3,16,5.34
+Dutch hoe,ETL0507,Hoes,3,3,15,5
+Hand plane,ETL0082,Planes,3,3,14,4.67
+Lawn aerator,ETL0011,Lawn Care (other),3,3,14,4.67
+Sheet metal cutter (hand),ETL0100,Wire Cutters,3,3,14,4.67
+Tack Hammer,ETL0514,Claw Hammers,3,3,14,4.67
+Screwdriver,ETL0692,Screwdrivers,3,3,14,4.67
+Micro G clamps (set of 2),ETL0877,Bar Clamps,3,3,14,4.67
+6 amp 12 V Battery Charger,ETL0978,Automotive Trickle Chargers,3,3,14,4.67
+Back Saw,ETL1004,Saws,3,3,14,4.67
+Panel Saw,ETL1006,Saws,3,3,14,4.67
+Finger Pointing Trowel,ETL1288,Tuck Point Trowel,3,3,14,4.67
+Square,ETL1305,Squares,3,3,14,4.67
+Folding pruning saw,ETL01340,Pruning Saw,3,3,14,4.67
+Small Hacksaw,ETL0888,Hack saw,3,3,11,3.67
+Roller Moss Remover / Scarifying rake,ETL6608,Corded Mowers,3,3,11,3.67
+Multi tool,ETL1365,Jig Saws,3,3,8,2.67
+Wood chisel,ETL0046,Wood Chisel,2,2,28,14
+Paint scraper 60mm,ETL0306,Scrapers,2,2,28,14
+14 / 12mm Spanner,ETL0663,Crescent Wrench,2,2,28,14
+Adjustable spanner,ETL1195,Crescent Wrench,2,2,28,14
+Autopaster Wallpaper pasting tool,ETL1216,Paste Brush,2,2,28,14
+Wood chisel,ETL0050,Wood Chisel,2,2,26,13
+Rubber Mallet,ETL0233,Rubber Mallets,2,2,26,13
+Pointing Trowel,ETL1105,Brick Trowel,2,2,26,13
+Belt Sander,ETL1361,Belt Sanders,2,2,22,11
+Needle File Set,ETL0571,Files,2,2,21,10.5
+Ratchet Socket Set,ETL0901,Socket Sets,2,2,21,10.5
+Large Extendable Ratchet Lopping Shears / Secaturs,ETL1816,Grass Shear,2,2,21,10.5
+Finishing Sander,ETL0905,Finishing Power Sanders,2,2,19,9.5
+Float Trowel,ETL1103,Float,2,2,19,9.5
+Small Axe,ETL0680,Hand Axe,2,2,17,8.5
+Paint scraper,ETL1161,Scrapers,2,2,17,8.5
+Jigsaw,ETL1020,Jig Saws,2,2,16,8
+Grass Rake,ETL1149,Metal Garden Rake,2,2,16,8
+Portable Folding Work Bench,ETL1322,Hand Tools,2,2,16,8
+STAPLE GUN (4 WAY),ETL0949,Staple Gun,2,2,14,7
+Wood chisel,ETL0056,Wood Chisel,2,2,14,7
+Garden Fork,ETL0007,Digging Fork,2,2,14,7
+Garden hoe,ETL0018,Hoes,2,2,14,7
+Drill stand,ETL0112,Drill Press (hand),2,2,14,7
+Marking guage,ETL0140,Marking,2,2,14,7
+Garden hoe,ETL0170,Hoes,2,2,14,7
+Sanding block,ETL0207,Sanders,2,2,14,7
+paint roller cage,ETL0214,Paint Roller Frame,2,2,14,7
+Stone chisel,ETL0224,Cement Chisel,2,2,14,7
+Plumb bob/line,ETL0259,Testers (hand held),2,2,14,7
+Rasp,ETL0286,Files,2,2,14,7
+"Spirit Level 36"" / 910mm",ETL0359,Levels,2,2,14,7
+Hedge Trimmer,ETL0371,Electric Hedge Trimmer,2,2,14,7
+"Spirit level 27"" / 70cm",ETL0406,Levels,2,2,14,7
+Two handed axe,ETL0474,Hand Axe,2,2,14,7
+Wood chisel 8mm blade,ETL0486,Wood Chisel,2,2,14,7
+Tape measure,ETL0492,Tape Measures,2,2,14,7
+Club hammer,ETL0509,Hammers & Mallets,2,2,14,7
+Small Hand-held Garden Fork,ETL0555,Digging Fork,2,2,14,7
+Hand drill,ETL0572,Drills,2,2,14,7
+Cross peen hammer,ETL0574,Ball Peen Hammers,2,2,14,7
+Small Hand Plane,ETL0575,Planes,2,2,14,7
+Hawkbill Machete,ETL0602,"Scythes, Sickles & Machetes",2,2,14,7
+Airmaster Tiger Air Compressor,ETL0873,Compressors,2,2,14,7
+Claw Hammer,ETL0709,Claw Hammers,2,2,14,7
+Corded hammer drill,ETL0910,Hammer Drills,2,2,14,7
+Garden rake,ETL0961,Metal Garden Rake,2,2,14,7
+Bicycle Floor Pump,ETL0973,Bike Tools,2,2,14,7
+Torque Wrench,ETL1024,Crescent Wrench,2,2,14,7
+Small Hand-held Garden Fork,ETL1059,Digging Fork,2,2,14,7
+Car Ramp,ETL1062,Automotive Ramps,2,2,14,7
+Pneumatic Hose,ETL1063,Watering Tools,2,2,14,7
+Caulk Gun,ETL1080,Caulk Guns,2,2,14,7
+"Bike Pump, Floor",ETL1118,Bike Tools,2,2,14,7
+Forstner,ETL1138,Power Tools,2,2,14,7
+Garden Fork,ETL1151,Digging Fork,2,2,14,7
+Wood file,ETL1157,Files,2,2,14,7
+Paint scraper,ETL1160,Scrapers,2,2,14,7
+Patio Knife,ETL1181,Hoe Weeders,2,2,14,7
+Random Orbital Sander,ETL1210,Random Orbit Sander,2,2,14,7
+Trim Router,ETL1231,Routers,2,2,14,7
+Combination Spanner/Wrench set,ETL1234,Open End Wrench,2,2,14,7
+Plug hole cutter/dowel making drill bit set,ETL1239,Drill Bits,2,2,14,7
+Plastic Pipe Cutter,ETL1268,Pipe Cutters,2,2,14,7
+Finger Pointing Trowel,ETL1295,Tuck Point Trowel,2,2,14,7
+Electric Screwdriver,ETL1297,Cordless Drills,2,2,14,7
+Hand sickle,ETL1314,Hand Sickle,2,2,14,7
+Wallpaper cutter,ETL1810,Hand Tools,2,2,14,7
+Hole Saw Kit,ETL1829,Hole Saw Kit,2,2,14,7
+Paint scraper,ETL1357,Scrapers,2,2,14,7
+Stone chisel,ETL1359,Cement Chisel,2,2,14,7
+DeWalt Cordless Drill,ETL1367,Cordless Drills,2,2,14,7
+Router Bit Set,ETL1370,Drill Bits,2,2,14,7
+Tape measure,ETL1262,Tape Measures,2,2,13,6.5
+G clamp set of 3,ETL1092,Bar Clamps,2,2,12,6
+Branch Loppers,ETL1178,Loppers,2,2,12,6
+Portable Folding Work Bench,ETL1320,Hand Tools,2,2,12,6
+Mitre Saw,ETL1804,Hand Miter Saws,2,2,12,6
+Tenon saw,ETL0074,Tenon Saws,2,2,11,5.5
+Drywall/hacksaw,ETL0085,Drywall Saws,2,2,11,5.5
+Garden rake,ETL0017,Metal Garden Rake,2,2,11,5.5
+Stone chisel,ETL0225,Cement Chisel,2,2,11,5.5
+Hand Drill,ETL0512,Drills,2,2,11,5.5
+Large Half Moon File,ETL0853,Files,2,2,11,5.5
+Crescent Wrench,ETL0178,Crescent Wrench,2,2,10,5
+Garden shears,ETL0646,Grass Shear,2,2,10,5
+Nylon tipped mallet,ETL0842,Rubber Mallets,2,2,10,5
+Brick Bolster chisel,ETL1094,Cement Chisel,2,2,10,5
+Fine Tipped Soldering iron,ETL1217,Soldering & Heat Guns,2,2,10,5
+Carpenter's Pincers,ETL1270,"Pliers, Cutters, and Snips",2,2,10,5
+Hand saw,ETL1351,Saws,2,2,10,5
+Paint scraper,ETL1355,Scrapers,2,2,10,5
+Mini Tool Set,ETL1840,Hand Tool Sets,2,2,10,5
+Bike Workstand,ETL0308,Stands & Work Tables,2,2,9,4.5
+File,ETL0655,Files,2,2,9,4.5
+Plunge Router,ETL0990,Routers,2,2,9,4.5
+Detail Sander,ETL1166,Sanders,2,2,9,4.5
+Wood chisel Set,ETL1327,Wood Chisel,2,2,9,4.5
+Claw Hammer,ETL0472,Claw Hammers,2,2,7,3.5
+Small Axe,ETL0505,Hand Axe,2,2,7,3.5
+Lawn aerator,ETL0682,Lawn Care (other),2,2,7,3.5
+Jigsaw,ETL1053,Jig Saws,2,2,7,3.5
+Lawn Spreader,ETL1070,Garden Tools,2,2,7,3.5
+Adjustable spanner,ETL1285,Crescent Wrench,2,2,7,3.5
+Claw Hammer,ETL0681,Claw Hammers,2,2,6,3
+Stick Welder,ETL1034,Welders,2,2,5,2.5
+Angle Grinder,ETL0033,Angle Grinders,2,2,4,2
+Wire stripper,ETL0097,Wire Cutters,2,2,4,2
+Sledgehammer,ETL0554,Sledgehammers,2,2,3,1.5
+Stanley / Utility Knife,ETL1823,Knives,1,1,28,28
+Allen Keys,ETL1188,Allen Wrench Sets,1,1,18,18
+Garden Spade,ETL0001,Shovels & Digging,1,1,14,14
+Lawn aerator,ETL0010,Lawn Care (other),1,1,14,14
+Metric Combo Spanner Set,ETL0994,Open End Wrench,1,1,14,14
+Float Trowel,ETL0707,Float,1,1,12,12
+Chalk line marker,ETL0141,Chalklines,1,1,11,11
+Bradawl,ETL0840,Screwdriver Sets,1,1,11,11
+Screwdriver,ETL0687,Screwdrivers,1,1,10,10
+Wood chisel,ETL0047,Wood Chisel,1,1,9,9
+Heat Gun,ETL1054,Heat Gun,1,1,9,9
+Wood chisel,ETL0058,Wood Chisel,1,1,7,7
+Wood chisel,ETL0060,Wood Chisel,1,1,7,7
+Tenon saw,ETL0078,Tenon Saws,1,1,7,7
+Garden hoe,ETL0019,Hoes,1,1,7,7
+Garden shears,ETL0021,Grass Shear,1,1,7,7
+Fetching ETL branded hard hat,ETL0118,Misc,1,1,7,7
+Leather punch,ETL0158,Punch,1,1,7,7
+Two handed axe,ETL0164,Hand Axe,1,1,7,7
+Jig Saws,ETL0183,Jig Saws,1,1,7,7
+Tape measure,ETL0199,Tape Measures,1,1,7,7
+Sharpening stone,ETL0222,Finishing Stone,1,1,7,7
+Plastic Tip Hammers,ETL0230,Plastic Tip Hammers,1,1,7,7
+Insulated screwdriver,ETL0375,Screwdrivers,1,1,7,7
+Turf Cutter,ETL0392,Hoes,1,1,7,7
+Lump hammer,ETL0405,Hammers & Mallets,1,1,7,7
+Screwdriver set,ETL0454,Screwdriver Sets,1,1,7,7
+Small Axe,ETL0510,Hand Axe,1,1,7,7
+Tape measure,ETL0536,Tape Measures,1,1,7,7
+Slip-joint Pliers,ETL0538,Lineman Plier,1,1,7,7
+Small Garden Trowel,ETL0556,Brick Trowel,1,1,7,7
+15/17mm Spanner,ETL0567,Crescent Wrench,1,1,7,7
+16cm Spanner,ETL0580,Crescent Wrench,1,1,7,7
+Flymo Gardenvac 2200w Turbo,ETL0604,Electric Chippers,1,1,7,7
+22 / 19mm Spanner,ETL0661,Crescent Wrench,1,1,7,7
+Wood file,ETL0834,Files,1,1,7,7
+Round File,ETL0863,Files,1,1,7,7
+Turf Cutter,ETL0694,Hoes,1,1,7,7
+half moon gouge,ETL0700,Chisels & Gouges,1,1,7,7
+Flat head Screwdriver,ETL0719,Screwdrivers,1,1,7,7
+Reciprocating Saw,ETL0929,Reciprocating Saw,1,1,7,7
+Micrometer,ETL0931,Distance Meters,1,1,7,7
+POLYCELL SMART /SMOOTHER SCRAPER APPLICATOR,ETL0951,Scrapers,1,1,7,7
+Garden hoe,ETL0954,Hoes,1,1,7,7
+Adjustable Pipe Cutter,ETL0960,Pipe Cutters,1,1,7,7
+Jigsaw,ETL0972,Jig Saws,1,1,7,7
+Mitre box,ETL0982,Saws,1,1,7,7
+G Clamp,ETL0997,Bar Clamps,1,1,7,7
+Electric Planer,ETL1023,Power Planer,1,1,7,7
+Garden Secateurs,ETL1076,Hand Pruner,1,1,7,7
+Bike Allen Key Set,ETL1085,Allen Wrench Sets,1,1,7,7
+Imperial Socket Set,ETL1088,Socket Sets,1,1,7,7
+Garden Hoe,ETL1122,Hand Tools,1,1,7,7
+Edging Shears,ETL1123,Shears,1,1,7,7
+Corded circular saw,ETL1137,Circular Saws,1,1,7,7
+Corded Hammer Drill,ETL1144,Power Drill 1/2in,1,1,7,7
+Electric Screwdriver,ETL1147,Cordless Drills,1,1,7,7
+Screwdriver set,ETL1185,Screwdriver Sets,1,1,7,7
+Adjustable spanner,ETL1194,Crescent Wrench,1,1,7,7
+Adjustable spanner,ETL1196,Crescent Wrench,1,1,7,7
+Steam Cleaner,ETL335,Wallpaper Steamer,1,1,7,7
+Dowel jig,ETL1241,Vises,1,1,7,7
+Amprobe Multimeter,ETL1243,Amp Meters,1,1,7,7
+Carpenter's Pincers,ETL1272,"Pliers, Cutters, and Snips",1,1,7,7
+Bubble Machine,ETL1291,Activities,1,1,7,7
+8 piece imperial Hex (Allen) Key Set,ETL1302,Wrench Sets,1,1,7,7
+9 piece imperial allen key set,ETL1301,Allen Wrench Sets,1,1,7,7
+square,ETL1306,Squares,1,1,7,7
+Screwdriver/socket bits set,ETL1307,Drill Bits,1,1,7,7
+Garden rake,ETL1319,Metal Garden Rake,1,1,7,7
+Wooden mallet,ETL1329,Hammers & Mallets,1,1,7,7
+Pipe wrench set (2 pieces),ETL1330,Slip Joint Pliers,1,1,7,7
+Set of 4 Corner Clamps (double entry in the database ETL1082),ETL1802,Corner Clamp,1,1,7,7
+Adjustable Tube / Pipe Cutter,ETL1805,Pipe Cutters,1,1,7,7
+Hack saw,ETL1806,Hack saw,1,1,7,7
+Dutch Hoe,ETL1812,Hoes,1,1,7,7
+Hand drill press,ETL1814,Drill Press (hand),1,1,7,7
+10 Piece Masonry Drill Bit set,ETL1343,"Bits, Drivers and Accessories",1,1,7,7
+Hole Saw Set,ETL1817,Hole Saw Kit,1,1,7,7
+Hole Saw Kit,ETL1827,Hole Saw Kit,1,1,7,7
+Step ladder,ETL1828,Step Ladders,1,1,7,7
+75 Piece Drill Bit Set,ETL1831,Drill Bits,1,1,7,7
+75 Piece Drill Bit Set,ETL1832,Drill Bits,1,1,7,7
+Garden Spade,ETL1833,Spade Shovel,1,1,7,7
+Large Reusable Bag,ETLBAG012,Buckets,1,1,7,7
+Laser Edge Level,ETL1839,Levels,1,1,7,7
+Stanley / Utility Knife,ETL1369,Knives,1,1,7,7
+"Woodcarving, tools, materials & equipment book",ETL1841,Curriculum,1,1,7,7
+Tape measure,ETL0229,Tape Measures,1,1,6,6
+Tape measure,ETL0625,Tape Measures,1,1,6,6
+Heavy pickaxe,ETL0013,Pickaxes,1,1,5,5
+Paint Roller Cage,ETL0212,Paint Roller Frame,1,1,5,5
+Hand saw,ETL0421,Saws,1,1,5,5
+Shavehook Paint Scraper,ETL0833,Scrapers,1,1,5,5
+Square Edged File,ETL0868,Files,1,1,5,5
+Needle nosed pliers,ETL0713,Needle Nose Pliers,1,1,5,5
+Small Step Ladder,ETL1117,Step Ladders,1,1,5,5
+Garden Spade,ETL1119,Hand Shovel,1,1,5,5
+Club hammer,ETL1159,Claw Hammers,1,1,5,5
+Sack trolley,ETL1296,Utility Wagon,1,1,5,5
+scissors,ETL0422,Shears,1,1,4,4
+Tri square,ETL0660,Squares,1,1,4,4
+Tile Saw,ETL0893,Saws,1,1,4,4
+Garden spade,ETL1278,Spade Shovel,1,1,4,4
+Drywall/hacksaw,ETL1375,Drywall Saws,1,1,4,4
+Chipping hammer / Rock pick,ETL0124,Pickaxes,1,1,3,3
+Sheet metal cutter (hand),ETL0130,Wire Cutters,1,1,3,3
+Squeegee,ETL0368,Squeegees,1,1,3,3
+Grout Rake,ETL0638,Grout Trowel,1,1,3,3
+Round File,ETL0859,Files,1,1,3,3
+Garden Fork,ETL0301,Digging Fork,1,1,0,0
+18mm/22mm Spanner,ETL0560,Crescent Wrench,1,1,0,0
