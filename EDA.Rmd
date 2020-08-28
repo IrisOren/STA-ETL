@@ -19,8 +19,15 @@ loans <- read_csv("raw_data/loans-export jan-dec 2019.csv") %>%
          
 
 usage <- read_csv("raw_data/usage-export jan-dec 2019.csv")
+
+categories <- read_csv("raw_data/inventory-with categories.csv")
 ```
 
+```{r}
+categories_clean <- categories %>% 
+  clean_names() %>% 
+  separate(categories, into = c("cat1", "cat2", "cat3", "cat4", "cat5", "cat6", "cat7", "cat8", "cat9", "cat10"), sep = ", ")
+```
 
 
 ```{r}
@@ -49,5 +56,10 @@ loans %>%
   filter(user_id == 209) %>% 
   arrange(checked_out)
 
+```
+
+```{r}
+loans_categories <- loans %>% 
+  left_join(categories_clean, by = "item_id")
 ```
 

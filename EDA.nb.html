@@ -1773,55 +1773,42 @@ summary {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9hbnMgPC0gcmVhZF9jc3YoXCJyYXdfZGF0YS9sb2Fucy1leHBvcnQgamFuLWRlYyAyMDE5LmNzdlwiKSAlPiUgXG4gIGNsZWFuX25hbWVzKCkgJT4lIFxuICBtdXRhdGUoZHVlX2RhdGUgPSBhcy5EYXRlKGR1ZV9kYXRlLCBmb3JtYXQgPSBcIiVkLyVtLyVZXCIpLFxuICAgICAgICAgY2hlY2tlZF9vdXQgPSBhcy5QT1NJWGN0KGNoZWNrZWRfb3V0LCBmb3JtYXQgPSBcIiVkLyVtLyVZICVIOiVNXCIpLFxuICAgICAgICAgY2hlY2tlZF9pbiA9IGFzLlBPU0lYY3QoY2hlY2tlZF9pbiwgZm9ybWF0ID0gXCIlZC8lbS8lWSAlSDolTVwiKVxuICAgICAgICAgKVxuYGBgIn0= -->
-<pre class="r"><code>loans &lt;- read_csv(&quot;raw_data/loans-export jan-dec 2019.csv&quot;) %&gt;% 
-  clean_names() %&gt;% 
-  mutate(due_date = as.Date(due_date, format = &quot;%d/%m/%Y&quot;),
-         checked_out = as.POSIXct(checked_out, format = &quot;%d/%m/%Y %H:%M&quot;),
-         checked_in = as.POSIXct(checked_in, format = &quot;%d/%m/%Y %H:%M&quot;)
-         )</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2F0ZWdvcmllcyA8LSByZWFkX2NzdihcInJhd19kYXRhL2ludmVudG9yeS13aXRoIGNhdGVnb3JpZXMuY3N2XCIpXG5cbmBgYCJ9 -->
+<pre class="r"><code>categories &lt;- read_csv(&quot;raw_data/inventory-with categories.csv&quot;)
+</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUGFyc2VkIHdpdGggY29sdW1uIHNwZWNpZmljYXRpb246XG5jb2xzKFxuICBgdXNlciBJRGAgPSBcdTAwMWJbMzJtY29sX2RvdWJsZSgpXHUwMDFiWzM5bSxcbiAgYEl0ZW0gSURgID0gXHUwMDFiWzMxbWNvbF9jaGFyYWN0ZXIoKVx1MDAxYlszOW0sXG4gIGBJdGVtIE5hbWVgID0gXHUwMDFiWzMxbWNvbF9jaGFyYWN0ZXIoKVx1MDAxYlszOW0sXG4gIGBDaGVja2VkIE91dGAgPSBcdTAwMWJbMzFtY29sX2NoYXJhY3RlcigpXHUwMDFiWzM5bSxcbiAgYENoZWNrZWQgSW5gID0gXHUwMDFiWzMxbWNvbF9jaGFyYWN0ZXIoKVx1MDAxYlszOW0sXG4gIGBEdWUgRGF0ZWAgPSBcdTAwMWJbMzFtY29sX2NoYXJhY3RlcigpXHUwMDFiWzM5bSxcbiAgUmVuZXdhbCA9IFx1MDAxYlszMW1jb2xfY2hhcmFjdGVyKClcdTAwMWJbMzltXG4pXG4ifQ== -->
+<!-- rnb-output-begin eyJkYXRhIjoiUGFyc2VkIHdpdGggY29sdW1uIHNwZWNpZmljYXRpb246XG5jb2xzKFxuICBgSXRlbSBJRGAgPSBcdTAwMWJbMzFtY29sX2NoYXJhY3RlcigpXHUwMDFiWzM5bSxcbiAgYEl0ZW0gVHlwZWAgPSBcdTAwMWJbMzFtY29sX2NoYXJhY3RlcigpXHUwMDFiWzM5bSxcbiAgYEhvbWUgTG9jYXRpb25gID0gXHUwMDFiWzMxbWNvbF9jaGFyYWN0ZXIoKVx1MDAxYlszOW0sXG4gIGBDdXJyZW50IExvY2F0aW9uYCA9IFx1MDAxYlszMW1jb2xfY2hhcmFjdGVyKClcdTAwMWJbMzltLFxuICBOYW1lID0gXHUwMDFiWzMxbWNvbF9jaGFyYWN0ZXIoKVx1MDAxYlszOW0sXG4gIENhdGVnb3JpZXMgPSBcdTAwMWJbMzFtY29sX2NoYXJhY3RlcigpXHUwMDFiWzM5bSxcbiAgYE1pbiBGcmVxdWVuY3lgID0gXHUwMDFiWzMzbWNvbF9sb2dpY2FsKClcdTAwMWJbMzltLFxuICBgUmVwbGFjZW1lbnQgQ29zdGAgPSBcdTAwMWJbMzJtY29sX2RvdWJsZSgpXHUwMDFiWzM5bVxuKVxuIn0= -->
 <pre><code>Parsed with column specification:
 cols(
-  `user ID` = [32mcol_double()[39m,
   `Item ID` = [31mcol_character()[39m,
-  `Item Name` = [31mcol_character()[39m,
-  `Checked Out` = [31mcol_character()[39m,
-  `Checked In` = [31mcol_character()[39m,
-  `Due Date` = [31mcol_character()[39m,
-  Renewal = [31mcol_character()[39m
-)</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICAgICAgICAgXG5cbnVzYWdlIDwtIHJlYWRfY3N2KFwicmF3X2RhdGEvdXNhZ2UtZXhwb3J0IGphbi1kZWMgMjAxOS5jc3ZcIilcbmBgYCJ9 -->
-<pre class="r"><code>         
-
-usage &lt;- read_csv(&quot;raw_data/usage-export jan-dec 2019.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUGFyc2VkIHdpdGggY29sdW1uIHNwZWNpZmljYXRpb246XG5jb2xzKFxuICBgSXRlbSBOYW1lYCA9IFx1MDAxYlszMW1jb2xfY2hhcmFjdGVyKClcdTAwMWJbMzltLFxuICBgSXRlbSBJRGAgPSBcdTAwMWJbMzFtY29sX2NoYXJhY3RlcigpXHUwMDFiWzM5bSxcbiAgVHlwZSA9IFx1MDAxYlszMW1jb2xfY2hhcmFjdGVyKClcdTAwMWJbMzltLFxuICBMb2FucyA9IFx1MDAxYlszMm1jb2xfZG91YmxlKClcdTAwMWJbMzltLFxuICBgQ29tcGxldGVkIExvYW5zYCA9IFx1MDAxYlszMm1jb2xfZG91YmxlKClcdTAwMWJbMzltLFxuICBgVG90YWwgRGF5c091dGAgPSBcdTAwMWJbMzJtY29sX2RvdWJsZSgpXHUwMDFiWzM5bSxcbiAgYEF2ZXJhZ2UgTG9hbiBMZW5ndGhgID0gXHUwMDFiWzMybWNvbF9kb3VibGUoKVx1MDAxYlszOW1cbilcbiJ9 -->
-<pre><code>Parsed with column specification:
-cols(
-  `Item Name` = [31mcol_character()[39m,
-  `Item ID` = [31mcol_character()[39m,
-  Type = [31mcol_character()[39m,
-  Loans = [32mcol_double()[39m,
-  `Completed Loans` = [32mcol_double()[39m,
-  `Total DaysOut` = [32mcol_double()[39m,
-  `Average Loan Length` = [32mcol_double()[39m
+  `Item Type` = [31mcol_character()[39m,
+  `Home Location` = [31mcol_character()[39m,
+  `Current Location` = [31mcol_character()[39m,
+  Name = [31mcol_character()[39m,
+  Categories = [31mcol_character()[39m,
+  `Min Frequency` = [33mcol_logical()[39m,
+  `Replacement Cost` = [32mcol_double()[39m
 )</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9hbnMgJT4lIFxuICBtdXRhdGUobW9udGggPSBtb250aChjaGVja2VkX291dCwgbGFiZWwgPSBUKSkgJT4lIFxuICBncm91cF9ieShtb250aCwgaXRlbV9uYW1lKSAlPiUgXG4gIHN1bW1hcmlzZShjb3VudCA9IG4oKSkgJT4lIFxuICBhcnJhbmdlKGNvdW50KSAlPiUgXG4gIHRvcF9uKDEpICU+JSBcbiAgYXJyYW5nZShtb250aCwgZGVzYyhjb3VudCkpXG5gYGAifQ== -->
-<pre class="r"><code>loans %&gt;% 
-  mutate(month = month(checked_out, label = T)) %&gt;% 
-  group_by(month, item_name) %&gt;% 
-  summarise(count = n()) %&gt;% 
-  arrange(count) %&gt;% 
-  top_n(1) %&gt;% 
-  arrange(month, desc(count))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2F0ZWdvcmllc19jbGVhbiA8LSBjYXRlZ29yaWVzICU+JSBcbiAgY2xlYW5fbmFtZXMoKSAlPiUgXG4gIHNlcGFyYXRlKGNhdGVnb3JpZXMsIGludG8gPSBjKFwiY2F0MVwiLCBcImNhdDJcIiwgXCJjYXQzXCIsIFwiY2F0NFwiLCBcImNhdDVcIiwgXCJjYXQ2XCIsIFwiY2F0N1wiLCBcImNhdDhcIiwgXCJjYXQ5XCIsIFwiY2F0MTBcIiksIHNlcCA9IFwiLCBcIilcbmBgYCJ9 -->
+<pre class="r"><code>categories_clean &lt;- categories %&gt;% 
+  clean_names() %&gt;% 
+  separate(categories, into = c(&quot;cat1&quot;, &quot;cat2&quot;, &quot;cat3&quot;, &quot;cat4&quot;, &quot;cat5&quot;, &quot;cat6&quot;, &quot;cat7&quot;, &quot;cat8&quot;, &quot;cat9&quot;, &quot;cat10&quot;), sep = &quot;, &quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXhwZWN0ZWQgMTAgcGllY2VzLiBNaXNzaW5nIHBpZWNlcyBmaWxsZWQgd2l0aCBgTkFgIGluIDEzMTcgcm93cyBbMSwgMiwgMywgNCwgNSwgNiwgNywgOCwgOSwgMTAsIDExLCAxMiwgMTMsIDE0LCAxNSwgMTYsIDE3LCAxOCwgMTksIDIwLCAuLi5dLlxuIn0= -->
+<pre><code>Expected 10 pieces. Missing pieces filled with `NA` in 1317 rows [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...].</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubG9hbnMgJT4lIFxuICBtdXRhdGUobW9udGggPSBtb250aChjaGVja2VkX291dCwgbGFiZWwgPSBUKSkgJT4lIFxuICBncm91cF9ieShtb250aCwgaXRlbV9uYW1lKSAlPiUgXG4gIHN1bW1hcmlzZShjb3VudCA9IG4oKSkgJT4lIFxuICBhcnJhbmdlKGNvdW50KSAlPiUgXG4gIHRvcF9uKDEpICU+JSBcbiAgYXJyYW5nZShtb250aCwgZGVzYyhjb3VudCkpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r loans %&gt;% mutate(month = month(checked_out, label = T)) %&gt;% group_by(month, item_name) %&gt;% summarise(count = n()) %&gt;% arrange(count) %&gt;% top_n(1) %&gt;% arrange(month, desc(count))</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiU2VsZWN0aW5nIGJ5IGNvdW50XG4ifQ== -->
 <pre><code>Selecting by count</code></pre>
@@ -1838,11 +1825,9 @@ cols(
 <p>group tools see if groups spike throughout year find specific user stories</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9hbnMgJT4lIFxuICBncm91cF9ieSh1c2VyX2lkKSAlPiUgXG4gIHN1bW1hcmlzZShjb3VudCA9IG4oKSkgJT4lIFxuICBhcnJhbmdlKGRlc2MoY291bnQpKVxuYGBgIn0= -->
-<pre class="r"><code>loans %&gt;% 
-  group_by(user_id) %&gt;% 
-  summarise(count = n()) %&gt;% 
-  arrange(desc(count))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubG9hbnMgJT4lIFxuICBncm91cF9ieSh1c2VyX2lkKSAlPiUgXG4gIHN1bW1hcmlzZShjb3VudCA9IG4oKSkgJT4lIFxuICBhcnJhbmdlKGRlc2MoY291bnQpKVxuYGBgXG5gYGByXG5OQVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r loans %&gt;% group_by(user_id) %&gt;% summarise(count = n()) %&gt;% arrange(desc(count)) <code></code>r NA</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibmNvbCI6MiwibnJvdyI6NzMzfSwicmRmIjoiSDRzSUFBQUFBQUFBQSsyYVNaQWJaeFhINWJISHkwQ01JQUVNQkJBa0pDN0FneUFHVEZpaXhJN2o3UEo0RysvU2FCOXBwRmEzV3Z2U2UzSFVrZU1jT2VySTBVZU9PbktoYW80Y2Rjd2xNZDN6ZmwvVlJHVUhGd1VwRnFmcStUZmZXLzlQVXFzbFZUWXViTDZ5dHJrV2k4VU94dzRmRGY5ZERmK01yVjY3ZXZITXVWanN5RXA0T0JRN0Vqc1JzUnVHbnczL2lKd25RL3cxbGNsRTJiRlVkVmU0blJEZWpBbmZoVzVYT0NKdS9VVlkyeE02eXY4M29aRVVkbExDSGRYbmorVDlnVHptajVqdjBkZTZ4Sm01MzZmZW1nbHQ0dmZ3MTJBVEhYM3lIT1pzTVVlREZ2TnM5TDFFL2U5Z0M1YnA1MjRLdHg4UXA4K1lQVXY0SjNINmFzTFQ5Tm1oanpNVjlxajMwYWxSNTdLWHYyQS9TMWhFcHdGYjFMWG53anJ6Ty9RUHpnay9wUDRPY1JlOUFYcmVRMThkUFEzNnYwZGRtbmllYzQyNFE3L2ZFTDhOUzNCN0QzM002MUUvMUlRV2VSWjk3RjNobTZvZmMweDBEaGZrczVlTjN6OGx2RVYraWJsTkVaNGFNYS9FZkEyL3lkd0JaNGUrTHpMZm1BbzdjZVl6NzFmRTM0QjNtTHVkWVM1OSsrd3p3dS85WG5pV3VndndIdmwxK2t5U3dnK0ozMFYzRmpiSWI3R25pZjQyZTFhWVo4eUVZM1RZOUhYK2pKN2pRcCs2Njh6UGs2L2pOOWkvelp3dUhESGZSNmV2K3FIekZQNE01eUw1bFlTd09hVXY4UTd6ZWd2aEFCME8xNE5MM01Ydm9kZjdrM0NkZVcvUTczMVlJdDlnN2dpL3cvdVFSMStmOXdtZmZqK2szMC9oSnR5aVR4RjIwdlNOQzIwZUI1ZlhaY0RqL1V2cUx5dWlvNWdSVmg0STYvUnRzbDl6SWRUWm96MWpiaEpTTjVnS0ozT2h4ZnVWeGV2T1psOEhuUzV6WGZiMU9IdlUrL1QzZVQ4TzJPYzU5S2ZSbDJaK0JuOFc1dmFFQmZZcGtGOWlqbzVlSXkxc29jc2szbUhQSHZWOTRuME5VajlpM21naEhLdkhnVHJySS9aWDd4c1dwTC9IOCs1eDMvb1ovUzZROXhibnkreTV3UjQzNFYyWTJXVlA5SmZ4YjhNNmZjdzlZUnVkWGZyMnFadVE3L0Q4dWVoMmxWNTFmMUNrenVjK3VjMmNaaEtpcTBtOXpsNzZRbWd3MzZTdW00REVlM1BoZ0RsRGRJL3dUemhidk81dDlmN0NISTk5ajlQL2RYaVIrRHVjcjhFYjZObmtjYmdIdDRqbmlXK3pWNVgrTzdCTzN6cm5CbmthZlRUaXpiaFFod2IrbGlMN21acXdUYjhPOFM3KzNrellwLzhBRHVrN1NzTXBKSCs4RUU0eVFvdkh6U2JmNXJxMHlYTTRPN3hPWGZSNXZMNTlYaStCSW5zSHpQdHhUSGdldnNzZUg4QU4vRmZRZitXQmNCUG1pVmZJMzBHM2p0NVdBbXBDRTkxdC9CM3FPK2p1N0FtNzZPc1I3Nkc3ejl3SnRKaHJVVy96T0RqVU9idy9PYWNoZWE1NlAyWXZ0d3pSNStOL2hUNnZNK2NpNTh2RU4vRGZ3SDhMWGJmaFhmejN5Y3ZnMytLY1M4Q01zSWkvdkNlc1VsOWxYcFY0RTdhU2tIZ0wvU1p4Y3dwM2hlMDRSRWVYdVYzeXUrUjN5ZTlwa1B6K1hEaVlRWFFPbVQ4aWI4elpvcjlGWDR2N2pjMzl4K0Z4ZCtqbjBNL2g5ZXR5ZGpsN01hanUwOHdMMkN1Z1g4QzhnUGZ4Z05kRmpQbzQvQzE4RGI3RjQvQSs1dzM2WDhPZlNVQjA1Y2pMa1pkbjN3TCtBdjRpTE84S3EvU3BrbDhsM21DT2xvVGthek5Jbms1Y3AxNG5icUNyUloxSm5qa1h0bFBDWGh4T2hmMkZjSUN1QVhPRzFJMm9HeE1mYTVDOE1YTW43RDFKUTNSWjFGazhQeGI1Tmpwc2ROak1zOVh6VHgrWDU5Rmxuc2RlSHYxOTdvYytmWDJlN3dBOUFkZDd3UDB4NEw0WVdKRFhZOERyS2xDZmIrajNLbjNPay84bXZJVC9iYzd2d0RTOEFxK21JT2Nibkc5dzNvUTNGZG56RnVjN3pMbXZTRHhEbnl6bkxIcTM4Rzl4enRHbm9MZ0xpUmM1bCtsZnBsK0ZjNFYrdFFUTVFQSWErRFZGK21vTFlaUDg1bHlvMDFjblg2ZS9UaitEUElQNlZocE9oZVpNMktaUG0vNXQ4anYwN2VEdnNGK0hlSmU2Ymx6WVkzNlBPWDNxKzBsb1FmWWFVRGNnUHRBZ2VRUDBENWt6SkcrSW5pRjVRM1FOMlh0SS94SDVZK3JINkJwVFA2WitQSVBNbTZCalFueEMvd2w3VytpMnVCOWF6TEdJMjl3dmJlSTI4Mnl1VzV2cnhrYXZ6WFZpbzl0SlFmUTY2SEhRNDZqM2ZYUTUxRHZNZDluWFJhZWJnT2h4NmVQU3g1MUMrcmhjOXg3MUh2dDQ5UEg0SE9SUjUvSDV5aWZmSjg5bm5rK2VqMTZmdlgzcUF2S0NKQ1FlelBmNTJvSjlub2NKbUlRL2g3K0E1K0N2WVVxUnZTL0J0L0YvQUsvQXE0cm91SmFDbks4VHYwNmY2L2h2NGIrTi93NjhTL3crZmJJSnFNNFp1Q3ZjVXFRdVIxNE9mNTc2UFA3OG5yREkvQkx4RXZFeS9jdm9xZENuUXQwMi9wb2k4UjNxZC9EdktEKzY2cHdiekcwd3AwRmZEYittd1NtY0M1dkVtOFNiMU9uRWRjNEdlUVo1Qm5OYjZERGpFTDF0NHQwa3hOK2xiNWUrUGVJOXpuM205TlBDQWVmQlFqakVQNXdKeDh5ZFVHOXhuVmpNczhpMzBHMXgzVnZxK3dmOWJhNG5tL3V6dzMzV1FaK1RnZFM3Nm5zZzE0M0hmZHRqbnNmN2pNZmo0S0hmSis0VDk3bitmZTdYL2h6eXVTRmdqNEM2QUIwQit3U3lSL2pmTTlIdjNTR2pkK3JvMStqb2xSaDlhby91dU5IVmRCNkxmdG1MdnFWR2phTlBqZEV2bks5aTBSSm5EMWowclNINnhTQjZFSDZDL1NpMDA5akwyRXRMOW9NRDlpTDJBaGI5MHYyOUE1WTRZTi9Gdm5QQXZ2MEllLzZBZld2SnZubkF2dkVJTy9XRTl2WEgyTmRDKytxU1BmY0llM2JKdnZJUDdNdVBzUGhuMkpjK3cwNCtvVDN6VDlvWG45Qys4SVMyOWpuWWljL1pqditiN2RpLzBJNytsOXZxZjVnZCtUK3h3MC90c2JieTFKN2FZK3pRVS90ZnNrLzlUeWlyOWV4T0lmcTZGTjkvc3NWNXpEUUsrdjFLWHVYa0dtYTl0VlI0UW05MDFsVng5Q2xyeFFyL2Vmanc0eGVXSitScVdVTk5VTTYxZkxhVlhTL3FZWDE0K21TcDVGaERhMVVhOWJCb0pmb3N1cnBVZkVoZmNzVE5lcVFrZnlaWE51dlZNMmVqTHdOckxCeERYdmozL2hjTy9vNWUyTkhNbFlmMFdxWFgwVUs5VktrWGxQaGFkcXRRNDNBeVhIbC80M1ZOcjRRUENLdUVYbU85MVdobFZkNWFybEZUbnYzbFlwLzhIZS9CSDVJWEpBQUEifQ== -->
 <div data-pagedtable="false">
@@ -1851,15 +1836,11 @@ cols(
   </script>
 </div>
 <!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTkFcbmBgYCJ9 -->
-<pre class="r"><code>NA</code></pre>
-<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9hbnMgJT4lIFxuICBmaWx0ZXIodXNlcl9pZCA9PSAyMDkpICU+JSBcbiAgYXJyYW5nZShjaGVja2VkX291dClcbmBgYCJ9 -->
-<pre class="r"><code>loans %&gt;% 
-  filter(user_id == 209) %&gt;% 
-  arrange(checked_out)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubG9hbnMgJT4lIFxuICBmaWx0ZXIodXNlcl9pZCA9PSAyMDkpICU+JSBcbiAgYXJyYW5nZShjaGVja2VkX291dClcbmBgYFxuYGBgclxuTkFcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r loans %&gt;% filter(user_id == 209) %&gt;% arrange(checked_out) <code></code>r NA</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInNwZWNfdGJsX2RmIiwidGJsX2RmIiwidGJsIiwiZGF0YS5mcmFtZSJdLCJuY29sIjo3LCJucm93IjoxMDJ9LCJyZGYiOiJINHNJQUFBQUFBQUFBKzFhelU4VFFSUWYra0Z0RFFnQjllREJPUms5VVB2QloySk1DV2pVSUJJS2dva1JodDBwREd4bmw5bXBOWjY0K3gvNFIzZ3lHbU0wSko0OGVpTCtBLzREWHZRZ09OdnVsTjFhMjByYUxUVzd5ZXh2M3B2MzVuMU0zODd1cEl1enErbllhZ3dBRUFUQlhuRVBpeTRJTHkvZEhwa0VJQlFRUkE4SWdhaUZ6OFR3a09oRVJPc1hMWmZaaHBZMDhORkhIeHVqdUFaRXk5a0ZGYm0xTkpkSUphY2NaREtWU0RqSlpHcmNLVHlWbm5TU2duWUpwNTI2aWZHSlVaZnU2S1JMZUNycEhCMUxKRHZoVmJVYmJpZXJ2VXFQcDF4VHBWd0JwcE5qOVViZHVsWENyWXUzdnBNTjFxaktxdzR0bVIrQ0gwS1hoZEExUHJ0M2dMNFpuTWVVUTg3MEl0WnM1dGtGcE9WaEZsRVZNNXQxN2w2QkVwM0JMYVRzUUJNVmJmYjUrMmlUWWs0VW1EVUlJeHpPNGFlVmFZYm1NVlkxREtsdVloVWFHc0hNdEllRzV4RVRGdUVDSXNKNFZtSElxSmdhTkRWaXdHM2RHbkVwOVM0NW5idzBvek9LR1N3ellSWnplRFVGRFlJVmZFMWFXVUdhWmxoVFE5RnlPa05jWjEwWWVCT2h1bk5UTi9DeWFkTmx1aWJ6NGgyTU9Od3MwT3YyS0dmRWFLQnpvb2s2c3hUTiszK2lSV3NROVAvd1kvWXo2R2ZRejZDZlFVOHo2R2VwZnBaQXNIUXlObjJ3UEh4QmRGcUhEMzk4TCtQUFFKTTRXQmRYMWwvVXhFYzNydFRHVE5JVGZId3o2QWsrK1lvOXdZMzRMMi93MjZ1Mkl2bDh1WTFZZGRRYzVzOTFhdVZ2d01IOFEwalJrR25hUWdINW9iWHdJSHQzVmVHeWNrc2tGNzNENDlKc2RTbTF2QlQrc1FUOWtqbWRKZU5ONlV3ZjdLN3Z0aEhMVlJjNHFsMk5RY2x2dmdBelgxNW5MUFhXNFJ2Z0RiN2Q3eXkrMi9NRzMyZTh3US9BRy95NDMxNzhCTnFKVllVbUN6QTBpN2oxdkR3RThrd1JnT2lSdUZxR2RrRXZZb3FMU0RzdFpIZDU2NU0rNlpNK2FUMjQzRjh2Rk9XeC9IcUpTTm1DaWRrYVVTVkpPTTRmazlFU2FlbkpjeGRsQ3lzN1dGM1RDL0o5S3laWmhOcWNNMm9CcjZuV1htRlB5bXI2RTJWNk1TNTk2aE10c0NkdTRzSDY4aS83VDB6TWllSTVacmxUMm9WYzAwVjBneE9kaXNrQzFsK0d3bFhLUGF5S01WQ2dsbkYxUk5rcTBKMlIwUW5MUW1tOGZQWFovWnlqSHluYkRFblB3dktkRTlOTlFtVzhZUTF0Vk01dStrV1VwU0RqQmlPMGtqVEJOZU5jNTVWRml5bTZKam5sTGZid045Zzg2NllxSlFBQSJ9 -->
 <div data-pagedtable="false">
@@ -1868,14 +1849,19 @@ cols(
   </script>
 </div>
 <!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTkFcbmBgYCJ9 -->
-<pre class="r"><code>NA</code></pre>
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9hbnNfY2F0ZWdvcmllcyA8LSBsb2FucyAlPiUgXG4gIGxlZnRfam9pbihjYXRlZ29yaWVzX2NsZWFuLCBieSA9IFwiaXRlbV9pZFwiKVxuYGBgIn0= -->
+<pre class="r"><code>loans_categories &lt;- loans %&gt;% 
+  left_join(categories_clean, by = &quot;item_id&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiRVRMIEluaXRpYWwgQW5hbHlzaXMiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCmBgYHtyLCBtZXNzYWdlPUZBTFNFfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKbGlicmFyeShsdWJyaWRhdGUpCmxpYnJhcnkoamFuaXRvcikKYGBgCgpgYGB7cn0KbG9hbnMgPC0gcmVhZF9jc3YoInJhd19kYXRhL2xvYW5zLWV4cG9ydCBqYW4tZGVjIDIwMTkuY3N2IikgJT4lIAogIGNsZWFuX25hbWVzKCkgJT4lIAogIG11dGF0ZShkdWVfZGF0ZSA9IGFzLkRhdGUoZHVlX2RhdGUsIGZvcm1hdCA9ICIlZC8lbS8lWSIpLAogICAgICAgICBjaGVja2VkX291dCA9IGFzLlBPU0lYY3QoY2hlY2tlZF9vdXQsIGZvcm1hdCA9ICIlZC8lbS8lWSAlSDolTSIpLAogICAgICAgICBjaGVja2VkX2luID0gYXMuUE9TSVhjdChjaGVja2VkX2luLCBmb3JtYXQgPSAiJWQvJW0vJVkgJUg6JU0iKQogICAgICAgICApCiAgICAgICAgIAoKdXNhZ2UgPC0gcmVhZF9jc3YoInJhd19kYXRhL3VzYWdlLWV4cG9ydCBqYW4tZGVjIDIwMTkuY3N2IikKYGBgCgoKCmBgYHtyfQpsb2FucyAlPiUgCiAgbXV0YXRlKG1vbnRoID0gbW9udGgoY2hlY2tlZF9vdXQsIGxhYmVsID0gVCkpICU+JSAKICBncm91cF9ieShtb250aCwgaXRlbV9uYW1lKSAlPiUgCiAgc3VtbWFyaXNlKGNvdW50ID0gbigpKSAlPiUgCiAgYXJyYW5nZShjb3VudCkgJT4lIAogIHRvcF9uKDEpICU+JSAKICBhcnJhbmdlKG1vbnRoLCBkZXNjKGNvdW50KSkKYGBgCgpncm91cCB0b29scwpzZWUgaWYgZ3JvdXBzIHNwaWtlIHRocm91Z2hvdXQgeWVhcgpmaW5kIHNwZWNpZmljICB1c2VyIHN0b3JpZXMKCmBgYHtyfQpsb2FucyAlPiUgCiAgZ3JvdXBfYnkodXNlcl9pZCkgJT4lIAogIHN1bW1hcmlzZShjb3VudCA9IG4oKSkgJT4lIAogIGFycmFuZ2UoZGVzYyhjb3VudCkpCiAgCmBgYApgYGB7cn0KbG9hbnMgJT4lIAogIGZpbHRlcih1c2VyX2lkID09IDIwOSkgJT4lIAogIGFycmFuZ2UoY2hlY2tlZF9vdXQpCgpgYGAKCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiRVRMIEluaXRpYWwgQW5hbHlzaXMiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCmBgYHtyLCBtZXNzYWdlPUZBTFNFfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKbGlicmFyeShsdWJyaWRhdGUpCmxpYnJhcnkoamFuaXRvcikKYGBgCgpgYGB7cn0KbG9hbnMgPC0gcmVhZF9jc3YoInJhd19kYXRhL2xvYW5zLWV4cG9ydCBqYW4tZGVjIDIwMTkuY3N2IikgJT4lIAogIGNsZWFuX25hbWVzKCkgJT4lIAogIG11dGF0ZShkdWVfZGF0ZSA9IGFzLkRhdGUoZHVlX2RhdGUsIGZvcm1hdCA9ICIlZC8lbS8lWSIpLAogICAgICAgICBjaGVja2VkX291dCA9IGFzLlBPU0lYY3QoY2hlY2tlZF9vdXQsIGZvcm1hdCA9ICIlZC8lbS8lWSAlSDolTSIpLAogICAgICAgICBjaGVja2VkX2luID0gYXMuUE9TSVhjdChjaGVja2VkX2luLCBmb3JtYXQgPSAiJWQvJW0vJVkgJUg6JU0iKQogICAgICAgICApCiAgICAgICAgIAoKdXNhZ2UgPC0gcmVhZF9jc3YoInJhd19kYXRhL3VzYWdlLWV4cG9ydCBqYW4tZGVjIDIwMTkuY3N2IikKCmNhdGVnb3JpZXMgPC0gcmVhZF9jc3YoInJhd19kYXRhL2ludmVudG9yeS13aXRoIGNhdGVnb3JpZXMuY3N2IikKYGBgCgpgYGB7cn0KY2F0ZWdvcmllc19jbGVhbiA8LSBjYXRlZ29yaWVzICU+JSAKICBjbGVhbl9uYW1lcygpICU+JSAKICBzZXBhcmF0ZShjYXRlZ29yaWVzLCBpbnRvID0gYygiY2F0MSIsICJjYXQyIiwgImNhdDMiLCAiY2F0NCIsICJjYXQ1IiwgImNhdDYiLCAiY2F0NyIsICJjYXQ4IiwgImNhdDkiLCAiY2F0MTAiKSwgc2VwID0gIiwgIikKYGBgCgoKYGBge3J9CmxvYW5zICU+JSAKICBtdXRhdGUobW9udGggPSBtb250aChjaGVja2VkX291dCwgbGFiZWwgPSBUKSkgJT4lIAogIGdyb3VwX2J5KG1vbnRoLCBpdGVtX25hbWUpICU+JSAKICBzdW1tYXJpc2UoY291bnQgPSBuKCkpICU+JSAKICBhcnJhbmdlKGNvdW50KSAlPiUgCiAgdG9wX24oMSkgJT4lIAogIGFycmFuZ2UobW9udGgsIGRlc2MoY291bnQpKQpgYGAKCmdyb3VwIHRvb2xzCnNlZSBpZiBncm91cHMgc3Bpa2UgdGhyb3VnaG91dCB5ZWFyCmZpbmQgc3BlY2lmaWMgIHVzZXIgc3RvcmllcwoKYGBge3J9CmxvYW5zICU+JSAKICBncm91cF9ieSh1c2VyX2lkKSAlPiUgCiAgc3VtbWFyaXNlKGNvdW50ID0gbigpKSAlPiUgCiAgYXJyYW5nZShkZXNjKGNvdW50KSkKICAKYGBgCmBgYHtyfQpsb2FucyAlPiUgCiAgZmlsdGVyKHVzZXJfaWQgPT0gMjA5KSAlPiUgCiAgYXJyYW5nZShjaGVja2VkX291dCkKCmBgYAoKYGBge3J9CmxvYW5zX2NhdGVnb3JpZXMgPC0gbG9hbnMgJT4lIAogIGxlZnRfam9pbihjYXRlZ29yaWVzX2NsZWFuLCBieSA9ICJpdGVtX2lkIikKYGBgCgo=</div>
 
 
 
