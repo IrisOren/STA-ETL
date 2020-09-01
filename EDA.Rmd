@@ -20,13 +20,12 @@ loans <- read_csv("raw_data/loans-export jan-dec 2019.csv") %>%
 
 usage <- read_csv("raw_data/usage-export jan-dec 2019.csv")
 
-categories <- read_csv("raw_data/inventory-with categories.csv")
+categories <- read_csv("raw_data/categories copy.csv")
 ```
 
 ```{r}
 categories_clean <- categories %>% 
-  clean_names() %>% 
-  separate(categories, into = c("cat1", "cat2", "cat3", "cat4", "cat5", "cat6", "cat7", "cat8", "cat9", "cat10"), sep = ", ")
+  clean_names()
 ```
 
 
@@ -60,6 +59,37 @@ loans %>%
 
 ```{r}
 loans_categories <- loans %>% 
-  left_join(categories_clean, by = "item_id")
+  left_join(categories_clean, by = "item_id") %>% 
+  mutate(month = month(checked_out, label = T))
+```
+
+```{r}
+loans_categories %>% 
+  mutate(month = month(checked_out, label = T)) %>% 
+  group_by(month, categories) %>% 
+  summarise(count = n()) %>% 
+  arrange(count) %>% 
+  top_n(3) %>% 
+  arrange(month, desc(count))
+```
+
+```{r}
+loans_categories %>%
+  group_by(month, categories) %>% 
+  drop_na(categories) %>% 
+  summarise(count = n()) %>% 
+  ggplot(aes(x = month, y = count, col = categories, group = categories)) +
+  geom_smooth(se = FALSE) +
+  labs(x = "Month", 
+       y = "Count",
+       col = "Category",
+       title = "2019 loans by category"
+       ) +
+  theme_classic()
+```
+
+```{r}
+loans_categories %>% filter(is.na(categories)) %>% count()
+
 ```
 
