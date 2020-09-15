@@ -1,26 +1,29 @@
 ---
-title: "ETL Initial Analysis"
-output: html_notebook
+title: "Edinburgh Tool Library - 2019"
+output:
+  html_document: default
+  pdf_document: default
 ---
 
-```{r message=FALSE}
-library(tidyverse)
-library(lubridate)
-library(janitor)
-library(ggrepel)
+```{r setup, include=FALSE}
 
+library(tidyverse)
+library(ggrepel)
+library(plotly)
+library(lubridate)
 ```
 
-```{r}
-         
+[Edinburgh Tool Library](https://edinburghtoollibrary.org.uk/)
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 usage <- read_csv("raw_data/usage-export jan-dec 2019.csv") %>% 
-  clean_names()
+  janitor::clean_names()
 
 categories <- read_csv("raw_data/categories copy.csv") %>% 
-  clean_names()
+  janitor::clean_names()
 
 loans <- read_csv("raw_data/loans-export jan-dec 2019.csv") %>% 
-  clean_names() %>% 
+  janitor::clean_names() %>%
   mutate(due_date = as.Date(due_date, format = "%d/%m/%Y"),
          checked_out = as.POSIXct(checked_out, format = "%d/%m/%Y %H:%M"),
          checked_in = as.POSIXct(checked_in, format = "%d/%m/%Y %H:%M")
@@ -30,62 +33,23 @@ loans <- read_csv("raw_data/loans-export jan-dec 2019.csv") %>%
 ```
 
 
-
-```{r}
+### Most common tools borrowed at certain times of the year?
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 loans %>% 
   mutate(month = month(checked_out, label = T)) %>% 
   group_by(month, item_name) %>% 
   summarise(count = n()) %>% 
   arrange(desc(count)) %>% 
-  top_n(1) %>% 
   arrange(month, desc(count)) %>% 
-  ggplot(aes(x = month, y = count)) +
-  geom_point() +
-  geom_label_repel(aes(label = item_name),
-                  box.padding   = 0.35, 
-                  point.padding = 0.5,
-                  segment.color = 'grey50') +
-  theme_classic() +
-  labs(
-    x = "Month",
-    y = "Loan Count",
-    title = "2019 Most Popular Monthly Tool"
-  ) +
-  theme(plot.title = element_text(hjust = 0.5))
-```
-
-group tools
-see if groups spike throughout year
-find specific  user stories
-
-```{r}
-loans %>% 
-  group_by(user_id) %>% 
-  summarise(count = n()) %>% 
-  arrange(desc(count))
+  left_join(categories, by = c("item_name" = "name")) %>% 
+  select(month, item_name, categories, count) %>% 
+  slice_max(1) %>% 
+  knitr::kable(col.names = c("Month", "Tool", "Category", "Loans")) 
   
 ```
-```{r}
-loans %>% 
-  filter(user_id == 209) %>% 
-  arrange(checked_out)
 
-```
-
-
-
-```{r}
-loans_categories %>% 
-  mutate(month = month(checked_out, label = T)) %>% 
-  group_by(month, categories) %>% 
-  summarise(count = n()) %>% 
-  arrange(count) %>% 
-  top_n(3) %>% 
-  arrange(month, desc(count))
-```
-
-```{r}
-loans_categories %>%
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+loans %>%
   group_by(month, categories) %>% 
   drop_na(categories) %>% 
   summarise(count = n()) %>% 
@@ -101,15 +65,27 @@ loans_categories %>%
   scale_color_brewer(palette="Paired")
 ```
 
-```{r}
-savings <- loans_categories %>%
+### How we can use a "cost per tool" to show money saved for members?
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+savings <- loans %>%
   filter(is.na(renewal)) %>% 
   group_by(user_id) %>% 
   summarise(savings = sum(replacement_cost)) %>% 
   drop_na(savings)
-  
-summary(savings$savings)
-
 ```
 
+##### Average Savings: £`r mean(savings$savings)`
 
+
+##### Max savings: £`r max(savings$savings)`
+
+
+
+##### User `r savings %>% arrange(desc(savings)) %>% top_n(1) %>% select(user_id)` saved the most by using ETL with `r loans %>% filter(user_id == 711) %>% count()` loans in 2019. 
+
+
+
+### How we can use a "CO2 per tool" to show a carbon saving?
+
+### Interesting ways to show usage patterns by time, and by type of tool?
