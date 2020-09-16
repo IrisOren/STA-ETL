@@ -1,4 +1,4 @@
-Item ID,Item Type,Home Location,Current Location,Name,Categories,Min Frequency,Replacement Cost
+Item ID,Item Type,Home Location,Current Location,Name,Category,Min Frequency,Replacement Cost
 ETL0531,Jack Stands,Leith,Leith,1.5 tonne Axle stands,Automotive,,30
 ETL1303,Socket Sets,Portobello,Portobello,1/2 in drive imperial socket set,General DIY,,
 ETL1343,"Bits, Drivers and Accessories",Portobello,Leith,10 Piece Masonry Drill Bit set,General DIY,,20
