@@ -21,8 +21,6 @@ library(janitor)
 categories <- read_csv("raw_data/categories copy.csv") %>%
   clean_names()
 
-
-
 ##################################################################
 ##                              UI                              ##
 ##################################################################
@@ -40,7 +38,7 @@ ui <- dashboardPage( # Using library(shinydashboard) for layout
       target = "_blank",
       tags$img(tags$img(src = "ETL_logo.png", height = "50px", width = "50px"))
     )
-  ), # This puts the ETL logo in the header and ha it link to ETL website
+  ), # TPuts the ETL logo in the header and has it link to ETL website
 
   dashboardSidebar(
     width = 250,
@@ -57,7 +55,6 @@ ui <- dashboardPage( # Using library(shinydashboard) for layout
     
     .sidebar-toggle {
       height: 55px;
-      padding: 20px 20px 20px;
     }
     
     .navbar {
@@ -65,8 +62,7 @@ ui <- dashboardPage( # Using library(shinydashboard) for layout
     }
                               "))),
 
-    # The dynamically-generated user panel
-    # uiOutput("userpanel"),
+    # The sidebar menu layout and widgets
     sidebarMenu(
       menuItem("Upload Files", tabName = "uploader", icon = icon("jedi-order")),
       menuItem("Data Viz",
@@ -82,6 +78,7 @@ ui <- dashboardPage( # Using library(shinydashboard) for layout
 
   # Sidebar panel for inputs ----
   dashboardBody(
+    # Custom CSS to recolour the dashboard using ETL yellow = #fbec3b
     tags$head(tags$style(HTML("
     
     .content-wrapper, .right-side {
@@ -183,7 +180,15 @@ ui <- dashboardPage( # Using library(shinydashboard) for layout
         )
       ),
 
-      tabItem(tabName = "usage"),
+      tabItem(tabName = "usage",
+            
+              fluidRow(
+                box(
+                  title = "Loans by Location for entire data",
+                  solidHeader = TRUE,
+                  collapsible = TRUE,
+                  status = "primary",
+                  plotOutput("location_plot")))),
 
       tabItem(
         tabName = "user_stories",
@@ -194,16 +199,36 @@ ui <- dashboardPage( # Using library(shinydashboard) for layout
             collapsible = TRUE,
             status = "primary",
             width = 3,
-            radioButtons("choice",
+            radioButtons("cat_or_tool",
               label = NULL,
               inline = TRUE,
               choices = list("Categories" = "category", "Tools" = "item_name"),
               selected = "category"
             )
-          )
-        ),
-        fluidRow(
+          ),
           box(
+            title = "Which User?",
+            solidHeader = TRUE,
+            collapsible = TRUE,
+            status = "primary",
+            width = 3,
+            radioButtons("user_choice",
+                         label = NULL,
+                         inline = TRUE,
+                         choices = list("Top" = "top", "2nd Top" = "top2"),
+                         selected = "top"
+            ),
+            "Does not interact with graph yet"),
+          box(
+            title = "User Savings",
+            solidHeader = TRUE,
+            collapsible = TRUE,
+            status = "primary",
+            width = 3,
+            h3(textOutput("top_user_savings")))),
+        
+        fluidRow(
+          box(width = 12, 
             title = "Top User",
             solidHeader = TRUE,
             collapsible = TRUE,
@@ -215,6 +240,9 @@ ui <- dashboardPage( # Using library(shinydashboard) for layout
     )
   )
 )
+
+
+
 
 
 
@@ -253,11 +281,7 @@ server <- function(input, output, session) {
 
   clean_usage <- reactive({
     raw_usage() %>%
-      left_join(categories, by = c("item_name" = "item_id")) %>%
-      filter(
-        checked_out >= input$dates[1],
-        checked_out <= input$dates[2]
-      )
+      left_join(categories, by = "item_id")
   })
 
 
@@ -354,8 +378,8 @@ server <- function(input, output, session) {
         plot.title = element_text(hjust = 0.5),
         # text = element_text(size = 15),
         legend.title = element_blank()
-      ) +
-      scale_color_brewer(palette = "Paired"))
+      ) + 
+        scale_color_viridis_d(option ="plasma"))
   })
 
 
@@ -384,7 +408,7 @@ server <- function(input, output, session) {
   })
 
 
-
+#Finding top user
   top_user_df <- reactive({
     clean_loans() %>%
       group_by(user_id) %>%
@@ -393,9 +417,46 @@ server <- function(input, output, session) {
       slice_max(n, n = 1) %>%
       select(user_id)
   })
+  
+  # Finding 2nd top user
+  top_user_2_df <- reactive({
+    clean_loans() %>%
+      group_by(user_id) %>%
+      count() %>%
+      ungroup() %>%
+      slice_max(n, n = 2) %>%
+      arrange(n) %>% 
+      slice(1) %>% 
+      select(user_id)
+  })
 
+  output$top_user_savings <- renderText({
+    
+    if (input$user_choice == "top") {
+    top_user <- clean_loans() %>%
+      inner_join(top_user_df(), by = "user_id") %>%
+      filter(renewal != "Renewal") %>%
+      drop_na(replacement_cost) %>% 
+      summarise(total_savings = sum(replacement_cost))
+    }
+    else {
+      top_user <- clean_loans() %>%
+        inner_join(top_user_2_df(), by = "user_id") %>%
+        filter(renewal != "Renewal") %>%
+        drop_na(replacement_cost) %>% 
+        summarise(total_savings = sum(replacement_cost))
+    }
+      
+    
+    paste0(
+      "£",
+      sum(top_user$total_savings)
+    )
+  })
+
+  
   output$top_user <- renderPlotly({
-    if (input$choice == "category") {
+    if (input$cat_or_tool == "category") {
       return(
         ggplotly(clean_loans() %>%
           inner_join(top_user_df(),
@@ -415,7 +476,9 @@ server <- function(input, output, session) {
             fill = "Category"
           ) +
           geom_histogram(bins = 12) +
-          theme_classic())
+          theme_classic() +
+          scale_fill_viridis_d(option ="viridis")
+        )
       )
     }
 
@@ -439,9 +502,23 @@ server <- function(input, output, session) {
             fill = "Tool"
           ) +
           geom_histogram(bins = 12) +
-          theme_classic())
+          theme_classic() + 
+          scale_fill_viridis_d(option ="viridis")
+        )
       )
     }
+  })
+  
+  output$location_plot <- renderPlot({
+    clean_usage() %>% 
+    filter(!(is.na(home_location))) %>% 
+    group_by(home_location) %>% 
+    summarise(total_loans = sum(loans)) %>% 
+    ggplot(aes(x = home_location, y = total_loans)) +
+    geom_col() +
+    labs(x = "Location",
+         y = "Total Loans") +
+    theme_classic()
   })
 }
 
