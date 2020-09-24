@@ -1,3 +1,9 @@
+
+#################################################################
+##                          Libraries                          ##
+#################################################################
+
+
 library(shiny)
 library(shinydashboard)
 library(tidyverse)
@@ -5,39 +11,71 @@ library(lubridate)
 library(plotly)
 library(janitor)
 
+
+
+## ================================================================
+##                  Reading in categories data                  ==
+## ================================================================
+
+
 categories <- read_csv("raw_data/categories copy.csv") %>%
   clean_names()
 
 
-# Define UI for data upload app ----
-ui <- dashboardPage(
-  title = "Edinburgh Tool Library",
-  skin = "black",
 
-  dashboardHeader(title = tags$a(
-    href = "https://edinburghtoollibrary.org.uk/",
-    tags$img(tags$img(src = "ETL_logo.png", height = "45", width = "45"))
-  )),
+##################################################################
+##                              UI                              ##
+##################################################################
+
+
+ui <- dashboardPage( # Using library(shinydashboard) for layout
+  title = "Edinburgh Tool Library",
+
+  skin = "black", # This is just a colour theme for shinyDashboard
+
+  dashboardHeader(
+    titleWidth = 250,
+    title = tags$a(
+      href = "https://edinburghtoollibrary.org.uk/",
+      target = "_blank",
+      tags$img(tags$img(src = "ETL_logo.png", height = "50px", width = "50px"))
+    )
+  ), # This puts the ETL logo in the header and ha it link to ETL website
 
   dashboardSidebar(
+    width = 250,
 
-    # Custom CSS to hide the default logout panel
-    tags$head(tags$style(HTML(".logo {
-                              background-color: #fbec3b !important;
-                              }
-                              .navbar {
-                              background-color: #fbec3b !important;
-                              }
+    # Custom CSS to recolour the dashboard using ETL yellow = #fbec3b
+    tags$head(tags$style(HTML("
+    .logo {
+      background-color: #fbec3b !important;
+    }
+    
+    .main-header .logo {
+      height: 55px;
+    }
+    
+    .sidebar-toggle {
+      height: 55px;
+      padding: 20px 20px 20px;
+    }
+    
+    .navbar {
+      background-color: #fbec3b !important;
+    }
                               "))),
 
     # The dynamically-generated user panel
-    uiOutput("userpanel"),
+    # uiOutput("userpanel"),
     sidebarMenu(
       menuItem("Upload Files", tabName = "uploader", icon = icon("jedi-order")),
       menuItem("Data Viz",
         tabName = "viz", icon = icon("dashboard"),
+        dateRangeInput("dates",
+          label = h3("Date range")),
         menuSubItem("Loans", tabName = "loans"),
-        menuSubItem("Usage", tabName = "usage")
+        menuSubItem("Usage", tabName = "usage"),
+        menuSubItem("User Stories", tabName = "user_stories")
       )
     )
   ),
@@ -45,12 +83,23 @@ ui <- dashboardPage(
   # Sidebar panel for inputs ----
   dashboardBody(
     tags$head(tags$style(HTML("
-                                /* body */
-                                .content-wrapper, .right-side {
-                                background-color: 	#FFFFFF;
-                                }
-
-                                "))),
+    
+    .content-wrapper, .right-side {
+      background-color: 	#f5f5f5;
+    }
+    
+    .box.box-solid.box-primary>.box-header {
+      color:#212e31;
+      background:#fbec3b;
+    }
+    
+    .box.box-solid.box-primary{
+      border-bottom-color:#fbec3b;
+      border-left-color:#fbec3b;
+      border-right-color:#fbec3b;
+      border-top-color:#fbec3b;
+    }
+                              "))),
 
     tabItems(
       # First tab content
@@ -95,42 +144,88 @@ ui <- dashboardPage(
       tabItem(
         tabName = "loans",
         fluidRow(
+          # Valid colors are: red, yellow, aqua, blue, light-blue, green, navy, teal, olive, lime, orange, fuchsia, purple, maroon, black.
           box(
-            width = 3,
-            # selectInput("year", label = h3("Select year"),
-            # choices = list("2016", "2017", "2018", "2019", "2020"),
-            # selected = "2019")
-            dateRangeInput("dates",
-              label = h3("Date range"),
-              start = "2019-01-01",
-              end = "2019-12-31"
-            )
+            title = "Average Savings",
+            solidHeader = TRUE,
+            collapsible = TRUE,
+            status = "primary",
+            width = 2,
+            h1(textOutput("avg_savings"))
           ),
-          box(width = 4, h1(textOutput("avg_savings"))),
-          box(width = 4, h1(textOutput("max_savings")))
+          box(
+            title = "Max Savings",
+            solidHeader = TRUE,
+            collapsible = TRUE,
+            status = "primary",
+            width = 2,
+            h1(textOutput("max_savings"))
+          )
         ),
 
         fluidRow(
           box(
+            title = "Monthly Top Tools",
+            solidHeader = TRUE,
+            collapsible = TRUE,
+            status = "primary",
             width = 4,
             tableOutput("top_tools")
           ),
           box(
+            title = "Loans by Category",
+            solidHeader = TRUE,
+            collapsible = TRUE,
+            status = "primary",
             width = 8,
             plotlyOutput("category_plot", height = "500px")
           )
-        ),
-
-        fluidRow()
+        )
       ),
-      tabItem(tabName = "usage")
+
+      tabItem(tabName = "usage"),
+
+      tabItem(
+        tabName = "user_stories",
+        fluidRow(
+          box(
+            title = "Categories or Tools?",
+            solidHeader = TRUE,
+            collapsible = TRUE,
+            status = "primary",
+            width = 3,
+            radioButtons("choice",
+              label = NULL,
+              inline = TRUE,
+              choices = list("Categories" = "category", "Tools" = "item_name"),
+              selected = "category"
+            )
+          )
+        ),
+        fluidRow(
+          box(
+            title = "Top User",
+            solidHeader = TRUE,
+            collapsible = TRUE,
+            status = "primary",
+            plotlyOutput("top_user")
+          )
+        )
+      )
     )
   )
 )
 
 
-# Define server logic to read selected file ----
-server <- function(input, output) {
+
+
+
+
+##################################################################
+##                            Server                            ##
+##################################################################
+
+server <- function(input, output, session) {
   raw_loans <- eventReactive(input$file1, {
     read.csv(input$file1$datapath) %>%
       clean_names()
@@ -158,8 +253,28 @@ server <- function(input, output) {
 
   clean_usage <- reactive({
     raw_usage() %>%
-      left_join(categories, by = c("item_name" = "item_id"))
+      left_join(categories, by = c("item_name" = "item_id")) %>%
+      filter(
+        checked_out >= input$dates[1],
+        checked_out <= input$dates[2]
+      )
   })
+
+
+  observe({
+    update_date <- raw_loans() %>%
+      mutate(
+        due_date = as.Date(due_date, format = "%d/%m/%Y"),
+        checked_out = as.Date(checked_out, format = "%d/%m/%Y"),
+        checked_in = as.Date(checked_in, format = "%d/%m/%Y")
+      )
+
+    updateDateRangeInput(session, "dates",
+      start = paste(min(update_date$checked_out)),
+      end = paste(max(update_date$checked_out))
+    )
+  })
+
 
 
   output$loans <- renderTable({
@@ -192,22 +307,43 @@ server <- function(input, output) {
 
   output$top_tools <- renderTable({
     clean_loans() %>%
-      group_by(month, item_name) %>%
+      group_by(
+        month,
+        item_name
+      ) %>%
       summarise(count = n()) %>%
-      arrange(desc(count)) %>%
-      arrange(month, desc(count)) %>%
-      left_join(categories, by = c("item_name" = "name")) %>%
-      select("Month" = month, "Item" = item_name, "Category" = category, "Count" = count) %>%
+      # arrange(desc(count)) %>%
+      arrange(
+        month,
+        desc(count)
+      ) %>%
+      left_join(categories,
+        by = c("item_name" = "name")
+      ) %>%
+      select(
+        "Month" = month,
+        "Item" = item_name,
+        "Category" = category,
+        "Count" = count
+      ) %>%
       slice_max(1)
   })
 
 
   output$category_plot <- renderPlotly({
     ggplotly(clean_loans() %>%
-      group_by(month, category) %>%
+      group_by(
+        month,
+        category
+      ) %>%
       drop_na(category) %>%
       summarise(count = n()) %>%
-      ggplot(aes(x = month, y = count, col = category, group = category)) +
+      ggplot(aes(
+        x = month,
+        y = count,
+        col = category,
+        group = category
+      )) +
       geom_line() +
       labs(
         x = "Month",
@@ -216,7 +352,7 @@ server <- function(input, output) {
       theme_classic() +
       theme(
         plot.title = element_text(hjust = 0.5),
-        text = element_text(size = 15),
+        # text = element_text(size = 15),
         legend.title = element_blank()
       ) +
       scale_color_brewer(palette = "Paired"))
@@ -225,25 +361,91 @@ server <- function(input, output) {
 
   savings <- reactive({
     clean_loans() %>%
-      filter(is.na(renewal)) %>%
+      filter(renewal != "Renewal") %>%
       group_by(user_id) %>%
-      summarise(savings = sum(replacement_cost)) %>%
-      drop_na(savings)
+      summarise(total_savings = sum(replacement_cost)) %>%
+      drop_na(total_savings)
   })
 
   output$avg_savings <- renderText({
-    paste(
-      sep = "\n", "Average User Savings", "£96.96"
-      # , mean(savings()$savings), sep="\n")
+    paste0(
+      "£",
+      round(mean(savings()$total_savings), digits = 2)
     )
   })
 
+
+
   output$max_savings <- renderText({
-    paste(
-      sep = "\n", "Max savings", "£669"
-      # , max(savings()$savings), sep="\n")
+    paste0(
+      "£",
+      max(savings()$total_savings)
     )
   })
+
+
+
+  top_user_df <- reactive({
+    clean_loans() %>%
+      group_by(user_id) %>%
+      count() %>%
+      ungroup() %>%
+      slice_max(n, n = 1) %>%
+      select(user_id)
+  })
+
+  output$top_user <- renderPlotly({
+    if (input$choice == "category") {
+      return(
+        ggplotly(clean_loans() %>%
+          inner_join(top_user_df(),
+            by = "user_id"
+          ) %>%
+          filter(renewal != "Renewal") %>%
+          group_by(checked_out) %>%
+          drop_na(category) %>%
+          drop_na(checked_out) %>%
+          ggplot(aes(
+            x = checked_out,
+            fill = category
+          )) +
+          labs(
+            x = "Date Checked Out",
+            y = "Count",
+            fill = "Category"
+          ) +
+          geom_histogram(bins = 12) +
+          theme_classic())
+      )
+    }
+
+    else {
+      return(
+        ggplotly(clean_loans() %>%
+          inner_join(top_user_df(),
+            by = "user_id"
+          ) %>%
+          filter(renewal != "Renewal") %>%
+          group_by(checked_out) %>%
+          drop_na(item_name) %>%
+          drop_na(checked_out) %>%
+          ggplot(aes(
+            x = checked_out,
+            fill = item_name
+          )) +
+          labs(
+            x = "Date Checked Out",
+            y = "Count",
+            fill = "Tool"
+          ) +
+          geom_histogram(bins = 12) +
+          theme_classic())
+      )
+    }
+  })
 }
+
+
+
 # Run the app ----
 shinyApp(ui, server)
