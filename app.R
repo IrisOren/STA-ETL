@@ -68,7 +68,8 @@ ui <- dashboardPage( # Using library(shinydashboard) for layout
       menuItem("Data Viz",
         tabName = "viz", icon = icon("dashboard"),
         dateRangeInput("dates",
-          label = h3("Date range")),
+          label = h3("Date range")
+        ),
         menuSubItem("Loans", tabName = "loans"),
         menuSubItem("Usage", tabName = "usage"),
         menuSubItem("User Stories", tabName = "user_stories")
@@ -180,15 +181,19 @@ ui <- dashboardPage( # Using library(shinydashboard) for layout
         )
       ),
 
-      tabItem(tabName = "usage",
-            
-              fluidRow(
-                box(
-                  title = "Loans by Location for entire data",
-                  solidHeader = TRUE,
-                  collapsible = TRUE,
-                  status = "primary",
-                  plotOutput("location_plot")))),
+      tabItem(
+        tabName = "usage",
+
+        fluidRow(
+          box(
+            title = "Loans by Location for entire data",
+            solidHeader = TRUE,
+            collapsible = TRUE,
+            status = "primary",
+            plotOutput("location_plot")
+          )
+        )
+      ),
 
       tabItem(
         tabName = "user_stories",
@@ -206,6 +211,7 @@ ui <- dashboardPage( # Using library(shinydashboard) for layout
               selected = "category"
             )
           ),
+
           box(
             title = "Which User?",
             solidHeader = TRUE,
@@ -213,22 +219,26 @@ ui <- dashboardPage( # Using library(shinydashboard) for layout
             status = "primary",
             width = 3,
             radioButtons("user_choice",
-                         label = NULL,
-                         inline = TRUE,
-                         choices = list("Top" = "top", "2nd Top" = "top2"),
-                         selected = "top"
-            ),
-            "Does not interact with graph yet"),
+              label = NULL,
+              inline = TRUE,
+              choices = list("Top" = "top", "2nd Top" = "top2"),
+              selected = "top"
+            )
+          ),
+
           box(
             title = "User Savings",
             solidHeader = TRUE,
             collapsible = TRUE,
             status = "primary",
             width = 3,
-            h3(textOutput("top_user_savings")))),
-        
+            h5(textOutput("top_user_savings"))
+          )
+        ),
+
         fluidRow(
-          box(width = 12, 
+          box(
+            width = 12,
             title = "Top User",
             solidHeader = TRUE,
             collapsible = TRUE,
@@ -298,6 +308,7 @@ server <- function(input, output, session) {
       end = paste(max(update_date$checked_out))
     )
   })
+
 
 
 
@@ -378,8 +389,8 @@ server <- function(input, output, session) {
         plot.title = element_text(hjust = 0.5),
         # text = element_text(size = 15),
         legend.title = element_blank()
-      ) + 
-        scale_color_viridis_d(option ="plasma"))
+      ) +
+      scale_color_viridis_d(option = "plasma"))
   })
 
 
@@ -408,7 +419,7 @@ server <- function(input, output, session) {
   })
 
 
-#Finding top user
+  # Finding top user
   top_user_df <- reactive({
     clean_loans() %>%
       group_by(user_id) %>%
@@ -417,7 +428,7 @@ server <- function(input, output, session) {
       slice_max(n, n = 1) %>%
       select(user_id)
   })
-  
+
   # Finding 2nd top user
   top_user_2_df <- reactive({
     clean_loans() %>%
@@ -425,100 +436,214 @@ server <- function(input, output, session) {
       count() %>%
       ungroup() %>%
       slice_max(n, n = 2) %>%
-      arrange(n) %>% 
-      slice(1) %>% 
+      arrange(n) %>%
+      slice(1) %>%
       select(user_id)
   })
 
   output$top_user_savings <- renderText({
-    
     if (input$user_choice == "top") {
-    top_user <- clean_loans() %>%
-      inner_join(top_user_df(), by = "user_id") %>%
-      filter(renewal != "Renewal") %>%
-      drop_na(replacement_cost) %>% 
-      summarise(total_savings = sum(replacement_cost))
+      top_user <- clean_loans() %>%
+        inner_join(top_user_df(), by = "user_id") %>%
+        filter(renewal != "Renewal") %>%
+        drop_na(replacement_cost) %>%
+        summarise(total_savings = sum(replacement_cost))
     }
     else {
       top_user <- clean_loans() %>%
         inner_join(top_user_2_df(), by = "user_id") %>%
         filter(renewal != "Renewal") %>%
-        drop_na(replacement_cost) %>% 
+        drop_na(replacement_cost) %>%
         summarise(total_savings = sum(replacement_cost))
     }
-      
-    
+
+
     paste0(
       "£",
       sum(top_user$total_savings)
     )
   })
 
-  
+
+
+
+
+
+
+
   output$top_user <- renderPlotly({
     if (input$cat_or_tool == "category") {
-      return(
-        ggplotly(clean_loans() %>%
-          inner_join(top_user_df(),
-            by = "user_id"
-          ) %>%
-          filter(renewal != "Renewal") %>%
-          group_by(checked_out) %>%
-          drop_na(category) %>%
-          drop_na(checked_out) %>%
-          ggplot(aes(
-            x = checked_out,
-            fill = category
-          )) +
-          labs(
-            x = "Date Checked Out",
-            y = "Count",
-            fill = "Category"
-          ) +
-          geom_histogram(bins = 12) +
-          theme_classic() +
-          scale_fill_viridis_d(option ="viridis")
+      if (input$user_choice == "top") {
+        return(
+          ggplotly(clean_loans() %>%
+            inner_join(top_user_df(),
+              by = "user_id"
+            ) %>%
+            filter(renewal != "Renewal") %>%
+            group_by(checked_out) %>%
+            drop_na(category) %>%
+            drop_na(checked_out) %>%
+            ggplot(aes(
+              x = checked_out,
+              fill = category
+            )) +
+            labs(
+              x = "Date Checked Out",
+              y = "Count",
+              fill = "Category"
+            ) +
+            geom_histogram(bins = 12) +
+            theme_classic() +
+            scale_fill_viridis_d(option = "viridis"))
         )
-      )
-    }
-
-    else {
-      return(
-        ggplotly(clean_loans() %>%
-          inner_join(top_user_df(),
-            by = "user_id"
-          ) %>%
-          filter(renewal != "Renewal") %>%
-          group_by(checked_out) %>%
-          drop_na(item_name) %>%
-          drop_na(checked_out) %>%
-          ggplot(aes(
-            x = checked_out,
-            fill = item_name
-          )) +
-          labs(
-            x = "Date Checked Out",
-            y = "Count",
-            fill = "Tool"
-          ) +
-          geom_histogram(bins = 12) +
-          theme_classic() + 
-          scale_fill_viridis_d(option ="viridis")
+      } else {
+        return(
+          ggplotly(clean_loans() %>%
+            inner_join(top_user_2_df(),
+              by = "user_id"
+            ) %>%
+            filter(renewal != "Renewal") %>%
+            group_by(checked_out) %>%
+            drop_na(category) %>%
+            drop_na(checked_out) %>%
+            ggplot(aes(
+              x = checked_out,
+              fill = category
+            )) +
+            labs(
+              x = "Date Checked Out",
+              y = "Count",
+              fill = "Category"
+            ) +
+            geom_histogram(bins = 12) +
+            theme_classic() +
+            scale_fill_viridis_d(option = "viridis"))
         )
-      )
+      }
+    } else {
+      if (input$user_choice == "top") {
+        return(
+          ggplotly(clean_loans() %>%
+            inner_join(top_user_df(),
+              by = "user_id"
+            ) %>%
+            filter(renewal != "Renewal") %>%
+            group_by(checked_out) %>%
+            drop_na(item_name) %>%
+            drop_na(checked_out) %>%
+            ggplot(aes(
+              x = checked_out,
+              fill = item_name
+            )) +
+            labs(
+              x = "Date Checked Out",
+              y = "Count",
+              fill = "Tool"
+            ) +
+            geom_histogram(bins = 12) +
+            theme_classic() +
+            scale_fill_viridis_d(option = "viridis"))
+        )
+      } else {
+        return(
+          ggplotly(clean_loans() %>%
+            inner_join(top_user_2_df(),
+              by = "user_id"
+            ) %>%
+            filter(renewal != "Renewal") %>%
+            group_by(checked_out) %>%
+            drop_na(item_name) %>%
+            drop_na(checked_out) %>%
+            ggplot(aes(
+              x = checked_out,
+              fill = item_name
+            )) +
+            labs(
+              x = "Date Checked Out",
+              y = "Count",
+              fill = "Tool"
+            ) +
+            geom_histogram(bins = 12) +
+            theme_classic() +
+            scale_fill_viridis_d(option = "viridis"))
+        )
+      }
     }
   })
-  
+
+
+
+
+
+
+
+  # output$top_user <- renderPlotly({
+  #
+  #   if (input$cat_or_tool == "category") {
+  #     return(
+  #       ggplotly(clean_loans() %>%
+  #         inner_join(top_user_df(),
+  #           by = "user_id"
+  #         ) %>%
+  #         filter(renewal != "Renewal") %>%
+  #         group_by(checked_out) %>%
+  #         drop_na(category) %>%
+  #         drop_na(checked_out) %>%
+  #         ggplot(aes(
+  #           x = checked_out,
+  #           fill = category
+  #         )) +
+  #         labs(
+  #           x = "Date Checked Out",
+  #           y = "Count",
+  #           fill = "Category"
+  #         ) +
+  #         geom_histogram(bins = 12) +
+  #         theme_classic() +
+  #         scale_fill_viridis_d(option ="viridis")
+  #       )
+  #     )
+  #   }
+  #
+  #   else {
+  #     return(
+  #       ggplotly(clean_loans() %>%
+  #         inner_join(top_user_2_df(),
+  #           by = "user_id"
+  #         ) %>%
+  #         filter(renewal != "Renewal") %>%
+  #         group_by(checked_out) %>%
+  #         drop_na(item_name) %>%
+  #         drop_na(checked_out) %>%
+  #         ggplot(aes(
+  #           x = checked_out,
+  #           fill = item_name
+  #         )) +
+  #         labs(
+  #           x = "Date Checked Out",
+  #           y = "Count",
+  #           fill = "Tool"
+  #         ) +
+  #         geom_histogram(bins = 12) +
+  #         theme_classic() +
+  #         scale_fill_viridis_d(option ="viridis")
+  #       )
+  #     )
+  #   }
+  # })
+
   output$location_plot <- renderPlot({
-    clean_usage() %>% 
-    filter(!(is.na(home_location))) %>% 
-    group_by(home_location) %>% 
-    summarise(total_loans = sum(loans)) %>% 
-    ggplot(aes(x = home_location, y = total_loans)) +
-    geom_col() +
-    labs(x = "Location",
-         y = "Total Loans") +
-    theme_classic()
+    clean_usage() %>%
+      filter(!(is.na(home_location))) %>%
+      group_by(home_location) %>%
+      summarise(total_loans = sum(loans)) %>%
+      ggplot(aes(x = home_location, y = total_loans)) +
+      geom_col() +
+      labs(
+        x = "Location",
+        y = "Total Loans"
+      ) +
+      theme_classic()
   })
 }
 
