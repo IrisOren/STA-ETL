@@ -38,12 +38,13 @@ ui <- dashboardPage( # Using library(shinydashboard) for layout
       target = "_blank",
       tags$img(tags$img(src = "ETL_logo.png", height = "50px", width = "50px"))
     )
-  ), # TPuts the ETL logo in the header and has it link to ETL website
+  ), # Puts the ETL logo in the header and has it link to ETL website
 
   dashboardSidebar(
     width = 250,
 
-    # Custom CSS to recolour the dashboard using ETL yellow = #fbec3b
+    # Custom CSS to recolour the dashboard using ETL yellow = #fbec3b and adjust
+    # the depth of the navbar
     tags$head(tags$style(HTML("
     .logo {
       background-color: #fbec3b !important;
@@ -418,45 +419,39 @@ server <- function(input, output, session) {
     )
   })
 
-
-  # Finding top user
-  top_user_df <- reactive({
-    clean_loans() %>%
-      group_by(user_id) %>%
-      count() %>%
-      ungroup() %>%
-      slice_max(n, n = 1) %>%
-      select(user_id)
+ user_df <- reactive({
+   
+   if (input$user_choice == "top") {
+     
+     # Finding top user
+     clean_loans() %>%
+       group_by(user_id) %>%
+       count() %>%
+       ungroup() %>%
+       slice_max(n, n = 1) %>%
+       select(user_id) 
+     
+     } else {
+       # Finding 2nd top user
+       clean_loans() %>%
+         group_by(user_id) %>%
+         count() %>%
+         ungroup() %>%
+         slice_max(n, n = 2) %>%
+         arrange(n) %>%
+         slice(1) %>%
+         select(user_id) }
   })
 
-  # Finding 2nd top user
-  top_user_2_df <- reactive({
-    clean_loans() %>%
-      group_by(user_id) %>%
-      count() %>%
-      ungroup() %>%
-      slice_max(n, n = 2) %>%
-      arrange(n) %>%
-      slice(1) %>%
-      select(user_id)
-  })
-
+ 
+ 
   output$top_user_savings <- renderText({
-    if (input$user_choice == "top") {
-      top_user <- clean_loans() %>%
-        inner_join(top_user_df(), by = "user_id") %>%
-        filter(renewal != "Renewal") %>%
-        drop_na(replacement_cost) %>%
-        summarise(total_savings = sum(replacement_cost))
-    }
-    else {
-      top_user <- clean_loans() %>%
-        inner_join(top_user_2_df(), by = "user_id") %>%
-        filter(renewal != "Renewal") %>%
-        drop_na(replacement_cost) %>%
-        summarise(total_savings = sum(replacement_cost))
-    }
-
+    
+    top_user <- clean_loans() %>%
+      inner_join(user_df(), by = "user_id") %>%
+      filter(renewal != "Renewal") %>%
+      drop_na(replacement_cost) %>%
+      summarise(total_savings = sum(replacement_cost))
 
     paste0(
       "£",
@@ -467,170 +462,33 @@ server <- function(input, output, session) {
 
 
 
-
-
-
-
+  
+  
   output$top_user <- renderPlotly({
-    if (input$cat_or_tool == "category") {
-      if (input$user_choice == "top") {
-        return(
-          ggplotly(clean_loans() %>%
-            inner_join(top_user_df(),
-              by = "user_id"
-            ) %>%
-            filter(renewal != "Renewal") %>%
-            group_by(checked_out) %>%
-            drop_na(category) %>%
-            drop_na(checked_out) %>%
-            ggplot(aes(
-              x = checked_out,
-              fill = category
-            )) +
-            labs(
-              x = "Date Checked Out",
-              y = "Count",
-              fill = "Category"
-            ) +
-            geom_histogram(bins = 12) +
-            theme_classic() +
-            scale_fill_viridis_d(option = "viridis"))
-        )
-      } else {
-        return(
-          ggplotly(clean_loans() %>%
-            inner_join(top_user_2_df(),
-              by = "user_id"
-            ) %>%
-            filter(renewal != "Renewal") %>%
-            group_by(checked_out) %>%
-            drop_na(category) %>%
-            drop_na(checked_out) %>%
-            ggplot(aes(
-              x = checked_out,
-              fill = category
-            )) +
-            labs(
-              x = "Date Checked Out",
-              y = "Count",
-              fill = "Category"
-            ) +
-            geom_histogram(bins = 12) +
-            theme_classic() +
-            scale_fill_viridis_d(option = "viridis"))
-        )
-      }
-    } else {
-      if (input$user_choice == "top") {
-        return(
-          ggplotly(clean_loans() %>%
-            inner_join(top_user_df(),
-              by = "user_id"
-            ) %>%
-            filter(renewal != "Renewal") %>%
-            group_by(checked_out) %>%
-            drop_na(item_name) %>%
-            drop_na(checked_out) %>%
-            ggplot(aes(
-              x = checked_out,
-              fill = item_name
-            )) +
-            labs(
-              x = "Date Checked Out",
-              y = "Count",
-              fill = "Tool"
-            ) +
-            geom_histogram(bins = 12) +
-            theme_classic() +
-            scale_fill_viridis_d(option = "viridis"))
-        )
-      } else {
-        return(
-          ggplotly(clean_loans() %>%
-            inner_join(top_user_2_df(),
-              by = "user_id"
-            ) %>%
-            filter(renewal != "Renewal") %>%
-            group_by(checked_out) %>%
-            drop_na(item_name) %>%
-            drop_na(checked_out) %>%
-            ggplot(aes(
-              x = checked_out,
-              fill = item_name
-            )) +
-            labs(
-              x = "Date Checked Out",
-              y = "Count",
-              fill = "Tool"
-            ) +
-            geom_histogram(bins = 12) +
-            theme_classic() +
-            scale_fill_viridis_d(option = "viridis"))
-        )
-      }
-    }
-  })
+    
+            ggplotly(clean_loans() %>%
+              inner_join(user_df(),
+                by = "user_id"
+              ) %>%
+              filter(renewal != "Renewal") %>%
+              group_by(checked_out) %>%
+              drop_na(input$cat_or_tool) %>%
+              drop_na(checked_out) %>%
+              ggplot(aes(
+                x = checked_out,
+                fill = if (input$cat_or_tool == "category"){ category} else {item_name} 
+              )) +
+              labs(
+                x = "Date Checked Out",
+                y = "Count",
+                fill = if (input$cat_or_tool == "category"){"Category"} else {"Tool"}
+              ) +
+              geom_histogram(bins = 12) +
+              theme_classic() +
+              scale_fill_viridis_d(option = "viridis"))
+          })
 
 
-
-
-
-
-
-  # output$top_user <- renderPlotly({
-  #
-  #   if (input$cat_or_tool == "category") {
-  #     return(
-  #       ggplotly(clean_loans() %>%
-  #         inner_join(top_user_df(),
-  #           by = "user_id"
-  #         ) %>%
-  #         filter(renewal != "Renewal") %>%
-  #         group_by(checked_out) %>%
-  #         drop_na(category) %>%
-  #         drop_na(checked_out) %>%
-  #         ggplot(aes(
-  #           x = checked_out,
-  #           fill = category
-  #         )) +
-  #         labs(
-  #           x = "Date Checked Out",
-  #           y = "Count",
-  #           fill = "Category"
-  #         ) +
-  #         geom_histogram(bins = 12) +
-  #         theme_classic() +
-  #         scale_fill_viridis_d(option ="viridis")
-  #       )
-  #     )
-  #   }
-  #
-  #   else {
-  #     return(
-  #       ggplotly(clean_loans() %>%
-  #         inner_join(top_user_2_df(),
-  #           by = "user_id"
-  #         ) %>%
-  #         filter(renewal != "Renewal") %>%
-  #         group_by(checked_out) %>%
-  #         drop_na(item_name) %>%
-  #         drop_na(checked_out) %>%
-  #         ggplot(aes(
-  #           x = checked_out,
-  #           fill = item_name
-  #         )) +
-  #         labs(
-  #           x = "Date Checked Out",
-  #           y = "Count",
-  #           fill = "Tool"
-  #         ) +
-  #         geom_histogram(bins = 12) +
-  #         theme_classic() +
-  #         scale_fill_viridis_d(option ="viridis")
-  #       )
-  #     )
-  #   }
-  # })
 
   output$location_plot <- renderPlot({
     clean_usage() %>%
