@@ -65,12 +65,13 @@ ui <- dashboardPage( # Using library(shinydashboard) for layout
 
     # The sidebar menu layout and widgets
     sidebarMenu(
-      menuItem("Upload Files", tabName = "uploader", icon = icon("jedi-order")),
+      menuItem("Upload Files", 
+               tabName = "uploader", 
+               icon = icon("file-upload")),
       menuItem("Data Viz",
-        tabName = "viz", icon = icon("dashboard"),
-        dateRangeInput("dates",
-          label = h3("Date range")
-        ),
+               tabName = "viz", 
+               icon = icon("chart-bar"),
+               dateRangeInput("dates", label = h3("Date range")),
         menuSubItem("Loans", tabName = "loans"),
         menuSubItem("Usage", tabName = "usage"),
         menuSubItem("User Stories", tabName = "user_stories")
