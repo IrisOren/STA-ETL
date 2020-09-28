@@ -1,11 +1,10 @@
-
 #################################################################
-##                          Libraries                          ##
+##                          Libraries                        ----
 #################################################################
 
 
 library(shiny)
-library(shinydashboard)
+library(shinydashboard) # Using library(shinydashboard) for layout
 library(tidyverse)
 library(lubridate)
 library(plotly)
@@ -14,25 +13,25 @@ library(janitor)
 
 
 ## ================================================================
-##                  Reading in categories data                  ==
+##                  Reading in categories data                 ----
 ## ================================================================
-
 
 categories <- read_csv("raw_data/categories copy.csv") %>%
   clean_names()
 
-##################################################################
-##                              UI                              ##
-##################################################################
 
 
-ui <- dashboardPage( # Using library(shinydashboard) for layout
+##################################################################
+##                              UI                            ----
+##################################################################
+
+ui <- dashboardPage( #UI dashboard page ----
   title = "Edinburgh Tool Library",
 
   skin = "black", # This is just a colour theme for shinyDashboard
 
-  dashboardHeader(
-    titleWidth = 250,
+  dashboardHeader( #UI dashboard header ----
+    titleWidth = 250, 
     title = tags$a(
       href = "https://edinburghtoollibrary.org.uk/",
       target = "_blank",
@@ -43,7 +42,8 @@ ui <- dashboardPage( # Using library(shinydashboard) for layout
   dashboardSidebar(
     width = 250,
 
-    # Custom CSS to recolour the dashboard using ETL yellow = #fbec3b and adjust
+    # Custom CSS ----
+    # to recolour the dashboard using ETL yellow = #fbec3b and adjust
     # the depth of the navbar
     tags$head(tags$style(HTML("
     .logo {
@@ -63,7 +63,7 @@ ui <- dashboardPage( # Using library(shinydashboard) for layout
     }
                               "))),
 
-    # The sidebar menu layout and widgets
+    # Sidebar menu layout and widgets ----
     sidebarMenu(
       menuItem("Upload Files", 
                tabName = "uploader", 
@@ -79,9 +79,9 @@ ui <- dashboardPage( # Using library(shinydashboard) for layout
     )
   ),
 
-  # Sidebar panel for inputs ----
+
   dashboardBody(
-    # Custom CSS to recolour the dashboard using ETL yellow = #fbec3b
+    # Custom CSS to recolour the dashboard using ETL yellow = #fbec3b ----
     tags$head(tags$style(HTML("
     
     .content-wrapper, .right-side {
@@ -266,37 +266,45 @@ ui <- dashboardPage( # Using library(shinydashboard) for layout
 ##################################################################
 
 server <- function(input, output, session) {
+  
+  # Raw data reading from user upload ----
+  
   raw_loans <- eventReactive(input$file1, {
     read.csv(input$file1$datapath) %>%
-      clean_names()
+      clean_names() #tidies up column names 
   })
 
   raw_usage <- eventReactive(input$file2, {
     read.csv(input$file2$datapath) %>%
-      clean_names()
+      clean_names() #tidies up column names 
   })
 
+  # Data Cleaning ----
   clean_loans <- reactive({
     raw_loans() %>%
-      mutate(
+      mutate( # formating date
         due_date = as.Date(due_date, format = "%d/%m/%Y"),
         checked_out = as.Date(checked_out, format = "%d/%m/%Y"),
         checked_in = as.Date(checked_in, format = "%d/%m/%Y")
       ) %>%
-      filter(
+      filter( #filtering to user input date
         checked_out >= input$dates[1],
         checked_out <= input$dates[2]
       ) %>%
-      left_join(categories, by = "item_id") %>%
-      mutate(month = month(checked_out, label = T))
+      left_join(categories, by = "item_id") %>% # adds tool categories to the data frame
+      mutate(month = month(checked_out, label = T)) # creates a column called month
   })
 
+  
+  # Cleans the raw Usage data and adds categories
   clean_usage <- reactive({
     raw_usage() %>%
       left_join(categories, by = "item_id")
   })
 
 
+  # Date range updater ----
+  # Updates the default date range to min and max of raw data
   observe({
     update_date <- raw_loans() %>%
       mutate(
@@ -313,7 +321,8 @@ server <- function(input, output, session) {
 
 
 
-
+  # Raw data table render ----
+  # Renders the table for display depending on user display input 
   output$loans <- renderTable({
 
     # input$file1 will be NULL initially. After the user selects
@@ -341,7 +350,10 @@ server <- function(input, output, session) {
       return(raw_usage())
     }
   })
-
+  
+  
+  
+  # Top Tools Table ----
   output$top_tools <- renderTable({
     clean_loans() %>%
       group_by(
@@ -366,7 +378,7 @@ server <- function(input, output, session) {
       slice_max(1)
   })
 
-
+  # Categories Plot ----
   output$category_plot <- renderPlotly({
     ggplotly(clean_loans() %>%
       group_by(
@@ -395,7 +407,7 @@ server <- function(input, output, session) {
       scale_color_viridis_d(option = "plasma"))
   })
 
-
+  # Savings df ----
   savings <- reactive({
     clean_loans() %>%
       filter(renewal != "Renewal") %>%
@@ -404,6 +416,7 @@ server <- function(input, output, session) {
       drop_na(total_savings)
   })
 
+  # Mean savings output ----
   output$avg_savings <- renderText({
     paste0(
       "£",
@@ -412,7 +425,7 @@ server <- function(input, output, session) {
   })
 
 
-
+  # Max savings Output ----
   output$max_savings <- renderText({
     paste0(
       "£",
@@ -420,7 +433,8 @@ server <- function(input, output, session) {
     )
   })
 
- user_df <- reactive({
+  # Creates reactive user df's ----
+  user_df <- reactive({
    
    if (input$user_choice == "top") {
      
@@ -445,7 +459,7 @@ server <- function(input, output, session) {
   })
 
  
- 
+ # User savings ----
   output$top_user_savings <- renderText({
     
     top_user <- clean_loans() %>%
@@ -464,7 +478,7 @@ server <- function(input, output, session) {
 
 
   
-  
+  # User Story plots ----
   output$top_user <- renderPlotly({
     
             ggplotly(clean_loans() %>%
@@ -490,7 +504,7 @@ server <- function(input, output, session) {
           })
 
 
-
+# Location Plot ---- 
   output$location_plot <- renderPlot({
     clean_usage() %>%
       filter(!(is.na(home_location))) %>%
@@ -508,5 +522,5 @@ server <- function(input, output, session) {
 
 
 
-# Run the app ----
+# Runs the app
 shinyApp(ui, server)
