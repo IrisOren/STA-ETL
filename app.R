@@ -534,7 +534,8 @@ server <- function(input, output, session) {
               drop_na(checked_out) %>%
               ggplot(aes(
                 x = checked_out,
-                fill = if (input$cat_or_tool == "category"){ category} else {item_name} 
+                fill = if (input$cat_or_tool == "category"){ category} else {item_name},
+                text = sprintf("Date: %s<br>Type: %s", checked_out, if (input$cat_or_tool == "category"){ category} else {item_name})
               )) +
               labs(
                 x = "Date Checked Out",
@@ -543,7 +544,7 @@ server <- function(input, output, session) {
               ) +
               geom_histogram(bins = 12) +
               theme_classic() +
-              scale_fill_viridis_d(option = "viridis"))
+              scale_fill_viridis_d(option = "viridis"), tooltip = "text")
           })
 
 
