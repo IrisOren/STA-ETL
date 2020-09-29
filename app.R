@@ -466,6 +466,8 @@ server <- function(input, output, session) {
       inner_join(user_df(), by = "user_id") %>%
       filter(renewal != "Renewal") %>%
       drop_na(replacement_cost) %>%
+      group_by(item_name) %>%
+      mutate(replacement_cost = mean(replacement_cost)) %>% #To remove new loans of the same item
       summarise(total_savings = sum(replacement_cost))
 
     paste0(
