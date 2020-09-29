@@ -140,14 +140,27 @@ ui <- dashboardPage( #UI dashboard page ----
                   )
         ))),
 
+        fluidRow(
         # Input: Select number of rows to display ----
+        column(4,
         radioButtons("disp", "Display",
           choices = c(
             Head = "head",
             All = "all"
           ),
           selected = "head"
-        ),
+        )),
+        
+        # test button ----
+        # test button for development reasons so I don't have to keep uploading
+        # for minor changes. 
+        #TODO Could keep with synthetic data for demo purposes? 
+        
+        column(4, 
+          actionButton("test", label = "Test Sample")
+               )), 
+        
+        
 
         # Output: Raw Data file
         tableOutput("loans"),
@@ -293,6 +306,20 @@ server <- function(input, output, session) {
       clean_names() #tidies up column names 
   })
 
+  #######################################################
+  #Test output----
+  raw_loans <- eventReactive(input$test,{
+    read.csv("raw_data/loans-export jan-dec 2019.csv") %>%
+      clean_names() 
+  })
+  
+  raw_usage <- eventReactive(input$test,{
+    read.csv("raw_data/usage-export jan-dec 2019.csv") %>%
+      clean_names() 
+  })
+ ######################################################### 
+  
+  
   # Data Cleaning ----
   clean_loans <- reactive({
     raw_loans() %>%
