@@ -105,8 +105,10 @@ ui <- dashboardPage( #UI dashboard page ----
       # First tab content
       tabItem(
         tabName = "uploader",
+        fluidRow(
 
         # Input: Select loans file ----
+        column(4,
         fileInput("file1", "Upload the LOANS file",
           multiple = TRUE,
           accept = c(
@@ -114,9 +116,10 @@ ui <- dashboardPage( #UI dashboard page ----
             "text/comma-separated-values,text/plain",
             ".csv"
           )
-        ),
+        )),
 
         # Input: Select usage file ----
+        column(4,
         fileInput("file2", "Upload the USAGE file",
           multiple = TRUE,
           accept = c(
@@ -124,9 +127,10 @@ ui <- dashboardPage( #UI dashboard page ----
             "text/comma-separated-values,text/plain",
             ".csv"
           )
-        ),
+        )),
         
         # Input: Select categories file ----
+        column(4,
         fileInput("file3", "Upload the CATEGORIES file",
                   multiple = TRUE,
                   accept = c(
@@ -134,7 +138,7 @@ ui <- dashboardPage( #UI dashboard page ----
                     "text/comma-separated-values,text/plain",
                     ".csv"
                   )
-        ),
+        ))),
 
         # Input: Select number of rows to display ----
         radioButtons("disp", "Display",
