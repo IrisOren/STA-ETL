@@ -141,11 +141,11 @@ ui <- dashboardPage( #UI dashboard page ----
       ),
 
 
-      tabItem(
+      tabItem( # Loans tab ----
         tabName = "loans",
         fluidRow(
           # Valid colors are: red, yellow, aqua, blue, light-blue, green, navy, teal, olive, lime, orange, fuchsia, purple, maroon, black.
-          box(
+          box( # display avergae savings
             title = "Average Savings",
             solidHeader = TRUE,
             collapsible = TRUE,
@@ -153,7 +153,7 @@ ui <- dashboardPage( #UI dashboard page ----
             width = 2,
             h1(textOutput("avg_savings"))
           ),
-          box(
+          box( #display max savings
             title = "Max Savings",
             solidHeader = TRUE,
             collapsible = TRUE,
@@ -164,7 +164,7 @@ ui <- dashboardPage( #UI dashboard page ----
         ),
 
         fluidRow(
-          box(
+          box( # top tools/category table
             title = "Monthly Top Tools",
             solidHeader = TRUE,
             collapsible = TRUE,
@@ -172,7 +172,7 @@ ui <- dashboardPage( #UI dashboard page ----
             width = 4,
             tableOutput("top_tools")
           ),
-          box(
+          box( # Loan category plot
             title = "Loans by Category",
             solidHeader = TRUE,
             collapsible = TRUE,
@@ -183,11 +183,11 @@ ui <- dashboardPage( #UI dashboard page ----
         )
       ),
 
-      tabItem(
+      tabItem( # Usage tab ----
         tabName = "usage",
 
         fluidRow(
-          box(
+          box( # The bar chart for loans by location
             title = "Loans by Location for entire data",
             solidHeader = TRUE,
             collapsible = TRUE,
@@ -197,10 +197,10 @@ ui <- dashboardPage( #UI dashboard page ----
         )
       ),
 
-      tabItem(
+      tabItem( # User Stories tab ----
         tabName = "user_stories",
         fluidRow(
-          box(
+          box( # category or tools selection button
             title = "Categories or Tools?",
             solidHeader = TRUE,
             collapsible = TRUE,
@@ -214,7 +214,7 @@ ui <- dashboardPage( #UI dashboard page ----
             )
           ),
 
-          box(
+          box( # User selection buttons
             title = "Which User?",
             solidHeader = TRUE,
             collapsible = TRUE,
@@ -228,7 +228,7 @@ ui <- dashboardPage( #UI dashboard page ----
             )
           ),
 
-          box(
+          box( # display user savings
             title = "User Savings",
             solidHeader = TRUE,
             collapsible = TRUE,
@@ -239,7 +239,7 @@ ui <- dashboardPage( #UI dashboard page ----
         ),
 
         fluidRow(
-          box(
+          box( # display plot for top user loans
             width = 12,
             title = "Top User",
             solidHeader = TRUE,
