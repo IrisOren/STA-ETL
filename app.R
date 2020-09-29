@@ -107,7 +107,7 @@ ui <- dashboardPage( #UI dashboard page ----
         tabName = "uploader",
 
         # Input: Select loans file ----
-        fileInput("file1", "Choose the loans CSV File",
+        fileInput("file1", "Upload the LOANS file",
           multiple = TRUE,
           accept = c(
             "text/csv",
@@ -117,13 +117,23 @@ ui <- dashboardPage( #UI dashboard page ----
         ),
 
         # Input: Select usage file ----
-        fileInput("file2", "Choose the usage CSV File",
+        fileInput("file2", "Upload the USAGE file",
           multiple = TRUE,
           accept = c(
             "text/csv",
             "text/comma-separated-values,text/plain",
             ".csv"
           )
+        ),
+        
+        # Input: Select categories file ----
+        fileInput("file3", "Upload the CATEGORIES file",
+                  multiple = TRUE,
+                  accept = c(
+                    "text/csv",
+                    "text/comma-separated-values,text/plain",
+                    ".csv"
+                  )
         ),
 
         # Input: Select number of rows to display ----
