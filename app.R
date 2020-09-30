@@ -445,7 +445,9 @@ server <- function(input, output, session) {
         # text = element_text(size = 15),
         legend.title = element_blank()
       ) +
-      scale_color_viridis_d(option = "plasma"))
+      scale_color_viridis_d(option = "plasma")) %>% 
+      layout(xaxis=list(fixedrange=TRUE)) %>% 
+      layout(yaxis=list(fixedrange=TRUE))
   })
 
   # Savings df ----
@@ -544,7 +546,9 @@ server <- function(input, output, session) {
               ) +
               geom_histogram(bins = 12) +
               theme_classic() +
-              scale_fill_viridis_d(option = "viridis"), tooltip = "text")
+              scale_fill_viridis_d(option = "viridis"), tooltip = "text") %>% 
+      layout(xaxis=list(fixedrange=TRUE)) %>% 
+      layout(yaxis=list(fixedrange=TRUE))
           })
 
 
