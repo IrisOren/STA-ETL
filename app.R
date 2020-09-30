@@ -188,23 +188,24 @@ ui <- dashboardPage( #UI dashboard page ----
         tabName = "loans",
 
         fluidRow(
-          box( # top tools/category table
-            title = "Monthly Top Tools",
-            solidHeader = TRUE,
-            collapsible = TRUE,
-            status = "primary",
-            width = 4,
-            tableOutput("top_tools")
-          ),
           box( # Loan category plot
             title = "Loans by Category",
             solidHeader = TRUE,
             collapsible = TRUE,
             status = "primary",
-            width = 8,
+            width = 12,
             plotlyOutput("category_plot", height = "500px")
-          )
-        )
+          )),
+        fluidRow(
+          box( # top tools/category table
+            title = "Monthly Top Tools",
+            solidHeader = TRUE,
+            collapsible = TRUE,
+            status = "primary",
+            width = 12,
+            tableOutput("top_tools")
+          ))
+        
       ),
 
       tabItem( # Usage tab ----
@@ -436,7 +437,7 @@ server <- function(input, output, session) {
   
   # Top Tools Table ----
   output$top_tools <- renderTable({
-    clean_loans() %>%
+    table <- clean_loans() %>%
       group_by(
         month,
         item_name
@@ -452,11 +453,14 @@ server <- function(input, output, session) {
       ) %>%
       select(
         "Month" = month,
-        "Item" = item_name,
+        "Tool" = item_name,
         "Category" = category,
         "Count" = count
       ) %>%
-      slice_max(1)
+      slice_max(1) 
+    #TODO flip this table around 
+    
+
   })
 
   # Categories Plot ----
