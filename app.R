@@ -74,6 +74,7 @@ ui <- dashboardPage( #UI dashboard page ----
                dateRangeInput("dates", label = h3("Date range")),
         menuSubItem("Loans", tabName = "loans"),
         menuSubItem("Usage", tabName = "usage"),
+        menuSubItem("Savings", tabName = "savings"),
         menuSubItem("User Stories", tabName = "user_stories")
       )
     )
@@ -222,6 +223,10 @@ ui <- dashboardPage( #UI dashboard page ----
             plotOutput("location_plot")
           )
         )
+      ),
+      
+      tabItem(
+        tabName = "savings"
       ),
 
       tabItem( # User Stories tab ----
