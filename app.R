@@ -20,19 +20,19 @@ library(bsplus)
 categories <- read_csv("raw_data/categories copy.csv") %>%
   clean_names()
 
-data_names <- tibble("user_id"= character(),	"item_id"= character(),	"item_name"= character(),	"checked_out"= character(),	"checked_in"= character(),	"due_date"= character(),	"renewal"= character())
+data_names <- tibble("user_id" = character(), "item_id" = character(), "item_name" = character(), "checked_out" = character(), "checked_in" = character(), "due_date" = character(), "renewal" = character())
 
 ##################################################################
 ##                              UI                            ----
 ##################################################################
 
-ui <- dashboardPage( #UI dashboard page ----
+ui <- dashboardPage( # UI dashboard page ----
   title = "Edinburgh Tool Library",
 
   skin = "black", # This is just a colour theme for shinyDashboard
 
-  dashboardHeader( #UI dashboard header ----
-    titleWidth = 250, 
+  dashboardHeader( # UI dashboard header ----
+    titleWidth = 250,
     title = tags$a(
       href = "https://edinburghtoollibrary.org.uk/",
       target = "_blank",
@@ -45,13 +45,14 @@ ui <- dashboardPage( #UI dashboard page ----
 
     # Sidebar menu layout and widgets ----
     sidebarMenu(
-      menuItem("Upload Files", 
-               tabName = "uploader", 
-               icon = icon("file-upload")),
+      menuItem("Upload Files",
+        tabName = "uploader",
+        icon = icon("file-upload")
+      ),
       menuItem("Data Viz",
-               tabName = "viz", 
-               icon = icon("chart-bar"),
-               dateRangeInput("dates", label = h3("Date range")),
+        tabName = "viz",
+        icon = icon("chart-bar"),
+        dateRangeInput("dates", label = h3("Date range")),
         menuSubItem("Loans", tabName = "loans"),
         menuSubItem("Usage", tabName = "usage"),
         menuSubItem("Savings", tabName = "savings"),
@@ -61,91 +62,108 @@ ui <- dashboardPage( #UI dashboard page ----
   ),
 
 
-  dashboardBody( 
-    
+  dashboardBody(
+
     # Sourcing ustom CSS ----
     tags$head(includeCSS("styles.css")),
-    
-   
+
+
     tabItems(
       # First tab content
       tabItem(
         tabName = "uploader",
         fluidRow(
 
-        # Input: Select loans file ----
-        column(4,
-        fileInput("file1", "Upload the LOANS file",
-          multiple = TRUE,
-          accept = c(
-            "text/csv",
-            "text/comma-separated-values,text/plain",
-            ".csv"
-          )
-        ) ),
+          # Input: Select loans file ----
+          column(
+            4,
+            fileInput("file1", "Upload the LOANS file",
+              multiple = TRUE,
+              accept = c(
+                "text/csv",
+                "text/comma-separated-values,text/plain",
+                ".csv"
+              )
+            )
+          ),
 
-        # Input: Select usage file ----
-        column(4,
-        fileInput("file2", "Upload the USAGE file",
-          multiple = TRUE,
-          accept = c(
-            "text/csv",
-            "text/comma-separated-values,text/plain",
-            ".csv"
+          # Input: Select usage file ----
+          column(
+            4,
+            fileInput("file2", "Upload the USAGE file",
+              multiple = TRUE,
+              accept = c(
+                "text/csv",
+                "text/comma-separated-values,text/plain",
+                ".csv"
+              )
+            )
+          ),
+
+          # Input: Select categories file ----
+          column(
+            4,
+            fileInput("file3", "Upload the CATEGORIES file",
+              multiple = TRUE,
+              accept = c(
+                "text/csv",
+                "text/comma-separated-values,text/plain",
+                ".csv"
+              )
+            )
           )
-        )),
-        
-        # Input: Select categories file ----
-        column(4,
-        fileInput("file3", "Upload the CATEGORIES file",
-                  multiple = TRUE,
-                  accept = c(
-                    "text/csv",
-                    "text/comma-separated-values,text/plain",
-                    ".csv"
-                  )
-        ))),
+        ),
 
         fluidRow(
-        # Input: Select number of rows to display ----
-        column(4,
-        radioButtons("disp", "Display",
-          choices = c(
-            Head = "head",
-            All = "all"
+          # Input: Select number of rows to display ----
+          column(
+            4,
+            radioButtons("disp", "Display",
+              choices = c(
+                Head = "head",
+                All = "all"
+              ),
+              selected = "head"
+            )
           ),
-          selected = "head"
-        )),
-        
-        # test button ----
-        # test button for development reasons so I don't have to keep uploading
-        # for minor changes. 
-        #TODO Could keep with synthetic data for demo purposes? 
-        
-        column(4, 
-          actionButton("test", label = "Demo") %>% bs_embed_tooltip("Test app with sample data", placement = 'bottom')
-               )), 
-        
-        
+
+          # test button ----
+          # test button for development reasons so I don't have to keep uploading
+          # for minor changes.
+          # TODO Could keep with synthetic data for demo purposes?
+
+          column(
+            4,
+            actionButton("test", label = "Demo") %>% bs_embed_tooltip("Test app with sample data", placement = "bottom")
+          )
+        ),
+
+
 
         # Output: Raw Data file
-        fluidRow(box(width = 12, 
-                     title = "Loans",
-                     solidHeader = TRUE,
-                     collapsible = TRUE,
-                     status = "primary",
-                     tableOutput("loans"))),
-        fluidRow(box(width = 12, 
-                     title = "Usage",
-                     solidHeader = TRUE,
-                     collapsible = TRUE,
-                     status = "primary",
-                     tableOutput("usage"))),
-        fluidRow(box(width = 12, 
-                     title = "Categories",
-                     solidHeader = TRUE,
-                     collapsible = TRUE,
-                     status = "primary"))
+        fluidRow(box(
+          width = 12,
+          title = "Loans",
+          solidHeader = TRUE,
+          collapsible = TRUE,
+          status = "primary",
+          tableOutput("loans")
+        )),
+        fluidRow(box(
+          width = 12,
+          title = "Usage",
+          solidHeader = TRUE,
+          collapsible = TRUE,
+          status = "primary",
+          tableOutput("usage")
+        )),
+        fluidRow(box(
+          width = 12,
+          title = "Categories",
+          solidHeader = TRUE,
+          collapsible = TRUE,
+          status = "primary"
+        ))
       ),
 
 
@@ -160,7 +178,8 @@ ui <- dashboardPage( #UI dashboard page ----
             status = "primary",
             width = 12,
             plotlyOutput("category_plot", height = "500px")
-          )),
+          )
+        ),
         fluidRow(
           box( # top tools/category table
             title = "Monthly Top Tools",
@@ -169,8 +188,8 @@ ui <- dashboardPage( #UI dashboard page ----
             status = "primary",
             width = 6,
             tableOutput("top_tools")
-          ))
-        
+          )
+        )
       ),
 
       tabItem( # Usage tab ----
@@ -186,13 +205,11 @@ ui <- dashboardPage( #UI dashboard page ----
           )
         )
       ),
-      
+
       tabItem(
         tabName = "savings",
-        
+
         fluidRow(
-          
-          
           box(
             title = "Membership Fee?",
             solidHeader = TRUE,
@@ -209,7 +226,7 @@ ui <- dashboardPage( #UI dashboard page ----
             width = 3,
             h1(textOutput("avg_savings"))
           ),
-          box( #display max savings
+          box( # display max savings
             title = "Max Savings",
             solidHeader = TRUE,
             collapsible = TRUE,
@@ -218,7 +235,7 @@ ui <- dashboardPage( #UI dashboard page ----
             h1(textOutput("max_savings"))
           )
         ),
-        
+
         fluidRow(
           box(
             title = "Average Savings by Category",
@@ -227,8 +244,9 @@ ui <- dashboardPage( #UI dashboard page ----
             status = "primary",
             width = 9,
             plotlyOutput("savings_plot")
-                 )
-      )),
+          )
+        )
+      ),
 
       tabItem( # User Stories tab ----
         tabName = "user_stories",
@@ -299,33 +317,33 @@ ui <- dashboardPage( #UI dashboard page ----
 ##################################################################
 
 server <- function(input, output, session) {
-  
+
   # Raw data reading from user upload ----
-  
+
   raw_loans <- eventReactive(input$file1, {
     read.csv(input$file1$datapath) %>%
-      clean_names() #tidies up column names 
+      clean_names() # tidies up column names
   })
 
   raw_usage <- eventReactive(input$file2, {
     read.csv(input$file2$datapath) %>%
-      clean_names() #tidies up column names 
+      clean_names() # tidies up column names
   })
 
   #######################################################
-  #Test output----
-  raw_loans <- eventReactive(input$test,{
+  # Test output----
+  raw_loans <- eventReactive(input$test, {
     read.csv("raw_data/loans-export jan-dec 2019.csv") %>%
-      clean_names() 
+      clean_names()
   })
-  
-  raw_usage <- eventReactive(input$test,{
+
+  raw_usage <- eventReactive(input$test, {
     read.csv("raw_data/usage-export jan-dec 2019.csv") %>%
-      clean_names() 
+      clean_names()
   })
- ######################################################### 
-  
-  
+  #########################################################
+
+
   # Data Cleaning ----
   clean_loans <- reactive({
     raw_loans() %>%
@@ -334,7 +352,7 @@ server <- function(input, output, session) {
         checked_out = as.Date(checked_out, format = "%d/%m/%Y"),
         checked_in = as.Date(checked_in, format = "%d/%m/%Y")
       ) %>%
-      filter( #filtering to user input date
+      filter( # filtering to user input date
         checked_out >= input$dates[1],
         checked_out <= input$dates[2]
       ) %>%
@@ -342,7 +360,7 @@ server <- function(input, output, session) {
       mutate(month = month(checked_out, label = T)) # creates a column called month
   })
 
-  
+
   # Cleans the raw Usage data and adds categories
   clean_usage <- reactive({
     raw_usage() %>%
@@ -368,7 +386,7 @@ server <- function(input, output, session) {
 
 
   # Raw data table render ----
-  # Renders the table for display depending on user display input 
+  # Renders the table for display depending on user display input
   output$loans <- renderTable({
 
     # input$file1 will be NULL initially. After the user selects
@@ -396,9 +414,9 @@ server <- function(input, output, session) {
       return(raw_usage())
     }
   })
-  
-  
-  
+
+
+
   # Top Tools Table ----
   output$top_tools <- renderTable({
     table <- clean_loans() %>%
@@ -421,10 +439,9 @@ server <- function(input, output, session) {
         "Category" = category,
         "Count" = count
       ) %>%
-      slice_max(1) 
-    
-    #TODO flip this table around 
+      slice_max(1)
 
+    # TODO flip this table around
   })
 
   # Categories Plot ----
@@ -441,13 +458,15 @@ server <- function(input, output, session) {
         y = count,
         col = category,
         group = category,
-        text = sprintf("Month: %s<br>Count: %s<br>Category: %s", 
-                       month, 
-                       count,
-                       category)
+        text = sprintf(
+          "Month: %s<br>Count: %s<br>Category: %s",
+          month,
+          count,
+          category
+        )
       )) +
       geom_line() +
-        geom_point()+
+      geom_point() +
       labs(
         x = "Month",
         y = "Count"
@@ -457,11 +476,12 @@ server <- function(input, output, session) {
         plot.title = element_text(hjust = 0.5),
         # text = element_text(size = 15),
         legend.title = element_blank()
-      ) + 
+      ) +
       scale_color_viridis_d(option = "plasma"),
-      tooltip = "text") %>% 
-      layout(xaxis=list(fixedrange=TRUE)) %>% 
-      layout(yaxis=list(fixedrange=TRUE))
+    tooltip = "text"
+    ) %>%
+      layout(xaxis = list(fixedrange = TRUE)) %>%
+      layout(yaxis = list(fixedrange = TRUE))
   })
 
   # Savings df ----
@@ -490,71 +510,75 @@ server <- function(input, output, session) {
     )
   })
 
-  
-  
+
+
   output$savings_plot <- renderPlotly({
-    
-  ggplotly(clean_loans() %>%
-             filter(!(is.na(replacement_cost)),
-                    !(is.na(renewal))) %>% 
-             group_by(category) %>% 
-             summarise(avg_savings = mean(replacement_cost)) %>% 
-             ggplot(aes(x = reorder(category, avg_savings),
-                        y = avg_savings,
-                        text = sprintf("Category: %s<br>Average Savings: %s", 
-                                       category, 
-                                       avg_savings)
-                        )) +
-             geom_col(fill = "#2c3c40") +
-             labs(
-               x = NULL,
-               y = "£ Savings") +
-             coord_flip() +
-             theme_classic(),
-             tooltip = "text") %>% 
-    #config(displayModeBar = F) %>% 
-    layout(xaxis=list(fixedrange=TRUE)) %>% 
-    layout(yaxis=list(fixedrange=TRUE))
-  })
-  
-  
-  
-  
-  # Creates reactive user df's ----
-  user_df <- reactive({
-   
-   if (input$user_choice == "top") {
-     
-     # Finding top user
-     clean_loans() %>%
-       group_by(user_id) %>%
-       count() %>%
-       ungroup() %>%
-       slice_max(n, n = 1) %>%
-       select(user_id) 
-     
-     } else {
-       # Finding 2nd top user
-       clean_loans() %>%
-         group_by(user_id) %>%
-         count() %>%
-         ungroup() %>%
-         slice_max(n, n = 2) %>%
-         arrange(n) %>%
-         slice(1) %>%
-         select(user_id) }
+    ggplotly(clean_loans() %>%
+      filter(
+        !(is.na(replacement_cost)),
+        !(is.na(renewal))
+      ) %>%
+      group_by(category) %>%
+      summarise(avg_savings = mean(replacement_cost)) %>%
+      ggplot(aes(
+        x = reorder(category, avg_savings),
+        y = avg_savings,
+        text = sprintf(
+          "Category: %s<br>Average Savings: %s",
+          category,
+          avg_savings
+        )
+      )) +
+      geom_col(fill = "#2c3c40") +
+      labs(
+        x = NULL,
+        y = "£ Savings"
+      ) +
+      coord_flip() +
+      theme_classic(),
+    tooltip = "text"
+    ) %>%
+      # config(displayModeBar = F) %>%
+      layout(xaxis = list(fixedrange = TRUE)) %>%
+      layout(yaxis = list(fixedrange = TRUE))
   })
 
- 
- # User savings ----
+
+
+
+  # Creates reactive user df's ----
+  user_df <- reactive({
+    if (input$user_choice == "top") {
+
+      # Finding top user
+      clean_loans() %>%
+        group_by(user_id) %>%
+        count() %>%
+        ungroup() %>%
+        slice_max(n, n = 1) %>%
+        select(user_id)
+    } else {
+      # Finding 2nd top user
+      clean_loans() %>%
+        group_by(user_id) %>%
+        count() %>%
+        ungroup() %>%
+        slice_max(n, n = 2) %>%
+        arrange(n) %>%
+        slice(1) %>%
+        select(user_id)
+    }
+  })
+
+
+  # User savings ----
   output$top_user_savings <- renderText({
-    
     top_user <- clean_loans() %>%
       inner_join(user_df(), by = "user_id") %>%
       filter(renewal != "Renewal") %>%
       drop_na(replacement_cost) %>%
       group_by(item_name) %>%
-      mutate(replacement_cost = mean(replacement_cost)) %>% #To remove new loans of the same item
+      mutate(replacement_cost = mean(replacement_cost)) %>% # To remove new loans of the same item
       summarise(total_savings = sum(replacement_cost))
 
     paste0(
@@ -566,39 +590,52 @@ server <- function(input, output, session) {
 
 
 
-  
+
   # User Story plots ----
   output$top_user <- renderPlotly({
-    
-            ggplotly(clean_loans() %>%
-              inner_join(user_df(),
-                by = "user_id"
-              ) %>%
-              filter(renewal != "Renewal") %>%
-              group_by(checked_out) %>%
-              drop_na(input$cat_or_tool) %>%
-              drop_na(checked_out) %>%
-              ggplot(aes(
-                x = checked_out,
-                fill = if (input$cat_or_tool == "category"){ category} else {item_name},
-                text = sprintf("Date: %s<br>Type: %s", 
-                               checked_out, 
-                               if (input$cat_or_tool == "category"){ category} else {item_name})
-              )) +
-              labs(
-                x = "Date Checked Out",
-                y = "Count",
-                fill = if (input$cat_or_tool == "category"){"Category"} else {"Tool"}
-              ) +
-              geom_histogram(bins = 12) +
-              theme_classic() +
-              scale_fill_viridis_d(option = "viridis"), tooltip = "text") %>% 
-      layout(xaxis=list(fixedrange=TRUE)) %>% 
-      layout(yaxis=list(fixedrange=TRUE))
-          })
+    ggplotly(clean_loans() %>%
+      inner_join(user_df(),
+        by = "user_id"
+      ) %>%
+      filter(renewal != "Renewal") %>%
+      group_by(checked_out) %>%
+      drop_na(input$cat_or_tool) %>%
+      drop_na(checked_out) %>%
+      ggplot(aes(
+        x = checked_out,
+        fill = if (input$cat_or_tool == "category") {
+          category
+        } else {
+          item_name
+        },
+        text = sprintf(
+          "Date: %s<br>Type: %s",
+          checked_out,
+          if (input$cat_or_tool == "category") {
+            category
+          } else {
+            item_name
+          }
+        )
+      )) +
+      labs(
+        x = "Date Checked Out",
+        y = "Count",
+        fill = if (input$cat_or_tool == "category") {
+          "Category"
+        } else {
+          "Tool"
+        }
+      ) +
+      geom_histogram(bins = 12) +
+      theme_classic() +
+      scale_fill_viridis_d(option = "viridis"), tooltip = "text") %>%
+      layout(xaxis = list(fixedrange = TRUE)) %>%
+      layout(yaxis = list(fixedrange = TRUE))
+  })
 
 
-# Location Plot ---- 
+  # Location Plot ----
   output$location_plot <- renderPlot({
     clean_usage() %>%
       filter(!(is.na(home_location))) %>%
