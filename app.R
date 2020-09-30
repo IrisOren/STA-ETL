@@ -171,25 +171,6 @@ ui <- dashboardPage( #UI dashboard page ----
 
       tabItem( # Loans tab ----
         tabName = "loans",
-        fluidRow(
-          # Valid colors are: red, yellow, aqua, blue, light-blue, green, navy, teal, olive, lime, orange, fuchsia, purple, maroon, black.
-          box( # display avergae savings
-            title = "Average Savings",
-            solidHeader = TRUE,
-            collapsible = TRUE,
-            status = "primary",
-            width = 2,
-            h1(textOutput("avg_savings"))
-          ),
-          box( #display max savings
-            title = "Max Savings",
-            solidHeader = TRUE,
-            collapsible = TRUE,
-            status = "primary",
-            width = 2,
-            h1(textOutput("max_savings"))
-          )
-        ),
 
         fluidRow(
           box( # top tools/category table
@@ -226,8 +207,47 @@ ui <- dashboardPage( #UI dashboard page ----
       ),
       
       tabItem(
-        tabName = "savings"
-      ),
+        tabName = "savings",
+        
+        fluidRow(
+          
+          
+          box(
+            title = "Membership Fee?",
+            solidHeader = TRUE,
+            collapsible = TRUE,
+            status = "primary",
+            width = 3,
+            numericInput("num", label = "Membership fee £:", value = 30)
+          ),
+          box( # display avergae savings
+            title = "Average Savings",
+            solidHeader = TRUE,
+            collapsible = TRUE,
+            status = "primary",
+            width = 3,
+            h1(textOutput("avg_savings"))
+          ),
+          box( #display max savings
+            title = "Max Savings",
+            solidHeader = TRUE,
+            collapsible = TRUE,
+            status = "primary",
+            width = 3,
+            h1(textOutput("max_savings"))
+          )
+        ),
+        
+        fluidRow(
+          box(
+            title = "Average Savings by Category",
+            solidHeader = TRUE,
+            collapsible = TRUE,
+            status = "primary",
+            width = 9,
+            plotlyOutput("savings_plot")
+                 )
+      )),
 
       tabItem( # User Stories tab ----
         tabName = "user_stories",
@@ -468,7 +488,7 @@ server <- function(input, output, session) {
   output$avg_savings <- renderText({
     paste0(
       "£",
-      round(mean(savings()$total_savings), digits = 2)
+      round(mean(savings()$total_savings - input$num), digits = 2)
     )
   })
 
@@ -477,10 +497,34 @@ server <- function(input, output, session) {
   output$max_savings <- renderText({
     paste0(
       "£",
-      max(savings()$total_savings)
+      max(savings()$total_savings - input$num)
     )
   })
 
+  
+  
+  output$savings_plot <- renderPlotly({
+    
+  ggplotly(clean_loans() %>%
+             filter(!(is.na(replacement_cost)),
+                    !(is.na(renewal))) %>% 
+             group_by(category) %>% 
+             summarise(avg_savings = mean(replacement_cost)) %>% 
+             ggplot(aes(x = category, y = avg_savings)) +
+             geom_col() +
+             labs(
+               x = NULL,
+               y = "£ Savings") +
+             coord_flip() +
+             theme_classic()) %>% 
+    #config(displayModeBar = F) %>% 
+    layout(xaxis=list(fixedrange=TRUE)) %>% 
+    layout(yaxis=list(fixedrange=TRUE))
+  })
+  
+  
+  
+  
   # Creates reactive user df's ----
   user_df <- reactive({
    
