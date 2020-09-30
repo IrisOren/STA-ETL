@@ -9,6 +9,7 @@ library(tidyverse)
 library(lubridate)
 library(plotly)
 library(janitor)
+library(bsplus)
 
 
 
@@ -19,7 +20,7 @@ library(janitor)
 categories <- read_csv("raw_data/categories copy.csv") %>%
   clean_names()
 
-
+data_names <- tibble("user_id"= character(),	"item_id"= character(),	"item_name"= character(),	"checked_out"= character(),	"checked_in"= character(),	"due_date"= character(),	"renewal"= character())
 
 ##################################################################
 ##                              UI                            ----
@@ -42,27 +43,6 @@ ui <- dashboardPage( #UI dashboard page ----
   dashboardSidebar(
     width = 250,
 
-    # Custom CSS ----
-    # to recolour the dashboard using ETL yellow = #fbec3b and adjust
-    # the depth of the navbar
-    tags$head(tags$style(HTML("
-    .logo {
-      background-color: #fbec3b !important;
-    }
-    
-    .main-header .logo {
-      height: 55px;
-    }
-    
-    .sidebar-toggle {
-      height: 55px;
-    }
-    
-    .navbar {
-      background-color: #fbec3b !important;
-    }
-                              "))),
-
     # Sidebar menu layout and widgets ----
     sidebarMenu(
       menuItem("Upload Files", 
@@ -81,27 +61,12 @@ ui <- dashboardPage( #UI dashboard page ----
   ),
 
 
-  dashboardBody(
-    # Custom CSS to recolour the dashboard using ETL yellow = #fbec3b ----
-    tags$head(tags$style(HTML("
+  dashboardBody( 
     
-    .content-wrapper, .right-side {
-      background-color: 	#f5f5f5;
-    }
+    # Sourcing ustom CSS ----
+    tags$head(includeCSS("styles.css")),
     
-    .box.box-solid.box-primary>.box-header {
-      color:#212e31;
-      background:#fbec3b;
-    }
-    
-    .box.box-solid.box-primary{
-      border-bottom-color:#fbec3b;
-      border-left-color:#fbec3b;
-      border-right-color:#fbec3b;
-      border-top-color:#fbec3b;
-    }
-                              "))),
-
+   
     tabItems(
       # First tab content
       tabItem(
@@ -117,7 +82,7 @@ ui <- dashboardPage( #UI dashboard page ----
             "text/comma-separated-values,text/plain",
             ".csv"
           )
-        )),
+        ) ),
 
         # Input: Select usage file ----
         column(4,
@@ -158,7 +123,7 @@ ui <- dashboardPage( #UI dashboard page ----
         #TODO Could keep with synthetic data for demo purposes? 
         
         column(4, 
-          actionButton("test", label = "Demo")
+          actionButton("test", label = "Demo") %>% bs_embed_tooltip("Test app with sample data", placement = 'bottom')
                )), 
         
         
@@ -169,12 +134,14 @@ ui <- dashboardPage( #UI dashboard page ----
                      solidHeader = TRUE,
                      collapsible = TRUE,
                      status = "primary",
+                     tableOutput("loans_names"), 
                      tableOutput("loans"))),
         fluidRow(box(width = 12, 
                      title = "Usage",
                      solidHeader = TRUE,
                      collapsible = TRUE,
                      status = "primary",
+                     tableOutput("usage_names"),
                      tableOutput("usage"))),
         fluidRow(box(width = 12, 
                      title = "Categories",
@@ -202,7 +169,7 @@ ui <- dashboardPage( #UI dashboard page ----
             solidHeader = TRUE,
             collapsible = TRUE,
             status = "primary",
-            width = 12,
+            width = 6,
             tableOutput("top_tools")
           ))
         
@@ -402,7 +369,17 @@ server <- function(input, output, session) {
   })
 
 
-
+output$loans_names <- renderTable({
+  tibble("user_id" = character(), "item_id"= character(),	"item_name"= character(),	"checked_out"= character(),	"checked_in"= character(),	"due_date"= character(),	"renewal"= character())
+  
+})
+output$usage_names <- renderTable({
+  tibble("item_name" = character(), "item_id" = character(), "type" = character(), "loans" = character(), "completed_loans" = character(), "total_days_out" = character(), "average_loan_length" = character())
+  
+})
+  
+  
+  
   # Raw data table render ----
   # Renders the table for display depending on user display input 
   output$loans <- renderTable({
@@ -458,8 +435,8 @@ server <- function(input, output, session) {
         "Count" = count
       ) %>%
       slice_max(1) 
-    #TODO flip this table around 
     
+    #TODO flip this table around 
 
   })
 
@@ -476,9 +453,14 @@ server <- function(input, output, session) {
         x = month,
         y = count,
         col = category,
-        group = category
+        group = category,
+        text = sprintf("Month: %s<br>Count: %s<br>Category: %s", 
+                       month, 
+                       count,
+                       category)
       )) +
       geom_line() +
+        geom_point()+
       labs(
         x = "Month",
         y = "Count"
@@ -488,8 +470,9 @@ server <- function(input, output, session) {
         plot.title = element_text(hjust = 0.5),
         # text = element_text(size = 15),
         legend.title = element_blank()
-      ) +
-      scale_color_viridis_d(option = "plasma")) %>% 
+      ) + 
+      scale_color_viridis_d(option = "plasma"),
+      tooltip = "text") %>% 
       layout(xaxis=list(fixedrange=TRUE)) %>% 
       layout(yaxis=list(fixedrange=TRUE))
   })
@@ -529,13 +512,19 @@ server <- function(input, output, session) {
                     !(is.na(renewal))) %>% 
              group_by(category) %>% 
              summarise(avg_savings = mean(replacement_cost)) %>% 
-             ggplot(aes(x = category, y = avg_savings)) +
-             geom_col() +
+             ggplot(aes(x = reorder(category, avg_savings),
+                        y = avg_savings,
+                        text = sprintf("Category: %s<br>Average Savings: %s", 
+                                       category, 
+                                       avg_savings)
+                        )) +
+             geom_col(fill = "#2c3c40") +
              labs(
                x = NULL,
                y = "£ Savings") +
              coord_flip() +
-             theme_classic()) %>% 
+             theme_classic(),
+             tooltip = "text") %>% 
     #config(displayModeBar = F) %>% 
     layout(xaxis=list(fixedrange=TRUE)) %>% 
     layout(yaxis=list(fixedrange=TRUE))
@@ -605,7 +594,9 @@ server <- function(input, output, session) {
               ggplot(aes(
                 x = checked_out,
                 fill = if (input$cat_or_tool == "category"){ category} else {item_name},
-                text = sprintf("Date: %s<br>Type: %s", checked_out, if (input$cat_or_tool == "category"){ category} else {item_name})
+                text = sprintf("Date: %s<br>Type: %s", 
+                               checked_out, 
+                               if (input$cat_or_tool == "category"){ category} else {item_name})
               )) +
               labs(
                 x = "Date Checked Out",
