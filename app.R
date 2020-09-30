@@ -134,14 +134,12 @@ ui <- dashboardPage( #UI dashboard page ----
                      solidHeader = TRUE,
                      collapsible = TRUE,
                      status = "primary",
-                     tableOutput("loans_names"), 
                      tableOutput("loans"))),
         fluidRow(box(width = 12, 
                      title = "Usage",
                      solidHeader = TRUE,
                      collapsible = TRUE,
                      status = "primary",
-                     tableOutput("usage_names"),
                      tableOutput("usage"))),
         fluidRow(box(width = 12, 
                      title = "Categories",
@@ -369,17 +367,6 @@ server <- function(input, output, session) {
   })
 
 
-output$loans_names <- renderTable({
-  tibble("user_id" = character(), "item_id"= character(),	"item_name"= character(),	"checked_out"= character(),	"checked_in"= character(),	"due_date"= character(),	"renewal"= character())
-  
-})
-output$usage_names <- renderTable({
-  tibble("item_name" = character(), "item_id" = character(), "type" = character(), "loans" = character(), "completed_loans" = character(), "total_days_out" = character(), "average_loan_length" = character())
-  
-})
-  
-  
-  
   # Raw data table render ----
   # Renders the table for display depending on user display input 
   output$loans <- renderTable({
@@ -618,7 +605,7 @@ output$usage_names <- renderTable({
       group_by(home_location) %>%
       summarise(total_loans = sum(loans)) %>%
       ggplot(aes(x = home_location, y = total_loans)) +
-      geom_col() +
+      geom_col(fill = "#2c3c40") +
       labs(
         x = "Location",
         y = "Total Loans"
