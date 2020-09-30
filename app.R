@@ -158,14 +158,29 @@ ui <- dashboardPage( #UI dashboard page ----
         #TODO Could keep with synthetic data for demo purposes? 
         
         column(4, 
-          actionButton("test", label = "Test Sample")
+          actionButton("test", label = "Demo")
                )), 
         
         
 
         # Output: Raw Data file
-        tableOutput("loans"),
-        tableOutput("usage")
+        fluidRow(box(width = 12, 
+                     title = "Loans",
+                     solidHeader = TRUE,
+                     collapsible = TRUE,
+                     status = "primary",
+                     tableOutput("loans"))),
+        fluidRow(box(width = 12, 
+                     title = "Usage",
+                     solidHeader = TRUE,
+                     collapsible = TRUE,
+                     status = "primary",
+                     tableOutput("usage"))),
+        fluidRow(box(width = 12, 
+                     title = "Categories",
+                     solidHeader = TRUE,
+                     collapsible = TRUE,
+                     status = "primary"))
       ),
 
 
