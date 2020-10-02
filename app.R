@@ -199,9 +199,13 @@ ui <- dashboardPage( # UI dashboard page ----
       tabItem( # Usage tab ----
         tabName = "usage",
 
+#TODO this usage plot can probably be calculated from loans data and therefore include date
+
         fluidRow(
           box( # The bar chart for loans by location
-            title = "Loans by Location for entire data",
+            title = span("Loans by Location for entire data", icon("info-circle") %>% 
+                           bs_embed_tooltip("Not adjusted by date",
+                                            placement = "bottom")),
             solidHeader = TRUE,
             collapsible = TRUE,
             status = "primary",
@@ -236,7 +240,9 @@ ui <- dashboardPage( # UI dashboard page ----
             collapsible = TRUE,
             status = "primary",
             width = 3,
-            h1(textOutput("max_savings"))
+            h1(textOutput("max_savings") %>% 
+                 bs_embed_tooltip("Not including renewals or repeat loans of the same tool ",
+                                  placement = "bottom"))
           )
         ),
 
@@ -270,7 +276,9 @@ ui <- dashboardPage( # UI dashboard page ----
           ),
 
           box( # User selection buttons
-            title = "Which User?",
+            title = span("Which User?", icon("info-circle") %>% 
+                           bs_embed_tooltip("Top by number of loans",
+                                            placement = "bottom")),
             solidHeader = TRUE,
             collapsible = TRUE,
             status = "primary",
@@ -280,8 +288,7 @@ ui <- dashboardPage( # UI dashboard page ----
               inline = TRUE,
               choices = list("Top" = "top", "2nd Top" = "top2"),
               selected = "top"
-            ) %>% 
-              bs_embed_tooltip("*Top by number of loans", placement = "bottom")
+            )
           ),
 
           box( # display user savings
@@ -294,7 +301,9 @@ ui <- dashboardPage( # UI dashboard page ----
           ),
           
           box( # display user savings
-            title = "User Savings",
+            title = span("User Savings", icon("info-circle") %>% 
+                           bs_embed_tooltip("Not including renewals or repeat loans of the same tool ",
+                                            placement = "bottom")),
             solidHeader = TRUE,
             collapsible = TRUE,
             status = "primary",
