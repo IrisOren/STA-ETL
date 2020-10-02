@@ -280,9 +280,19 @@ ui <- dashboardPage( # UI dashboard page ----
               inline = TRUE,
               choices = list("Top" = "top", "2nd Top" = "top2"),
               selected = "top"
-            )
+            ) %>% 
+              bs_embed_tooltip("*Top by number of loans", placement = "bottom")
           ),
 
+          box( # display user savings
+            title = "Number of Loans",
+            solidHeader = TRUE,
+            collapsible = TRUE,
+            status = "primary",
+            width = 3,
+            h5(textOutput("top_user_loans"))
+          ),
+          
           box( # display user savings
             title = "User Savings",
             solidHeader = TRUE,
@@ -491,12 +501,10 @@ server <- function(input, output, session) {
   # Savings df ----
   savings <- reactive({
     clean_loans() %>%
-      filter(renewal != "Renewal") %>%
+      filter(renewal != "Renewal") %>% 
       drop_na(replacement_cost) %>% 
-      group_by(item_name, user_id) %>%
-      mutate(replacement_cost = mean(replacement_cost)) %>%
-      #ungroup() %>% 
-     # group_by(user_id) %>% 
+      group_by(user_id) %>% 
+      distinct(item_name, .keep_all=TRUE) %>% 
       summarise(total_savings = sum(replacement_cost)) 
   })
 
@@ -553,23 +561,23 @@ server <- function(input, output, session) {
 
 
 
-  # Creates reactive user df's ----
+  # Creates reactive top_user df ----
   user_df <- reactive({
+    
+    df <- clean_loans() %>%
+      filter(renewal != "Renewal") %>%
+      group_by(user_id) %>%
+      count() %>% 
+      ungroup()
+    
     if (input$user_choice == "top") {
-
       # Finding top user
-      clean_loans() %>%
-        group_by(user_id) %>%
-        count() %>%
-        ungroup() %>%
+       df %>% 
         slice_max(n, n = 1) %>%
         select(user_id)
     } else {
       # Finding 2nd top user
-      clean_loans() %>%
-        group_by(user_id) %>%
-        count() %>%
-        ungroup() %>%
+      df %>% 
         slice_max(n, n = 2) %>%
         arrange(n) %>%
         slice(1) %>%
@@ -582,20 +590,27 @@ server <- function(input, output, session) {
   output$top_user_savings <- renderText({
     top_user <- clean_loans() %>%
       inner_join(user_df(), by = "user_id") %>%
-      filter(renewal != "Renewal") %>%
-      drop_na(replacement_cost) %>%
-      group_by(item_name) %>%
-      mutate(replacement_cost = mean(replacement_cost)) %>% # To remove new loans of the same item
+      filter(renewal != "Renewal") %>% 
+      group_by(user_id) %>% 
+      drop_na(replacement_cost) %>% 
+      distinct(item_name, .keep_all=TRUE) %>% 
       summarise(total_savings = sum(replacement_cost))
-
+      
     paste0(
       "£",
-      sum(top_user$total_savings)
+      sum(top_user$total_savings) - input$num
     )
   })
 
-
-
+  output$top_user_loans <- renderText({
+    top_user_1 <- clean_loans() %>% 
+      inner_join(user_df(), by = "user_id") %>%
+      filter(renewal != "Renewal") %>% 
+      summarise(total = n())
+    
+    paste0(
+      top_user_1$total)
+    })
 
 
   # User Story plots ----
@@ -616,13 +631,14 @@ server <- function(input, output, session) {
           item_name
         },
         text = sprintf(
-          "Date: %s<br>Type: %s",
+          "Date: %s<br>Type: %s<br>User ID: %s",
           checked_out,
           if (input$cat_or_tool == "category") {
             category
           } else {
             item_name
-          }
+          },
+          user_id
         )
       )) +
       labs(
