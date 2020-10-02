@@ -17,7 +17,7 @@ library(bsplus)
 ##                  Reading in categories data                 ----
 ## ================================================================
 
-categories <- read_csv("raw_data/categories copy.csv") %>%
+categories <- read_csv("raw_data/inventory-with categories.csv") %>%
   clean_names()
 
 data_names <- tibble("user_id" = character(), "item_id" = character(), "item_name" = character(), "checked_out" = character(), "checked_in" = character(), "due_date" = character(), "renewal" = character())
@@ -49,15 +49,18 @@ ui <- dashboardPage( # UI dashboard page ----
         tabName = "uploader",
         icon = icon("file-upload")
       ),
-      menuItem("Data Viz",
-        tabName = "viz",
-        icon = icon("chart-bar"),
-        dateRangeInput("dates", label = h3("Date range")),
-        menuSubItem("Loans", tabName = "loans"),
-        menuSubItem("Usage", tabName = "usage"),
-        menuSubItem("Savings", tabName = "savings"),
-        menuSubItem("User Stories", tabName = "user_stories")
-      )
+      menuItem(#"Date",
+               tabName = "date", 
+               icon = icon("calendar"),
+               dateRangeInput("dates", label = "Date range")),
+      # menuItem("Data Viz",
+      #   tabName = "viz",
+      #   icon = icon("chart-bar")),
+        menuItem("Loans", tabName = "loans", icon = icon("tools")),
+        menuItem("Usage", tabName = "usage", icon = icon("bar-chart")),
+        menuItem("Savings", tabName = "savings", icon = icon("coins")),
+        menuItem("User Stories", tabName = "user_stories", icon = icon("book"))
+      
     )
   ),
 
@@ -72,12 +75,15 @@ ui <- dashboardPage( # UI dashboard page ----
       # First tab content
       tabItem(
         tabName = "uploader",
+        
+        h2("Upload files:"),
+        
         fluidRow(
 
           # Input: Select loans file ----
           column(
             4,
-            fileInput("file1", "Upload the LOANS file",
+            fileInput("file1", "loans-export [date].csv",
               multiple = TRUE,
               accept = c(
                 "text/csv",
@@ -90,7 +96,7 @@ ui <- dashboardPage( # UI dashboard page ----
           # Input: Select usage file ----
           column(
             4,
-            fileInput("file2", "Upload the USAGE file",
+            fileInput("file2", "usage-export [date].csv",
               multiple = TRUE,
               accept = c(
                 "text/csv",
@@ -103,7 +109,7 @@ ui <- dashboardPage( # UI dashboard page ----
           # Input: Select categories file ----
           column(
             4,
-            fileInput("file3", "Upload the CATEGORIES file",
+            fileInput("file3", "inventory-with categories.csv",
               multiple = TRUE,
               accept = c(
                 "text/csv",
@@ -488,9 +494,12 @@ server <- function(input, output, session) {
   savings <- reactive({
     clean_loans() %>%
       filter(renewal != "Renewal") %>%
-      group_by(user_id) %>%
-      summarise(total_savings = sum(replacement_cost)) %>%
-      drop_na(total_savings)
+      drop_na(replacement_cost) %>% 
+      group_by(item_name, user_id) %>%
+      mutate(replacement_cost = mean(replacement_cost)) %>%
+      #ungroup() %>% 
+     # group_by(user_id) %>% 
+      summarise(total_savings = sum(replacement_cost)) 
   })
 
   # Mean savings output ----
