@@ -20,8 +20,6 @@ library(bsplus)
 categories <- read_csv("raw_data/inventory-with categories.csv") %>%
   clean_names()
 
-data_names <- tibble("user_id" = character(), "item_id" = character(), "item_name" = character(), "checked_out" = character(), "checked_in" = character(), "due_date" = character(), "renewal" = character())
-
 ##################################################################
 ##                              UI                            ----
 ##################################################################
