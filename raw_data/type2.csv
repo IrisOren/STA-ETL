@@ -1,0 +1,14 @@
+"","type","emission factor"
+"1","solid metal",1.83
+"2","solid plastic/rubber",3.43
+"3","mixed plastic/rubber metal",2.63
+"4","mixed wood metal",1.37
+"5","mixed wood plastic",2.16
+"6","wood",0.9
+"7","aluminium",10.42
+"8","fabric",4.32
+"9","powertool (dril)",9.27
+"10","other powertool (no battery)",3.12
+"11","petrol based (metal mostly)",3.26
+"12","mixed alluminium wood",5.66
+"13","WEE (computer waste, flashlights too, meters)",3.58
