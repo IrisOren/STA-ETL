@@ -117,21 +117,21 @@ ui <- dashboardPage( # UI dashboard page ----
                 ".csv"
               )
             )
-          ),
+          )#,
         
         
-        # Input: Select categories file ----
-        column(
-          3,
-          fileInput("file4", "type1.csv",
-                    multiple = TRUE,
-                    accept = c(
-                      "text/csv",
-                      "text/comma-separated-values,text/plain",
-                      ".csv"
-                    )
-          )
-        )
+        # # Input: Select categories file ----
+        # column(
+        #   3,
+        #   fileInput("file4", "type1.csv",
+        #             multiple = TRUE,
+        #             accept = c(
+        #               "text/csv",
+        #               "text/comma-separated-values,text/plain",
+        #               ".csv"
+        #             )
+        #   )
+        # )
       ),
 
         fluidRow(
