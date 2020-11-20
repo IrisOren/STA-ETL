@@ -75,9 +75,9 @@ ui <- dashboardPage( # UI dashboard page ----
       # First tab content
       tabItem(
         tabName = "uploader",
-        
+
         h2("Upload files:"),
-        
+
         fluidRow(
 
           # Input: Select loans file ----
@@ -118,8 +118,8 @@ ui <- dashboardPage( # UI dashboard page ----
               )
             )
           )#,
-        
-        
+
+
         # # Input: Select categories file ----
         # column(
         #   3,
