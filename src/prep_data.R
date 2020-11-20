@@ -25,9 +25,9 @@ get_match <- function(name, match_vec){
 }
 
 # import inventory
-inv <- read.csv("../raw_data/inventory-with categories.csv")
+inv <- read.csv("./raw_data/inventory-with categories.csv")
 #import data of name, weight and type classification (in terms of type 1 and type 2)
-wght <- readxl::read_excel("../raw_data/CO2 data - weight, type, emission factor.xlsx", 
+wght <- readxl::read_excel("./raw_data/CO2 data - weight, type, emission factor.xlsx", 
                            range = "A2:D36") %>%
   rename(name = `...1` , 
          weight = `...2`) %>%
@@ -42,6 +42,12 @@ inv <- inv %>%
            flatten_chr()) %>%
   left_join(wght)
 
+inv_type1 <- inv %>%
+  select(-`Type 2`)
+
+inv_type2 <- inv %>%
+  select(-`Type 1`)
+
 type1 <- read_excel("./raw_data/CO2 data - weight, type, emission factor.xlsx", 
                    range = "H2:I5", 
                    col_names = T)
@@ -50,7 +56,8 @@ type2 <- read_excel("./raw_data/CO2 data - weight, type, emission factor.xlsx",
                     range = "H7:I20", 
                     col_names = T)
 
-write.csv(inv, "./raw_data/inv_with_type.csv")
+write.csv(inv_type1, "./raw_data/inv_with_type1.csv")
+write.csv(inv_type2, "./raw_data/inv_with_type2.csv")
 write.csv(type1, "./raw_data/type1.csv")
 write.csv(type2, "./raw_data/type2.csv")
 
