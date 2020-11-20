@@ -16,8 +16,9 @@ library(bsplus)
 ## ================================================================
 ##                  Reading in categories data                 ----
 ## ================================================================
-
-categories <- read_csv("raw_data/inventory-with categories.csv") %>%
+inv_file <- "raw_data/inventory-with categories.csv"
+inv_file <- "raw_data/inv_with_type1.csv"
+categories <- read_csv(inv_file) %>%
   clean_names()
 
 ##################################################################
@@ -57,6 +58,7 @@ ui <- dashboardPage( # UI dashboard page ----
         menuItem("Loans", tabName = "loans", icon = icon("tools")),
         menuItem("Usage", tabName = "usage", icon = icon("bar-chart")),
         menuItem("Savings", tabName = "savings", icon = icon("coins")),
+        menuItem("CO2 Emissions", tabName = "co2", icon = icon("thermometer-three-quarters")),
         menuItem("User Stories", tabName = "user_stories", icon = icon("book"))
       
     )
@@ -80,7 +82,7 @@ ui <- dashboardPage( # UI dashboard page ----
 
           # Input: Select loans file ----
           column(
-            4,
+            3,
             fileInput("file1", "loans-export [date].csv",
               multiple = TRUE,
               accept = c(
@@ -93,7 +95,7 @@ ui <- dashboardPage( # UI dashboard page ----
 
           # Input: Select usage file ----
           column(
-            4,
+            3,
             fileInput("file2", "usage-export [date].csv",
               multiple = TRUE,
               accept = c(
@@ -106,8 +108,8 @@ ui <- dashboardPage( # UI dashboard page ----
 
           # Input: Select categories file ----
           column(
-            4,
-            fileInput("file3", "inventory-with categories.csv",
+            3,
+            fileInput("file3", "inventory_with_type1.csv",
               multiple = TRUE,
               accept = c(
                 "text/csv",
@@ -115,8 +117,22 @@ ui <- dashboardPage( # UI dashboard page ----
                 ".csv"
               )
             )
+          ),
+        
+        
+        # Input: Select categories file ----
+        column(
+          3,
+          fileInput("file4", "type1.csv",
+                    multiple = TRUE,
+                    accept = c(
+                      "text/csv",
+                      "text/comma-separated-values,text/plain",
+                      ".csv"
+                    )
           )
-        ),
+        )
+      ),
 
         fluidRow(
           # Input: Select number of rows to display ----
@@ -254,6 +270,50 @@ ui <- dashboardPage( # UI dashboard page ----
             status = "primary",
             width = 9,
             plotlyOutput("savings_plot")
+          )
+        )
+      ),
+      
+      tabItem(
+        tabName = "co2",
+        
+        fluidRow(
+          box(
+            title = "Percentage new tools?",
+            solidHeader = TRUE,
+            collapsible = TRUE,
+            status = "primary",
+            width = 3,
+            numericInput("num", label = "Percentage new tools:", value = 40)
+          ),
+          box( # display avergae savings
+            title = "Average Emissions Savings",
+            solidHeader = TRUE,
+            collapsible = TRUE,
+            status = "primary",
+            width = 3,
+            h1(textOutput("avg_savings"))
+          ),
+          box( # display max savings
+            title = "Max Emissions Savings",
+            solidHeader = TRUE,
+            collapsible = TRUE,
+            status = "primary",
+            width = 3,
+            h1(textOutput("max_co2_savings") %>% 
+                 bs_embed_tooltip("Not including renewals or repeat loans of the same tool ",
+                                  placement = "bottom"))
+          )
+        ),
+        
+        fluidRow(
+          box(
+            title = "Average Emissions Savings by Category",
+            solidHeader = TRUE,
+            collapsible = TRUE,
+            status = "primary",
+            width = 9,
+            plotlyOutput("co2_savings_plot")
           )
         )
       ),

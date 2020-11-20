@@ -43,10 +43,12 @@ inv <- inv %>%
   left_join(wght)
 
 inv_type1 <- inv %>%
-  select(-`Type 2`)
+  select(-`Type 2`, -name) %>%
+  rename(type = `Type 1`)
 
 inv_type2 <- inv %>%
-  select(-`Type 1`)
+  select(-`Type 1`, -name) %>%
+  rename(type = `Type 2`)
 
 type1 <- read_excel("./raw_data/CO2 data - weight, type, emission factor.xlsx", 
                    range = "H2:I5", 
@@ -56,8 +58,8 @@ type2 <- read_excel("./raw_data/CO2 data - weight, type, emission factor.xlsx",
                     range = "H7:I20", 
                     col_names = T)
 
-write.csv(inv_type1, "./raw_data/inv_with_type1.csv")
-write.csv(inv_type2, "./raw_data/inv_with_type2.csv")
+write.csv(inv_type1, "./raw_data/inv_with_type1.csv", row.names = F)
+write.csv(inv_type2, "./raw_data/inv_with_type2.csv", row.names = F)
 write.csv(type1, "./raw_data/type1.csv")
 write.csv(type2, "./raw_data/type2.csv")
 
