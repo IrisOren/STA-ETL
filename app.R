@@ -17,8 +17,9 @@ library(bsplus)
 ##                  Reading in categories data                 ----
 ## ================================================================
 
-categories <- read_csv("raw_data/inventory-with categories.csv") %>%
-  clean_names()
+#categories <- read_csv("raw_data/inventory-with categories.csv") %>%
+#categories <- read_csv("raw_data/inv_with_type1.csv") %>%
+#  clean_names() 
 
 ##################################################################
 ##                              UI                            ----
@@ -179,7 +180,8 @@ ui <- dashboardPage( # UI dashboard page ----
                              title = "Categories",
                              solidHeader = TRUE,
                              collapsible = TRUE,
-                             status = "primary"
+                             status = "primary", 
+                             tableOutput("categories")
                            ))
                          ),
                          
@@ -414,6 +416,18 @@ server <- function(input, output, session) {
       clean_names() # tidies up column names
   })
   
+  categories <- eventReactive(input$file3, {
+    read.csv(input$file3$datapath) %>%
+      clean_names() # tidies up column names
+  })
+  
+  type <- eventReactive(input$file4, {
+    type <- read.csv(input$file4$datapath) %>%
+      clean_names()
+    #print(type)
+    return(type)
+  })
+  
   #######################################################
   # Test output----
   raw_loans <- eventReactive(input$test, {
@@ -425,8 +439,23 @@ server <- function(input, output, session) {
     read.csv("raw_data/usage-export jan-dec 2019.csv") %>%
       clean_names()
   })
+  
+  # The inventory file 
+  categories <- eventReactive(input$test, {
+    read_csv("raw_data/inv_with_type1.csv") %>%
+    clean_names() 
+  })
+  
+  type <- eventReactive(input$test, {
+    type <- read.csv("raw_data/type1.csv") %>%
+      clean_names()
+  #  print(type)
+    return(type)
+  })
   #########################################################
   
+  
+ 
   
   # Data Cleaning ----
   clean_loans <- reactive({
@@ -440,18 +469,30 @@ server <- function(input, output, session) {
         checked_out >= input$dates[1],
         checked_out <= input$dates[2]
       ) %>%
-      left_join(categories, by = "item_id") %>% # adds tool categories to the data frame
+      left_join(categories(), by = "item_id") %>% # adds tool categories to the data frame
       mutate(month = month(checked_out, label = T)) # creates a column called month
   })
   
+  # # Add emissions to inventory
+  categories_with_type <- reactive({
+    cat_with_type <- categories() %>%
+    left_join(type(), by = "type") %>%
+    mutate(embedded_co2 = weight * emission_factor)
+    #print(head(cat_with_type))
+    return(cat_with_type)
+    
+    
+  })
   
   # Cleans the raw Usage data and adds categories
   clean_usage <- reactive({
     raw_usage() %>%
-      left_join(categories, by = "item_id")
+      left_join(categories(), by = "item_id")
   })
   
   
+  
+  # 
   # Date range updater ----
   # Updates the default date range to min and max of raw data
   observe({
@@ -499,6 +540,11 @@ server <- function(input, output, session) {
     }
   })
   
+  output$categories <- renderTable({
+    #print(head(categories_with_type()))
+     return(head(categories_with_type() %>%
+                   select(item_type, weight, emission_factor, embedded_co2)))})   
+                 
   
   
   # Top Tools Table ----
@@ -514,7 +560,7 @@ server <- function(input, output, session) {
         month,
         desc(count)
       ) %>%
-      left_join(categories,
+      left_join(categories(),
                 by = c("item_name" = "name")
       ) %>%
       select(
